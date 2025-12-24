@@ -86,7 +86,15 @@ h1 {
     display: flex;
     align-items: center;
     gap: 15px;
+    gap: 15px;
     flex-wrap: wrap;
+}
+
+.site-logo {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.6));
 }
 
 /* GÜNCELLENEN BADGE STİLİ */
