@@ -345,6 +345,7 @@ function init() {
     drawPreview();
     setupKeyboardShortcuts();
     setupCanvasDrag();
+    setupModalListeners();
 }
 
 function renderUI() {
@@ -542,7 +543,7 @@ function toggleFavorite() {
     const hash = JSON.stringify(currentSettings);
 
     if (isFavorite) {
-        // If already favorite, remove it with confirmation
+        // If already favorite, remove it (confirm first maybe?)
         if (confirm(currentLang === 'tr' ? 'Bu favoriyi kaldırmak istiyor musunuz?' : 'Do you want to remove this favorite?')) {
             favorites = favorites.filter(f => JSON.stringify(f) !== hash);
             isFavorite = false;
