@@ -1296,6 +1296,14 @@
                     <span class="hud-label" id="hl-txt">TEXT</span>
                     <span class="hud-value" id="hv-txt" style="color:#38bdf8">N/A</span>
                 </div>
+                <div class="hud-item">
+                    <span class="hud-label" id="hl-angle">ANGLE</span>
+                    <span class="hud-value" id="hv-angle">N/A</span>
+                </div>
+                <div class="hud-item">
+                    <span class="hud-label" id="hl-fx">FX</span>
+                    <span class="hud-value" id="hv-fx">N/A</span>
+                </div>
             </div>
         </div>
 
@@ -1443,18 +1451,40 @@
                 shortcutLabels: { gen: "Oluştur", copy: "Kopyala" },
 
                 expr: [
+                    // Basic Emotions
                     { i: "😱", l: "Şok Olmuş" }, { i: "😊", l: "Mutlu" }, { i: "🤬", l: "Çok Sinirli" }, { i: "😭", l: "Ağlayan" }, { i: "🤔", l: "Düşünceli" },
                     { i: "🤯", l: "Beyni Yanmış" }, { i: "🤑", l: "Para Gözlü" }, { i: "😈", l: "Sinsi/Kötü" }, { i: "😴", l: "Uykulu" }, { i: "😨", l: "Dehşete Düşmüş" },
                     { i: "🤐", l: "Ağzı Bantlı" }, { i: "🤡", l: "Palyaço" }, { i: "😎", l: "Havalı" }, { i: "🤕", l: "Yaralı" }, { i: "🧐", l: "İnceleyen" },
                     { i: "🤢", l: "İğrenmiş" }, { i: "🤣", l: "Kahkaha Atan" }, { i: "😤", l: "Kararlı" }, { i: "🙄", l: "Göz Deviren" }, { i: "🥺", l: "Masum/Yalvaran" },
-                    { i: "😵", l: "Baygın" }, { i: "🤪", l: "Çılgın" }, { i: "🤥", l: "Yalancı (Burnu Uzun)" }, { i: "🤫", l: "Sus İşareti" }, { i: "😬", l: "Gergin" }
+                    { i: "😵", l: "Baygın" }, { i: "🤪", l: "Çılgın" }, { i: "🤥", l: "Yalancı (Burnu Uzun)" }, { i: "🤫", l: "Sus İşareti" }, { i: "😬", l: "Gergin" },
+                    // Advanced Emotions
+                    { i: "😏", l: "Sırıtan" }, { i: "🥴", l: "Sarhoş/Baş Dönmesi" }, { i: "😇", l: "Melek Gibi" }, { i: "🤩", l: "Yıldız Gözlü" }, { i: "😳", l: "Utanmış" },
+                    { i: "🥶", l: "Donmuş/Üşümüş" }, { i: "🥵", l: "Sıcaktan Bunalmış" }, { i: "😡", l: "Öfkeli" }, { i: "😱", l: "Çığlık Atan" }, { i: "🫣", l: "Gözlerini Kapatan" },
+                    { i: "🫢", l: "Ağzını Kapatan" }, { i: "🫠", l: "Eriyen" }, { i: "😶", l: "Sessiz Kalan" }, { i: "🙃", l: "Ters Gülümseme" }, { i: "😋", l: "Dil Çıkaran" },
+                    { i: "🤗", l: "Sarılmak İsteyen" }, { i: "😒", l: "Bezgin" }, { i: "😞", l: "Hayal Kırıklığına Uğramış" }, { i: "😟", l: "Endişeli" }, { i: "🫨", l: "Titreyen" },
+                    // YouTube Popular
+                    { i: "👀", l: "Gözleri Faltaşı" }, { i: "💀", l: "Öldüm (Komik)" }, { i: "🙀", l: "Korkmuş Kedi" }, { i: "😵‍💫", l: "Hipnotize" }, { i: "🫥", l: "Görünmez" },
+                    { i: "😮", l: "Ağzı Açık Kalmış" }, { i: "😧", l: "Endişeli Bakış" }, { i: "😲", l: "Şaşkın" }, { i: "😯", l: "Hafif Şaşkın" }, { i: "🤨", l: "Tek Kaş Kaldırmış" }
                 ],
                 outfit: [
-                    { i: "🧥", l: "Siyah Hoodie" }, { i: "👔", l: "Takım Elbise" }, { i: "🔧", l: "İş Tulumu" }, { i: "👕", l: "T-Shirt" }, { i: "👮", l: "Polis" },
-                    { i: "🩺", l: "Doktor" }, { i: "🪖", l: "Askeri" }, { i: "⛓️", l: "Mahkum" }, { i: "👨‍🍳", l: "Aşçı" }, { i: "🕴️", l: "Smokin" },
-                    { i: "🧟", l: "Zombi" }, { i: "🦸", l: "Süper Kahraman" }, { i: "🏋️", l: "Sporcu/Atlet" }, { i: "🥋", l: "Dövüşçü" }, { i: "🧪", l: "Laboratuvar Önlüğü" },
-                    { i: "🧥", l: "Deri Ceket" }, { i: "🚀", l: "Astronot" }, { i: "🤴", l: "Kraliyet Giysisi" }, { i: "👘", l: "Cyberpunk Ceket" }, { i: "🏖️", l: "Hawaii Gömleği" },
-                    { i: "👗", l: "Abiye Elbise" }, { i: "🕶️", l: "Ajan (Siyah Takım)" }, { i: "🦁", l: "Kürk Mantolu" }
+                    // Casual & Streetwear
+                    { i: "🧥", l: "Siyah Hoodie" }, { i: "👕", l: "Beyaz T-Shirt" }, { i: "👕", l: "Siyah T-Shirt" }, { i: "🎽", l: "Kolsuz Atlet" }, { i: "👖", l: "Yırtık Kot" },
+                    { i: "🧢", l: "Snapback Şapka" }, { i: "🧥", l: "Oversize Hoodie" }, { i: "🧥", l: "Fermuarlı Hoodie" }, { i: "👟", l: "Spor Ayakkabı" }, { i: "🥾", l: "Bot" },
+                    { i: "🧥", l: "Bomber Ceket" }, { i: "🧥", l: "Deri Ceket" }, { i: "🧥", l: "Kot Ceket" }, { i: "🧥", l: "Varsity Ceket" }, { i: "🧣", l: "Şal/Atkı" },
+                    // Formal & Business
+                    { i: "👔", l: "Takım Elbise" }, { i: "🕴️", l: "Smokin" }, { i: "👔", l: "Gömlek & Kravat" }, { i: "🎩", l: "Fötr Şapka" }, { i: "👞", l: "Klasik Ayakkabı" },
+                    { i: "👔", l: "Blazer Ceket" }, { i: "👔", l: "V Yaka Kazak" }, { i: "📿", l: "Altın Zincir" }, { i: "⌚", l: "Lüks Saat" }, { i: "👓", l: "Gözlük" },
+                    // Professions
+                    { i: "👮", l: "Polis Üniforma" }, { i: "🩺", l: "Doktor Önlüğü" }, { i: "🪖", l: "Askeri Üniforma" }, { i: "👨‍🍳", l: "Aşçı Kıyafeti" }, { i: "🚒", l: "İtfaiyeci" },
+                    { i: "👷", l: "İnşaat İşçisi" }, { i: "⛓️", l: "Mahkum Tulumu" }, { i: "🧪", l: "Laboratuvar Önlüğü" }, { i: "✈️", l: "Pilot Üniforması" }, { i: "🧑‍🚀", l: "Astronot" },
+                    { i: "🔧", l: "Tamirci Tulumu" }, { i: "🎬", l: "Yönetmen Koltuğu" }, { i: "📰", l: "Gazeteci" }, { i: "🎤", l: "Şarkıcı" }, { i: "🧑‍🎨", l: "Sanatçı" },
+                    // Characters & Costumes
+                    { i: "🦸", l: "Süper Kahraman" }, { i: "🦹", l: "Süper Villain" }, { i: "🧟", l: "Zombi" }, { i: "🧙", l: "Büyücü" }, { i: "🥷", l: "Ninja" },
+                    { i: "🤴", l: "Kral/Prens" }, { i: "👸", l: "Kraliçe/Prenses" }, { i: "🏴‍☠️", l: "Korsan" }, { i: "🤖", l: "Robot/Cyborg" }, { i: "👽", l: "Uzaylı" },
+                    { i: "🧛", l: "Vampir" }, { i: "🎭", l: "Joker/Palyaço" }, { i: "⚔️", l: "Ortaçağ Şövalye" }, { i: "🥋", l: "Dövüşçü" }, { i: "🏋️", l: "Fitness Kıyafeti" },
+                    // Trendy & Luxury
+                    { i: "👘", l: "Cyberpunk Ceket" }, { i: "🏖️", l: "Hawaii Gömleği" }, { i: "👗", l: "Abiye Elbise" }, { i: "🕶️", l: "Ajan (Siyah Takım)" }, { i: "🦁", l: "Kürk Manto" },
+                    { i: "💎", l: "Mücevherli Kıyafet" }, { i: "🔥", l: "Hypebeast Outfit" }, { i: "🎸", l: "Rock Star Kıyafeti" }, { i: "🏀", l: "Basketbol Forması" }, { i: "⚽", l: "Futbol Forması" }
                 ],
                 obj: [
                     { i: "📱", l: "Telefon" }, { i: "💵", l: "Para Destesi" }, { i: "💻", l: "Laptop" }, { i: "🎮", l: "Oyun Kolu" }, { i: "🚪", l: "Kapı Hidroliği" },
@@ -1464,11 +1494,29 @@
                     { i: "🥤", l: "Enerji İçeceği" }, { i: "🎈", l: "Kırmızı Balon" }, { i: "🎁", l: "Hediye Paketi" }, { i: "🌶️", l: "Acı Biber" }
                 ],
                 bg: [
-                    { i: "🎙️", l: "Neon Stüdyo" }, { i: "🏠", l: "Ev Salonu" }, { i: "🍳", l: "Lüks Mutfak" }, { i: "👾", l: "Oyun Odası" }, { i: "🖥️", l: "Ofis" },
-                    { i: "🛠️", l: "Atölye" }, { i: "🚔", l: "Hapishane" }, { i: "🌲", l: "Orman" }, { i: "🏚️", l: "Harabe" }, { i: "🌌", l: "Uzay" }, { i: "🏙️", l: "Şehir" },
-                    { i: "✈️", l: "Özel Jet" }, { i: "🛒", l: "Süpermarket" }, { i: "🏋️", l: "Spor Salonu" }, { i: "🎓", l: "Sınıf/Okul" }, { i: "⚖️", l: "Mahkeme" },
-                    { i: "🏖️", l: "Plaj" }, { i: "🏎️", l: "Yarış Pisti" }, { i: "🌋", l: "Volkanik Alan" }, { i: "🏥", l: "Hastane Odası" }, { i: "🏦", l: "Banka Kasası" },
-                    { i: "🛁", l: "Lüks Banyo" }, { i: "🏜️", l: "Çöl" }, { i: "🛥️", l: "Yat Güvertesi" }
+                    // Studio & Indoor
+                    { i: "🎙️", l: "Neon Stüdyo" }, { i: "📹", l: "YouTube Stüdyo" }, { i: "🔴", l: "Podcast Stüdyosu" }, { i: "📷", l: "Fotoğraf Stüdyosu" }, { i: "🎬", l: "Film Seti" },
+                    { i: "🎤", l: "Konser Sahnesi" }, { i: "🎭", l: "Tiyatro" }, { i: "🏠", l: "Ev Salonu" }, { i: "🛋️", l: "Modern Oturma Odası" }, { i: "🛏️", l: "Yatak Odası" },
+                    { i: "🍳", l: "Lüks Mutfak" }, { i: "👾", l: "Gaming Odası" }, { i: "🖥️", l: "Ofis" }, { i: "🏢", l: "CEO Ofisi" }, { i: "📚", l: "Kütüphane" },
+                    // Sports & Action
+                    { i: "🏋️", l: "Spor Salonu" }, { i: "🏟️", l: "Stadyum" }, { i: "🥊", l: "Boks Ringi" }, { i: "🏀", l: "Basketbol Sahası" }, { i: "⚽", l: "Futbol Sahası" },
+                    { i: "🎳", l: "Bowling Salonu" }, { i: "🎱", l: "Bilardo Salonu" }, { i: "🏎️", l: "Yarış Pisti" }, { i: "🏍️", l: "Motokros Pisti" }, { i: "🛹", l: "Skate Parkı" },
+                    // Urban & City
+                    { i: "🏙️", l: "Şehir Manzarası" }, { i: "🌃", l: "Gece Şehri" }, { i: "🌆", l: "Gökdelen" }, { i: "🏗️", l: "İnşaat Alanı" }, { i: "🚇", l: "Metro İstasyonu" },
+                    { i: "🌉", l: "Köprü" }, { i: "🛣️", l: "Otoban" }, { i: "🚧", l: "Karanlık Sokak" }, { i: "🏪", l: "Dükkan Vitrini" }, { i: "🛒", l: "Süpermarket" },
+                    // Nature & Outdoor
+                    { i: "🌲", l: "Karanlık Orman" }, { i: "🏔️", l: "Dağ Zirvesi" }, { i: "🏖️", l: "Tropik Plaj" }, { i: "🏜️", l: "Çöl" }, { i: "🌋", l: "Volkan" },
+                    { i: "⛰️", l: "Kanyon" }, { i: "🌊", l: "Okyanus Dibi" }, { i: "🌅", l: "Gün Batımı" }, { i: "🌄", l: "Gün Doğumu" }, { i: "❄️", l: "Kar Manzarası" },
+                    // Luxury & Special
+                    { i: "✈️", l: "Özel Jet" }, { i: "🛥️", l: "Yat Güvertesi" }, { i: "🏦", l: "Banka Kasası" }, { i: "💎", l: "Elmas Odası" }, { i: "🎰", l: "Casino" },
+                    { i: "🍸", l: "VIP Lounge" }, { i: "🏨", l: "5 Yıldızlı Otel" }, { i: "🛁", l: "Lüks Banyo" }, { i: "🏊", l: "Infinity Havuz" }, { i: "🎡", l: "Lunapark" },
+                    // Dark & Scary
+                    { i: "🏚️", l: "Terk Edilmiş Bina" }, { i: "🚔", l: "Hapishane" }, { i: "⚰️", l: "Mezarlık" }, { i: "👻", l: "Perili Ev" }, { i: "🩸", l: "Korku Evi" },
+                    // Fantasy & Sci-Fi
+                    { i: "🌌", l: "Uzay" }, { i: "🚀", l: "Uzay Gemisi" }, { i: "🌍", l: "Dünya Yörüngesi" }, { i: "🛸", l: "UFO İçi" }, { i: "🤖", l: "Robot Fabrikası" },
+                    { i: "⚗️", l: "Bilim Kurgu Lab" }, { i: "🏰", l: "Ortaçağ Kalesi" }, { i: "🐉", l: "Ejderha Mağarası" }, { i: "🧙", l: "Büyücü Kulesi" },
+                    // Institutions
+                    { i: "🎓", l: "Okul/Sınıf" }, { i: "🏥", l: "Hastane" }, { i: "⚖️", l: "Mahkeme Salonu" }, { i: "🏛️", l: "Müze" }, { i: "⛪", l: "Kilise/Cami" }
                 ],
                 txt: [
                     { i: "❓", l: "NASIL?" }, { i: "🔎", l: "İNCELEME" }, { i: "🚫", l: "SAKIN YAPMA" }, { i: "💡", l: "GERÇEKLER" }, { i: "🤥", l: "YALAN MI?" },
@@ -1477,15 +1525,37 @@
                     { i: "🧪", l: "DENEY" }, { i: "🔒", l: "GİZLİ" }, { i: "❌", l: "HATA YAPTIM" }, { i: "📈", l: "YATIRIM" }, { i: "🏆", l: "KAZANDIM" }
                 ],
                 light: [
-                    { i: "🟦", l: "Teal & Orange (Sinematik)" }, { i: "🟣", l: "Neon Cyberpunk (Mor/Mavi)" }, { i: "🌑", l: "Rembrandt (Karanlık)" },
-                    { i: "💡", l: "High Key (Parlak/Temiz)" }, { i: "🤢", l: "Korku (Yeşil/Toksik)" }, { i: "🌅", l: "Golden Hour (Güneşli)" },
-                    { i: "🔦", l: "Rim Light (Kenar Işığı)" }, { i: "🌩️", l: "Dramatik Fırtına" }, { i: "🕯️", l: "Mum Işığı (Sıcak)" }, { i: "🌈", l: "RGB Split (Renkli)" },
-                    { i: "⚫", l: "Siyah Beyaz (Noir)" }, { i: "✨", l: "Hüzme Işıklar (God Rays)" }
+                    // Cinematic & Film
+                    { i: "🟦", l: "Teal & Orange (Sinematik)" }, { i: "🎬", l: "Hollywood Stüdyo" }, { i: "🎞️", l: "Film Noir" }, { i: "🔥", l: "Turuncu Sıcak" }, { i: "❄️", l: "Mavi Soğuk" },
+                    // Neon & Cyberpunk
+                    { i: "🟣", l: "Neon Cyberpunk (Mor/Mavi)" }, { i: "💜", l: "Mor Neon" }, { i: "💙", l: "Mavi Neon" }, { i: "💖", l: "Pembe Neon" }, { i: "💚", l: "Yeşil Neon" },
+                    { i: "🌈", l: "RGB Split (Renkli)" }, { i: "🎨", l: "Çoklu Renk" }, { i: "🪩", l: "Disco Işıkları" },
+                    // Natural Light
+                    { i: "🌅", l: "Golden Hour (Güneşli)" }, { i: "🌄", l: "Gün Doğumu" }, { i: "🌇", l: "Gün Batımı" }, { i: "☀️", l: "Parlak Güneş" }, { i: "⛅", l: "Bulutlu Yumuşak" },
+                    { i: "🌙", l: "Ay Işığı" }, { i: "✨", l: "Yıldız Işıltısı" },
+                    // Studio Lighting
+                    { i: "💡", l: "High Key (Parlak/Temiz)" }, { i: "🌑", l: "Low Key (Karanlık)" }, { i: "📸", l: "Softbox" }, { i: "🔦", l: "Rim Light (Kenar)" }, { i: "💫", l: "Butterfly Light" },
+                    { i: "🎭", l: "Split Light (Yarım)" }, { i: "🌓", l: "Rembrandt Light" }, { i: "👤", l: "Silhouette" }, { i: "⚪", l: "Beyaz Arka Plan" },
+                    // Dramatic & Mood
+                    { i: "🌩️", l: "Dramatik Fırtına" }, { i: "⚡", l: "Yıldırım" }, { i: "🕯️", l: "Mum Işığı" }, { i: "🔥", l: "Ateş Işığı" }, { i: "🤢", l: "Korku Yeşili" },
+                    { i: "🩸", l: "Kanlı Kırmızı" }, { i: "👻", l: "Hayalet Mavisi" }, { i: "💀", l: "Karanlık Korku" },
+                    // Special Effects
+                    { i: "⚫", l: "Siyah Beyaz (Noir)" }, { i: "✨", l: "God Rays (Hüzme)" }, { i: "🌫️", l: "Sisli Atmosfer" }, { i: "📺", l: "TV Ekranı" }, { i: "🖥️", l: "Monitör Parıltısı" },
+                    { i: "🔮", l: "Mistik Mor" }, { i: "⭐", l: "Yıldız Lens Flare" }
                 ],
                 angle: [
-                    { i: "😐", l: "Göz Hizası (Normal)" }, { i: "🐟", l: "Geniş Açı (GoPro)" }, { i: "🦸", l: "Alttan Bakış (Kahraman)" },
-                    { i: "🔍", l: "Yakın Çekim (Duygusal)" }, { i: "🚁", l: "Üstten Bakış (Drone)" }, { i: "🤳", l: "Selfie Açısı" },
-                    { i: "📐", l: "Dutch Angle (Eğik)" }, { i: "🐜", l: "Makro (Çok Yakın)" }, { i: "👥", l: "Omuz Üstü (Over Shoulder)" }
+                    // Standard Shots
+                    { i: "😐", l: "Göz Hizası (Normal)" }, { i: "👤", l: "Portre (Yakın)" }, { i: "👥", l: "İkili Çekim" }, { i: "🧍", l: "Tam Boy" }, { i: "🪑", l: "Bel Üstü" },
+                    // Dynamic Angles
+                    { i: "🦸", l: "Alttan Bakış (Kahraman)" }, { i: "🐜", l: "Karınca Bakışı (Çok Alçak)" }, { i: "🚁", l: "Üstten Bakış (Drone)" }, { i: "🦅", l: "Kuşbakışı" }, { i: "📐", l: "Dutch Angle (Eğik)" },
+                    { i: "↗️", l: "Eğik Yukarı" }, { i: "↘️", l: "Eğik Aşağı" },
+                    // Wide & Close
+                    { i: "🐟", l: "Geniş Açı (GoPro)" }, { i: "🔍", l: "Yakın Çekim (Close-up)" }, { i: "👁️", l: "Extreme Close-up (Göz)" }, { i: "🐜", l: "Makro (Detay)" }, { i: "🌍", l: "Ultra Geniş" },
+                    // Cinematic Shots
+                    { i: "👥", l: "Omuz Üstü (OTS)" }, { i: "🤳", l: "Selfie Açısı" }, { i: "📹", l: "POV (Birinci Kişi)" }, { i: "🎬", l: "Establishing Shot" }, { i: "🎥", l: "Tracking Shot" },
+                    { i: "🔄", l: "360° Çekim" }, { i: "⬛", l: "Letterbox Sinematik" },
+                    // Special Perspectives
+                    { i: "🪞", l: "Ayna Yansıması" }, { i: "💧", l: "Su Altı" }, { i: "🚗", l: "Araç İçi" }, { i: "🚪", l: "Kapı Arkası (Gizli)" }, { i: "🔭", l: "Teleskopik Zoom" }
                 ],
                 fx: [
                     { i: "✨", l: "Temiz (Efekt Yok)" }, { i: "💨", l: "Toz Zerrecikleri" }, { i: "🔥", l: "Ateş Kıvılcımları" }, { i: "💸", l: "Yağan Paralar" },
@@ -1519,18 +1589,40 @@
                 shortcutLabels: { gen: "Generate", copy: "Copy" },
 
                 expr: [
-                    { i: "😱", l: "Shocked" }, { i: "😊", l: "Happy" }, { i: "🤬", l: "Angry" }, { i: "😭", l: "Crying" }, { i: "🤔", l: "Thinking" },
-                    { i: "🤯", l: "Mind Blown" }, { i: "🤑", l: "Greedy" }, { i: "😈", l: "Evil smirk" }, { i: "😴", l: "Sleepy" }, { i: "😨", l: "Terrified" },
-                    { i: "🤐", l: "Mouth taped shut" }, { i: "🤡", l: "Clown face" }, { i: "😎", l: "Cool wearing sunglasses" }, { i: "🤕", l: "Injured with bandages" }, { i: "🧐", l: "Focused and analyzing" },
-                    { i: "🤢", l: "Disgusted" }, { i: "🤣", l: "Laughing hysterically" }, { i: "😤", l: "Determined" }, { i: "🙄", l: "Rolling eyes" }, { i: "🥺", l: "Pleading puppy eyes" },
-                    { i: "😵", l: "Unconscious" }, { i: "🤪", l: "Crazy tongue out" }, { i: "🤥", l: "Lying with long nose" }, { i: "🤫", l: "Shushing finger on lips" }, { i: "😬", l: "Awkward grimace" }
+                    // Basic Emotions
+                    { i: "😱", l: "Shocked open mouth" }, { i: "😊", l: "Happy smiling" }, { i: "🤬", l: "Extremely angry yelling" }, { i: "😭", l: "Crying with tears" }, { i: "🤔", l: "Thinking pondering" },
+                    { i: "🤯", l: "Mind blown exploding head" }, { i: "🤑", l: "Greedy money eyes" }, { i: "😈", l: "Evil smirk devilish" }, { i: "😴", l: "Sleepy tired" }, { i: "😨", l: "Terrified scared" },
+                    { i: "🤐", l: "Mouth taped shut" }, { i: "🤡", l: "Clown face makeup" }, { i: "😎", l: "Cool wearing sunglasses" }, { i: "🤕", l: "Injured with bandages" }, { i: "🧐", l: "Focused analyzing" },
+                    { i: "🤢", l: "Disgusted nauseous" }, { i: "🤣", l: "Laughing hysterically" }, { i: "😤", l: "Determined confident" }, { i: "🙄", l: "Rolling eyes annoyed" }, { i: "🥺", l: "Pleading puppy eyes" },
+                    { i: "😵", l: "Unconscious dizzy" }, { i: "🤪", l: "Crazy tongue out wild" }, { i: "🤥", l: "Lying with long nose" }, { i: "🤫", l: "Shushing finger on lips" }, { i: "😬", l: "Awkward grimace" },
+                    // Advanced Emotions
+                    { i: "😏", l: "Smirking confident" }, { i: "🥴", l: "Drunk woozy dizzy" }, { i: "😇", l: "Angelic innocent" }, { i: "🤩", l: "Star-struck excited" }, { i: "😳", l: "Embarrassed blushing" },
+                    { i: "🥶", l: "Freezing cold blue" }, { i: "🥵", l: "Overheated sweating" }, { i: "😡", l: "Furious red face" }, { i: "😱", l: "Screaming in horror" }, { i: "🫣", l: "Peeking covering eyes" },
+                    { i: "🫢", l: "Covering mouth shocked" }, { i: "🫠", l: "Melting dissolving" }, { i: "😶", l: "Silent speechless" }, { i: "🙃", l: "Upside down smile sarcastic" }, { i: "😋", l: "Yummy tongue out" },
+                    { i: "🤗", l: "Hugging arms open" }, { i: "😒", l: "Unamused bored" }, { i: "😞", l: "Disappointed sad" }, { i: "😟", l: "Worried anxious" }, { i: "🫨", l: "Shaking vibrating" },
+                    // YouTube Popular
+                    { i: "👀", l: "Wide eyes staring" }, { i: "💀", l: "Dead laughing skull" }, { i: "🙀", l: "Scared cat shocked" }, { i: "😵‍💫", l: "Hypnotized dizzy spirals" }, { i: "🫥", l: "Invisible dotted" },
+                    { i: "😮", l: "Open mouth surprised" }, { i: "😧", l: "Anguished worried" }, { i: "😲", l: "Astonished amazed" }, { i: "😯", l: "Hushed slightly surprised" }, { i: "🤨", l: "Raised eyebrow skeptical" }
                 ],
                 outfit: [
-                    { i: "🧥", l: "Black Hoodie" }, { i: "👔", l: "Luxury Suit" }, { i: "🔧", l: "Blue Overalls" }, { i: "👕", l: "White T-Shirt" }, { i: "👮", l: "Police Uniform" },
-                    { i: "🩺", l: "Doctor Coat" }, { i: "🪖", l: "Military Gear" }, { i: "⛓️", l: "Prisoner Jumpsuit" }, { i: "👨‍🍳", l: "Chef Uniform" }, { i: "🕴️", l: "Tuxedo" },
-                    { i: "🧟", l: "Zombie Clothes" }, { i: "🦸", l: "Superhero Costume" }, { i: "🏋️", l: "Gym Sportswear" }, { i: "🥋", l: "MMA Fighter Gear" }, { i: "🧪", l: "White Lab Coat" },
-                    { i: "🧥", l: "Leather Biker Jacket" }, { i: "🚀", l: "NASA Astronaut Suit" }, { i: "🤴", l: "Royal King Robe" }, { i: "👘", l: "Futuristic Cyberpunk Jacket" }, { i: "🏖️", l: "Floral Hawaiian Shirt" },
-                    { i: "👗", l: "Elegant Evening Gown" }, { i: "🕶️", l: "Secret Agent Black Suit" }, { i: "🦁", l: "Extravagant Fur Coat" }
+                    // Casual & Streetwear
+                    { i: "🧥", l: "Black Hoodie with hood up" }, { i: "👕", l: "White cotton T-Shirt" }, { i: "👕", l: "Black graphic T-Shirt" }, { i: "🎽", l: "Sleeveless tank top" }, { i: "👖", l: "Ripped blue jeans" },
+                    { i: "🧢", l: "Snapback baseball cap" }, { i: "🧥", l: "Oversized grey hoodie" }, { i: "🧥", l: "Zip-up hoodie" }, { i: "👟", l: "Nike sneakers" }, { i: "🥾", l: "Combat boots" },
+                    { i: "🧥", l: "Black bomber jacket" }, { i: "🧥", l: "Brown leather biker jacket" }, { i: "🧥", l: "Denim jacket" }, { i: "🧥", l: "Varsity letterman jacket" }, { i: "🧣", l: "Wool scarf" },
+                    // Formal & Business
+                    { i: "👔", l: "Luxury three-piece suit" }, { i: "🕴️", l: "Black tuxedo with bowtie" }, { i: "👔", l: "White shirt with silk tie" }, { i: "🎩", l: "Black fedora hat" }, { i: "👞", l: "Polished Oxford shoes" },
+                    { i: "👔", l: "Navy blue blazer" }, { i: "👔", l: "V-neck cashmere sweater" }, { i: "📿", l: "Heavy gold chain necklace" }, { i: "⌚", l: "Luxury Rolex watch" }, { i: "👓", l: "Designer glasses" },
+                    // Professions
+                    { i: "👮", l: "Police officer uniform" }, { i: "🩺", l: "White doctor lab coat" }, { i: "🪖", l: "Military camouflage uniform" }, { i: "👨‍🍳", l: "Chef whites with hat" }, { i: "🚒", l: "Firefighter bunker gear" },
+                    { i: "👷", l: "Construction worker hardhat vest" }, { i: "⛓️", l: "Orange prisoner jumpsuit" }, { i: "🧪", l: "Scientist white lab coat" }, { i: "✈️", l: "Airline pilot uniform" }, { i: "🧑‍🚀", l: "NASA astronaut spacesuit" },
+                    { i: "🔧", l: "Mechanic blue overalls" }, { i: "🎬", l: "Movie director casual" }, { i: "📰", l: "News reporter suit" }, { i: "🎤", l: "Pop star stage outfit" }, { i: "🧑‍🎨", l: "Artist paint-splattered clothes" },
+                    // Characters & Costumes
+                    { i: "🦸", l: "Superhero cape and mask" }, { i: "🦹", l: "Supervillain dark costume" }, { i: "🧟", l: "Zombie torn bloody clothes" }, { i: "🧙", l: "Wizard robe and hat" }, { i: "🥷", l: "Ninja all-black outfit" },
+                    { i: "🤴", l: "Medieval king crown and robe" }, { i: "👸", l: "Princess ball gown" }, { i: "🏴‍☠️", l: "Pirate captain costume" }, { i: "🤖", l: "Robot cyborg armor" }, { i: "👽", l: "Alien space creature suit" },
+                    { i: "🧛", l: "Vampire cape and fangs" }, { i: "🎭", l: "Joker clown costume" }, { i: "⚔️", l: "Medieval knight armor" }, { i: "🥋", l: "MMA fighter shorts gear" }, { i: "🏋️", l: "Fitness gym wear" },
+                    // Trendy & Luxury
+                    { i: "👘", l: "Neon cyberpunk jacket" }, { i: "🏖️", l: "Colorful Hawaiian shirt" }, { i: "👗", l: "Elegant evening gown" }, { i: "🕶️", l: "Secret agent all-black suit" }, { i: "🦁", l: "Luxurious fur coat" },
+                    { i: "💎", l: "Diamond-studded outfit" }, { i: "🔥", l: "Hypebeast streetwear" }, { i: "🎸", l: "Rock star leather outfit" }, { i: "🏀", l: "NBA basketball jersey" }, { i: "⚽", l: "Football soccer jersey" }
                 ],
                 obj: [
                     { i: "📱", l: "Glowing Phone" }, { i: "💵", l: "Stack of Money" }, { i: "💻", l: "Laptop" }, { i: "🎮", l: "Gamepad" }, { i: "🚪", l: "Door Closer" },
@@ -1540,42 +1632,68 @@
                     { i: "🥤", l: "Energy Drink Can" }, { i: "🎈", l: "Red Balloon" }, { i: "🎁", l: "Wrapped Gift Box" }, { i: "🌶️", l: "Hot Chili Pepper" }
                 ],
                 bg: [
-                    { i: "🎙️", l: "Neon Studio" }, { i: "🏠", l: "Living Room" }, { i: "🍳", l: "Luxury Kitchen" }, { i: "👾", l: "Gaming Room" }, { i: "🖥️", l: "Office" },
-                    { i: "🛠️", l: "Workshop" }, { i: "🚔", l: "Jail Cell" }, { i: "🌲", l: "Dark Forest" }, { i: "🏚️", l: "Abandoned Ruins" }, { i: "🌌", l: "Outer Space" }, { i: "🏙️", l: "City Skyline" },
-                    { i: "✈️", l: "Private Jet Interior" }, { i: "🛒", l: "Supermarket Aisle" }, { i: "🏋️", l: "Gym Background" }, { i: "🎓", l: "University Classroom" }, { i: "⚖️", l: "Courtroom" },
-                    { i: "🏖️", l: "Sunny Beach" }, { i: "🏎️", l: "F1 Racetrack" }, { i: "🌋", l: "Volcanic Landscape" }, { i: "🏥", l: "Hospital Room" }, { i: "🏦", l: "Bank Vault" },
-                    { i: "🛁", l: "Luxury Bathroom" }, { i: "🏜️", l: "Sahara Desert" }, { i: "🛥️", l: "Yacht Deck" }
+                    // Studio & Indoor
+                    { i: "🎙️", l: "neon-lit professional YouTube studio" }, { i: "📹", l: "content creator YouTube studio setup" }, { i: "🔴", l: "podcast recording studio" }, { i: "📷", l: "professional photography studio" }, { i: "🎬", l: "Hollywood film set" },
+                    { i: "🎤", l: "concert stage with spotlights" }, { i: "🎭", l: "theater stage" }, { i: "🏠", l: "cozy living room" }, { i: "🛋️", l: "modern minimalist living room" }, { i: "🛏️", l: "bedroom interior" },
+                    { i: "🍳", l: "luxury modern kitchen" }, { i: "👾", l: "RGB-lit gaming room" }, { i: "🖥️", l: "professional office" }, { i: "🏢", l: "corner CEO office skyline view" }, { i: "📚", l: "grand library with books" },
+                    // Sports & Action
+                    { i: "🏋️", l: "gym with weights equipment" }, { i: "🏟️", l: "sports stadium arena" }, { i: "🥊", l: "boxing ring" }, { i: "🏀", l: "basketball court" }, { i: "⚽", l: "soccer football field" },
+                    { i: "🎳", l: "bowling alley" }, { i: "🎱", l: "pool hall" }, { i: "🏎️", l: "F1 racing track pit lane" }, { i: "🏍️", l: "motocross dirt track" }, { i: "🛹", l: "skate park" },
+                    // Urban & City
+                    { i: "🏙️", l: "city skyline panorama" }, { i: "🌃", l: "night city neon lights" }, { i: "🌆", l: "skyscraper rooftop" }, { i: "🏗️", l: "construction site" }, { i: "🚇", l: "subway metro station" },
+                    { i: "🌉", l: "iconic bridge view" }, { i: "🛣️", l: "highway road" }, { i: "🚧", l: "dark alley street" }, { i: "🏪", l: "neon shop storefront" }, { i: "🛒", l: "supermarket aisle" },
+                    // Nature & Outdoor
+                    { i: "🌲", l: "dark mysterious forest" }, { i: "🏔️", l: "snow mountain peak" }, { i: "🏖️", l: "tropical beach with palm trees" }, { i: "🏜️", l: "sahara desert dunes" }, { i: "🌋", l: "active volcano lava" },
+                    { i: "⛰️", l: "grand canyon" }, { i: "🌊", l: "underwater ocean scene" }, { i: "🌅", l: "beautiful sunset" }, { i: "🌄", l: "sunrise landscape" }, { i: "❄️", l: "snowy winter wonderland" },
+                    // Luxury & Special
+                    { i: "✈️", l: "private jet interior" }, { i: "🛥️", l: "luxury yacht deck" }, { i: "🏦", l: "bank vault gold stacks" }, { i: "💎", l: "diamond room" }, { i: "🎰", l: "Las Vegas casino floor" },
+                    { i: "🍸", l: "VIP lounge club" }, { i: "🏨", l: "5-star hotel lobby" }, { i: "🛁", l: "luxury spa bathroom" }, { i: "🏊", l: "infinity pool ocean view" }, { i: "🎡", l: "theme park" },
+                    // Dark & Scary
+                    { i: "🏚️", l: "abandoned building ruins" }, { i: "🚔", l: "prison jail cell" }, { i: "⚰️", l: "spooky cemetery" }, { i: "👻", l: "haunted house interior" }, { i: "🩸", l: "horror house bloody" },
+                    // Fantasy & Sci-Fi
+                    { i: "🌌", l: "outer space stars nebula" }, { i: "🚀", l: "spaceship interior" }, { i: "🌍", l: "Earth orbit view" }, { i: "🛸", l: "UFO alien spacecraft" }, { i: "🤖", l: "robot factory" },
+                    { i: "⚗️", l: "sci-fi laboratory" }, { i: "🏰", l: "medieval castle throne room" }, { i: "🐉", l: "dragon cave lair" }, { i: "🧙", l: "wizard tower" },
+                    // Institutions
+                    { i: "🎓", l: "university classroom" }, { i: "🏥", l: "hospital room" }, { i: "⚖️", l: "courtroom trial" }, { i: "🏛️", l: "museum gallery" }, { i: "⛪", l: "church cathedral interior" }
+                ],
+                light: [
+                    // Cinematic & Film
+                    { i: "🟦", l: "dramatic teal and orange cinematic color grading" }, { i: "🎬", l: "Hollywood studio professional lighting" }, { i: "🎞️", l: "classic film noir black and white shadows" }, { i: "🔥", l: "warm orange tungsten lighting" }, { i: "❄️", l: "cool blue moonlight atmosphere" },
+                    // Neon & Cyberpunk
+                    { i: "🟣", l: "vibrant neon cyberpunk pink and blue lighting" }, { i: "💜", l: "purple neon glow" }, { i: "💙", l: "electric blue neon lights" }, { i: "💖", l: "hot pink neon signs" }, { i: "💚", l: "toxic green neon" },
+                    { i: "🌈", l: "RGB split color chromatic aberration" }, { i: "🎨", l: "multi-colored party lights" }, { i: "🪩", l: "disco ball reflections" },
+                    // Natural Light
+                    { i: "🌅", l: "warm golden hour magic hour lighting" }, { i: "🌄", l: "soft sunrise morning light" }, { i: "🌇", l: "beautiful sunset orange sky" }, { i: "☀️", l: "bright direct sunlight" }, { i: "⛅", l: "soft overcast diffused light" },
+                    { i: "🌙", l: "blue moonlight night scene" }, { i: "✨", l: "starlight sparkle" },
+                    // Studio Lighting
+                    { i: "💡", l: "bright high-key studio lighting clean white" }, { i: "🌑", l: "dramatic low-key dark shadows" }, { i: "📸", l: "softbox diffused portrait lighting" }, { i: "🔦", l: "sharp rim light edge lighting" }, { i: "💫", l: "butterfly beauty lighting" },
+                    { i: "🎭", l: "split lighting half face shadow" }, { i: "🌓", l: "rembrandt dramatic triangle light" }, { i: "👤", l: "silhouette backlit outline" }, { i: "⚪", l: "pure white infinity background" },
+                    // Dramatic & Mood
+                    { i: "🌩️", l: "dramatic lightning storm flashes" }, { i: "⚡", l: "electric lightning bolts" }, { i: "🕯️", l: "warm candlelight intimate" }, { i: "🔥", l: "campfire flame flickering light" }, { i: "🤢", l: "eerie toxic green horror lighting" },
+                    { i: "🩸", l: "blood red ominous glow" }, { i: "👻", l: "ghostly pale blue" }, { i: "💀", l: "dark horror underexposed" },
+                    // Special Effects
+                    { i: "⚫", l: "classic black and white film" }, { i: "✨", l: "volumetric god rays light beams" }, { i: "🌫️", l: "foggy hazy atmospheric" }, { i: "📺", l: "TV screen ambient glow" }, { i: "🖥️", l: "computer monitor light face" },
+                    { i: "🔮", l: "mystical purple magical glow" }, { i: "⭐", l: "lens flare anamorphic streaks" }
+                ],
+                angle: [
+                    // Standard Shots
+                    { i: "😐", l: "eye-level straight on shot" }, { i: "👤", l: "portrait headshot close" }, { i: "👥", l: "two-shot both subjects" }, { i: "🧍", l: "full body standing shot" }, { i: "🪑", l: "medium waist-up shot" },
+                    // Dynamic Angles
+                    { i: "🦸", l: "low-angle hero shot looking up powerful" }, { i: "🐜", l: "worm's eye view extreme low" }, { i: "🚁", l: "high-angle drone shot looking down" }, { i: "🦅", l: "bird's eye view overhead" }, { i: "📐", l: "tilted dutch angle dynamic" },
+                    { i: "↗️", l: "tilted up diagonal" }, { i: "↘️", l: "tilted down diagonal" },
+                    // Wide & Close
+                    { i: "🐟", l: "wide-angle fisheye lens distortion" }, { i: "🔍", l: "close-up face details" }, { i: "👁️", l: "extreme close-up eyes only" }, { i: "🐜", l: "macro extreme detail shot" }, { i: "🌍", l: "ultra wide establishing shot" },
+                    // Cinematic Shots
+                    { i: "👥", l: "over-the-shoulder OTS shot" }, { i: "🤳", l: "selfie angle hand holding phone" }, { i: "📹", l: "POV first-person perspective" }, { i: "🎬", l: "establishing wide master shot" }, { i: "🎥", l: "tracking dolly shot movement" },
+                    { i: "🔄", l: "360 degree rotating orbit" }, { i: "⬛", l: "cinematic letterbox 2.35:1 aspect" },
+                    // Special Perspectives
+                    { i: "🪞", l: "mirror reflection shot" }, { i: "💧", l: "underwater looking up" }, { i: "🚗", l: "inside car through window" }, { i: "🚪", l: "through doorway peeking" }, { i: "🔭", l: "telephoto zoom compression" }
                 ],
                 txt: [
                     { i: "❓", l: "HOW TO?" }, { i: "🔎", l: "REVIEW" }, { i: "🚫", l: "DON'T DO IT" }, { i: "💡", l: "THE TRUTH" }, { i: "🤥", l: "FAKE?" },
                     { i: "⚠️", l: "SCAMMER" }, { i: "💸", l: "BANKRUPT" }, { i: "🤑", l: "I'M RICH" }, { i: "⏳", l: "24 HOURS" }, { i: "🆚", l: "VS" },
                     { i: "🔥", l: "HIGH RISK" }, { i: "🛑", l: "STOP!" }, { i: "😱", l: "UNBELIEVABLE" }, { i: "💰", l: "$100,000" }, { i: "🆓", l: "FOR FREE" },
                     { i: "🧪", l: "EXPERIMENT" }, { i: "🔒", l: "SECRET" }, { i: "❌", l: "HUGE MISTAKE" }, { i: "📈", l: "INVESTING" }, { i: "🏆", l: "I WON" }
-                ],
-                light: [
-                    { i: "🟦", l: "dramatic teal and orange cinematic lighting" },
-                    { i: "🟣", l: "vibrant neon cyberpunk pink and blue lighting" },
-                    { i: "🌑", l: "moody dark rembrandt lighting, high contrast" },
-                    { i: "💡", l: "bright high-key studio lighting, clean white look" },
-                    { i: "🤢", l: "eerie green toxic horror lighting" },
-                    { i: "🌅", l: "warm golden hour sunset lighting" },
-                    { i: "🔦", l: "sharp rim lighting outlining the subject" },
-                    { i: "🌩️", l: "dramatic stormy lightning flashes" },
-                    { i: "🕯️", l: "warm candlelight low light" },
-                    { i: "🌈", l: "RGB split color lighting effect" },
-                    { i: "⚫", l: "black and white film noir lighting" },
-                    { i: "✨", l: "volumetric god rays shining through" }
-                ],
-                angle: [
-                    { i: "😐", l: "eye-level shot" },
-                    { i: "🐟", l: "wide-angle fish-eye lens effect" },
-                    { i: "🦸", l: "low-angle hero shot looking up" },
-                    { i: "🔍", l: "extreme close-up shot on face" },
-                    { i: "🚁", l: "high-angle drone shot looking down" },
-                    { i: "🤳", l: "selfie style camera angle holding camera" },
-                    { i: "📐", l: "tilted dutch angle shot" },
-                    { i: "🐜", l: "macro photography shot" },
-                    { i: "👥", l: "over-the-shoulder cinematic shot" }
                 ],
                 fx: [
                     { i: "✨", l: "clean sharp focus, no particles" },
@@ -1698,7 +1816,7 @@
                 }
                 // HUD labels logic
                 if (document.getElementById(`hl-${cat}`)) {
-                    document.getElementById(`hl-${cat}`).innerText = d.hudLabels[i + 1];
+                    document.getElementById(`hl-${cat}`).innerText = d.hudLabels[i + 2];
                 }
 
                 // Render Chips
@@ -2026,7 +2144,7 @@
             document.getElementById('txt-pos-right').innerText = d.posLabels.right;
 
             // Inputs
-            const fields = ['expr', 'outfit', 'obj', 'bg', 'txt', 'light'];
+            const fields = ['expr', 'outfit', 'obj', 'bg', 'txt', 'light', 'angle', 'fx'];
             fields.forEach(f => {
                 const val = document.getElementById(`inp-${f}`).value;
                 const displayVal = val ? (val.length > 18 ? val.substring(0, 16) + ".." : val) : "N/A";
