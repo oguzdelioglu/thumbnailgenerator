@@ -4,31 +4,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thumbnail Studio v1.0.0 (Director's Edition)</title>
+    <title>Thumbnail Studio - AI Thumbnail Prompt Generator</title>
     <meta name="description"
         content="YouTube thumbnail prompt generator for AI image creation. Create stunning clickbait thumbnails with ease.">
     <meta name="keywords" content="youtube, thumbnail, ai, prompt, generator, midjourney, dalle, stable diffusion">
     <meta name="author" content="Thumbnail Studio">
 
+    <!-- Favicon - Inline SVG -->
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎥</text></svg>">
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://thumbnailstudio.app/">
+    <meta property="og:url" content="https://thumbnail.odel.dev/">
     <meta property="og:title" content="Thumbnail Studio - AI Thumbnail Prompt Generator">
     <meta property="og:description" content="Create stunning YouTube thumbnails with AI-powered prompt generation.">
-    <meta property="og:image" content="https://thumbnailstudio.app/og-image.jpg">
+    <meta property="og:image" content="https://thumbnail.odel.dev/og-image.svg">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://thumbnailstudio.app/">
+    <meta property="twitter:url" content="https://thumbnail.odel.dev/">
     <meta property="twitter:title" content="Thumbnail Studio - AI Thumbnail Prompt Generator">
     <meta property="twitter:description"
         content="Create stunning YouTube thumbnails with AI-powered prompt generation.">
-    <meta property="twitter:image" content="https://thumbnailstudio.app/og-image.jpg">
+    <meta property="twitter:image" content="https://thumbnail.odel.dev/og-image.svg">
 
     <!-- PWA -->
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="./manifest.json">
     <meta name="theme-color" content="#8b5cf6">
-    <link rel="apple-touch-icon" href="icon-192.png">
+    <link rel="apple-touch-icon" href="./icon-192.svg">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="ThumbStudio">
 
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -37,12 +45,20 @@
         "@type": "WebApplication",
         "name": "Thumbnail Studio",
         "description": "AI-powered YouTube thumbnail prompt generator",
-        "url": "https://thumbnailstudio.app/",
+        "url": "https://thumbnail.odel.dev/",
         "applicationCategory": "DesignApplication",
-        "operatingSystem": "Any"
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        }
     }
     </script>
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap"
         rel="stylesheet">

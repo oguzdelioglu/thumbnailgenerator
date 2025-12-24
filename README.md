@@ -1,39 +1,106 @@
-# Thumbnail Studio v1.0.0 (Director's Edition) 🎬
+# 🎥 Thumbnail Studio
 
-## 🇹🇷 Türkçe Açıklama
+> AI-Powered YouTube Thumbnail Prompt Generator
 
-**Proje Adı:** Thumbnail Studio v1.0.0 (Director's Edition) 🎬
-
-**Açıklama:**
-YouTube içerik üreticileri için tasarlanmış, yapay zeka (Nano Banana) odaklı gelişmiş bir thumbnail prompt oluşturucusudur. Karmaşık prompt yazma sürecini ortadan kaldırarak, sadece butonlara tıklayarak yüksek tıklama oranına (CTR) sahip görsel tarifleri oluşturmanızı sağlar.
-
-**Özellikler:**
-* **🤖 Çift Dil Desteği:** Tek tıkla Türkçe ve İngilizce arayüz arasında geçiş.
-* **🎲 Rastgele & Manuel Mod:** Kendi fotoğrafınızı referans alın veya rastgele karakterler yaratın.
-* **⚡ Hızlı Seçim:** Yüz ifadesi, kıyafet, ışık ve kamera açısı gibi 8 farklı kategoride hazır şablonlar.
-* **📜 Akıllı Geçmiş:** Oluşturduğunuz promptlar otomatik olarak kaydedilir, silinene kadar kaybolmaz.
-* **🎨 Cyberpunk UI:** Modern, "Glassmorphism" tasarım diliyle oluşturulmuş kullanıcı dostu arayüz.
-* **📋 Tek Tıkla Kopyala:** Nano Banana için optimize edilmiş parametrelerle anında çıktı.
+[![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-thumbnail.odel.dev-8b5cf6?style=for-the-badge)](https://thumbnail.odel.dev)
+[![GitHub Pages](https://img.shields.io/badge/Hosted_on-GitHub_Pages-222?style=for-the-badge&logo=github)](https://github.com)
 
 ---
 
-## 🇺🇸 English Description (For Global Reach)
+## 🇹🇷 Türkçe
 
-**Project Name:** Thumbnail Studio v1.0.0 (Director's Edition) 🎬
+### Proje Hakkında
 
-**Description:**
-An advanced AI prompt generator designed specifically for YouTube content creators. This tool streamlines the creation of High-CTR thumbnail prompts for AI image generation using Nano Banana. It features a modern visual interface that eliminates the hassle of writing complex prompt engineering scripts manually.
+**Thumbnail Studio**, YouTube içerik üreticileri için tasarlanmış, yapay zeka odaklı gelişmiş bir thumbnail prompt oluşturucusudur. Karmaşık prompt yazma sürecini ortadan kaldırarak, sadece butonlara tıklayarak yüksek tıklama oranına (CTR) sahip görsel tarifleri oluşturmanızı sağlar.
 
-**Key Features:**
-* **🤖 Bilingual Interface:** Switch between English and Turkish seamlessly.
-* **🎲 Dual Modes:** Generate prompts for specific photo references or random characters.
-* **⚡ Smart Workflow:** Select expressions, lighting, angles, and FX from 8 specialized categories.
-* **📜 Local History:** Auto-saves your generated prompts locally so you never lose an idea.
-* **🎨 Cyberpunk UI:** A sleek, responsive "Glassmorphism" design built with pure HTML/CSS/JS.
-* **📋 Optimized Output:** Generates production-ready prompts optimized for Nano Banana.
+### ✨ Özellikler
+
+| Özellik | Açıklama |
+|---------|----------|
+| 🤖 **Çift Dil Desteği** | Tek tıkla Türkçe ve İngilizce arayüz |
+| 🎲 **Çift Mod** | Kendi fotoğrafınızı referans alın veya rastgele karakter |
+| 🎨 **16 Hazır Şablon** | Clickbait, Gaming, Vlog, Horror ve daha fazlası |
+| ⭐ **Favoriler Sistemi** | Ayarlarınızı kaydedin ve tekrar kullanın |
+| 📜 **Akıllı Geçmiş** | Tüm promptlar otomatik kaydedilir |
+| 📋 **Tek Tıkla Kopyala** | Midjourney, DALL-E, Stable Diffusion için optimize |
+| 🎨 **Modern UI** | Cyberpunk/Glassmorphism tasarım |
+
+### 🚀 Kullanım
+
+1. [thumbnail.odel.dev](https://thumbnail.odel.dev) adresini ziyaret edin
+2. Mod seçin (Referans Fotoğraf veya Rastgele)
+3. Kategorilerden seçimlerinizi yapın
+4. "PROMPT OLUŞTUR" butonuna tıklayın
+5. Oluşan promptu kopyalayıp AI aracınıza yapıştırın
 
 ---
 
-**Notes:**
-- Bu README dosyası, projeyi GitHub üzerinde paylaşırken About kısmına veya repo açıklamalarına kopyalanabilecek profesyonel bir iki dilli özet sağlar.
-- Eğer isterseniz bu README'ye kullanım örnekleri, kurulum adımları veya ekran görüntüleri ekleyebilirim.
+## 🇺🇸 English
+
+### About
+
+**Thumbnail Studio** is an advanced AI prompt generator designed for YouTube content creators. Create high-CTR thumbnail prompts for Midjourney, DALL-E, and Stable Diffusion without writing complex prompts manually.
+
+### ✨ Features
+
+| Feature | Description |
+|---------|-------------|
+| 🤖 **Bilingual** | Switch between English and Turkish seamlessly |
+| 🎲 **Dual Modes** | Use photo reference or generate random characters |
+| 🎨 **16 Quick Presets** | Clickbait, Gaming, Vlog, Horror and more |
+| ⭐ **Favorites System** | Save and reuse your configurations |
+| 📜 **Local History** | Auto-saves all generated prompts |
+| 📋 **One-Click Copy** | Optimized for Midjourney, DALL-E, SD |
+| 🎨 **Modern UI** | Sleek Cyberpunk/Glassmorphism design |
+
+### 🚀 Usage
+
+1. Visit [thumbnail.odel.dev](https://thumbnail.odel.dev)
+2. Select mode (Reference Photo or Random)
+3. Make selections from categories
+4. Click "GENERATE PROMPT"
+5. Copy and paste the prompt into your AI tool
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend:** Pure HTML5, CSS3, Vanilla JavaScript
+- **Hosting:** GitHub Pages
+- **PWA:** Progressive Web App support
+- **Storage:** LocalStorage for history & favorites
+
+## 📦 Deployment
+
+This project is deployed on GitHub Pages with a custom domain.
+
+### Local Development
+
+Simply open `index.html` in your browser - no build step required!
+
+```bash
+# Clone the repo
+git clone https://github.com/YOUR_USERNAME/thumbnailgenerator.git
+
+# Open in browser
+open index.html
+```
+
+### GitHub Pages Setup
+
+1. Push code to `main` branch
+2. Go to Settings → Pages
+3. Select "Deploy from a branch" → `main` / `root`
+4. (Optional) Add custom domain in CNAME file
+
+---
+
+## 📄 License
+
+MIT License - Feel free to use and modify!
+
+---
+
+<p align="center">
+  Made with 💜 for YouTube Creators
+</p>
