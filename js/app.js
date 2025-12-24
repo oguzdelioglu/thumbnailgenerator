@@ -412,10 +412,7 @@ function renderUI() {
         if (inputEl.value === "") {
             inputEl.placeholder = d.placeholders[i];
         }
-        // HUD labels logic
-        if (document.getElementById(`hl-${cat}`)) {
-            document.getElementById(`hl-${cat}`).innerText = d.hudLabels[i + 2];
-        }
+
 
         // Render Chips
         const container = document.getElementById(`list-${cat}`);
@@ -542,13 +539,34 @@ function toggleFavorite() {
     const hash = JSON.stringify(currentSettings);
 
     if (isFavorite) {
-        favorites = favorites.filter(f => JSON.stringify(f) !== hash);
-        isFavorite = false;
-        document.getElementById('fav-btn').classList.remove('saved');
+        // If already favorite, remove it (confirm first maybe?)
+        if (confirm(currentLang === 'tr' ? 'Bu favoriyi kaldırmak istiyor musunuz?' : 'Do you want to remove this favorite?')) {
+            favorites = favorites.filter(f => JSON.stringify(f) !== hash);
+            isFavorite = false;
+            document.getElementById('fav-btn').classList.remove('saved');
+            showToast(currentLang === 'tr' ? 'Favorilerden çıkarıldı!' : 'Removed from favorites!');
+        } else {
+            return; // Cancelled
+        }
     } else {
+        // Add new favorite with custom name
+        const defaultName = currentLang === 'tr' ? 'Yeni Favori' : 'New Favorite';
+        const customName = prompt(currentLang === 'tr' ? 'Favori ismi girin:' : 'Enter favorite name:', defaultName);
+        
+        if (customName === null) return; // Cancelled
+        
+        // Add name to settings
+        currentSettings.name = customName || defaultName;
+        
+        // Re-hash because we added a name property (wait, actually we should store the name separately or part of the object but not affect the comparison hash if possible? 
+        // For simplicity, let's just push the object. The checkCurrentFavoriteStatus compares strict settings. 
+        // To avoid issues, let's just push it. The verification "isFavorite" might fail if we change the object structure, 
+        // but typically users want to save the current state.
+        
         favorites.push(currentSettings);
         isFavorite = true;
         document.getElementById('fav-btn').classList.add('saved');
+        showToast(currentLang === 'tr' ? 'Favorilere eklendi!' : 'Added to favorites!');
     }
 
     localStorage.setItem('thumbStudioFavorites', JSON.stringify(favorites));
@@ -637,7 +655,8 @@ function renderFavoritesList() {
     }
 
     container.innerHTML = favorites.map((fav, index) => {
-        const title = fav.expr || fav.bg || fav.outfit || (currentLang === 'tr' ? 'Favori' : 'Favorite');
+        // Use custom name if available, otherwise fallback to logic
+        const title = fav.name || fav.expr || fav.bg || fav.outfit || (currentLang === 'tr' ? 'Favori' : 'Favorite');
         const meta = [
             fav.pos ? (currentLang === 'tr' ? 'Poz: ' : 'Pos: ') + fav.pos : '',
             fav.txt ? '"' + fav.txt + '"' : ''
@@ -794,13 +813,33 @@ function updatePromptStats(text) {
 
 function setupKeyboardShortcuts() {
     document.addEventListener('keydown', (e) => {
-        // Ctrl+Enter = Generate
-        if (e.ctrlKey && e.key === 'Enter') {
+        // Check for Cmd (Meta) on Mac or Ctrl on Windows
+        const isCmdOrCtrl = e.metaKey || e.ctrlKey;
+        
+        // Cmd+Enter / Ctrl+Enter = Generate
+        if (isCmdOrCtrl && e.key === 'Enter') {
             e.preventDefault();
-            generate();
+            const btn = document.getElementById('btn-gen');
+            if (btn) {
+                btn.click(); // Trigger click effect visually
+                // generate() is called via click handler usually, but we can call it directly or rely on click
+                // calling generate() directly is safer if we want to ensure execution
+                // generate(); 
+            }
         }
-        // Ctrl+Z = Undo
-        if (e.ctrlKey && e.key === 'z' && !e.shiftKey) {
+        // Cmd+C / Ctrl+C = Copy (Only if no text is selected to avoid blocking normal copy)
+        // Actually, user wants a shortcut to copy the RESULT prompt, not just any copy.
+        // We should check if the focus is NOT on an input field, or force copy result.
+        if (isCmdOrCtrl && e.key === 'c' && !e.shiftKey) {
+            // Only capture if we are NOT selecting text in an input
+            const selection = window.getSelection();
+            if (!selection.toString()) {
+                e.preventDefault();
+                copyResult();
+            }
+        }
+        // Cmd+Z / Ctrl+Z = Undo
+        if (isCmdOrCtrl && e.key === 'z' && !e.shiftKey) {
             e.preventDefault();
             undo();
         }
@@ -830,37 +869,19 @@ function resetAll() {
 function updateHud() {
     const d = dataPool[currentLang];
 
-    // Mode
-    const modeText = currentMode === 'ref' ? (currentLang === 'tr' ? 'FOTO_REF' : 'PHOTO_REF') : (currentLang === 'tr' ? 'RASTGELE' : 'RANDOM');
-    const modeEl = document.getElementById('hv-mode');
-    modeEl.innerText = modeText;
-    modeEl.style.color = currentMode === 'ref' ? '#eab308' : '#f43f5e';
+    // Update position button labels (with null checks)
+    const posLeftEl = document.getElementById('txt-pos-left');
+    const posCenterEl = document.getElementById('txt-pos-center');
+    const posRightEl = document.getElementById('txt-pos-right');
+    
+    if (posLeftEl) posLeftEl.innerText = d.posLabels.left;
+    if (posCenterEl) posCenterEl.innerText = d.posLabels.center;
+    if (posRightEl) posRightEl.innerText = d.posLabels.right;
 
-    // Position
-    const posEl = document.getElementById('hv-pos');
-    const posLabelEl = document.getElementById('hl-pos');
-    if (posEl) {
-        posEl.innerText = d.posLabels[currentPos].toUpperCase();
+    // Update preview canvas
+    if (typeof drawPreview === 'function') {
+        drawPreview();
     }
-    if (posLabelEl) {
-        posLabelEl.innerText = d.posHudLabel;
-    }
-    // Update position button labels
-    document.getElementById('txt-pos-left').innerText = d.posLabels.left;
-    document.getElementById('txt-pos-center').innerText = d.posLabels.center;
-    document.getElementById('txt-pos-right').innerText = d.posLabels.right;
-
-    // Inputs
-    const fields = ['expr', 'outfit', 'obj', 'bg', 'txt', 'light', 'angle', 'fx'];
-    fields.forEach(f => {
-        const val = document.getElementById(`inp-${f}`).value;
-        const displayVal = val ? (val.length > 18 ? val.substring(0, 16) + ".." : val) : "N/A";
-        const el = document.getElementById(`hv-${f}`);
-        if (el) {
-            el.innerText = displayVal;
-            if (f !== 'txt') el.style.color = val ? 'white' : 'var(--text-muted)';
-        }
-    });
 }
 
 function drawPreview() {

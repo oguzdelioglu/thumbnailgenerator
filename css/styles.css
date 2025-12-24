@@ -138,6 +138,12 @@ h1 {
     display: flex;
     align-items: center;
     gap: var(--space-sm);
+    flex-wrap: nowrap; /* Prevent wrapping causing layout shift */
+}
+
+/* Adjust button padding for better fit */
+.btn {
+    padding: 8px 14px;
 }
 
 /* ===== BUTTONS ===== */
@@ -198,23 +204,28 @@ h1 {
 /* ===== SWITCH GROUPS ===== */
 .switch-group {
     display: flex;
+    flex-wrap: wrap; /* Allow wrapping if needed */
     background: var(--bg-secondary);
     border-radius: var(--radius-md);
     padding: 4px;
     border: 1px solid var(--border-subtle);
+    max-width: 100%; /* Ensure it doesn't overflow parent */
 }
 
 .switch-item {
     display: flex;
     align-items: center;
+    justify-content: center; /* Center content */
     gap: 6px;
-    padding: 8px 14px;
+    padding: 6px 10px; /* Reduced padding */
     border-radius: var(--radius-sm);
-    font-size: 0.8rem;
+    font-size: 0.75rem; /* Slightly smaller font */
     font-weight: 600;
     color: var(--text-muted);
     cursor: pointer;
     transition: all var(--transition-fast);
+    flex: 1; /* Distribute space evenly */
+    white-space: nowrap;
 }
 
 .switch-item:hover {
@@ -804,11 +815,14 @@ h1 {
 /* ===== FAVORITES DROPDOWN ===== */
 .favorites-wrapper {
     position: relative;
+    display: flex; /* Ensure inline display */
+    align-items: center;
+    gap: var(--space-sm);
 }
 
 .favorites-dropdown {
     position: absolute;
-    top: calc(100% + 8px);
+    top: calc(100% + 12px);
     right: 0;
     width: 320px;
     max-height: 400px;
@@ -1031,36 +1045,40 @@ h1 {
     padding: 2px 6px;
     background: var(--bg-primary);
     border: 1px solid var(--border-default);
-    border-radius: 4px;
+    border-radius: 6px;
     font-family: var(--font-mono);
     font-size: 0.7rem;
+    min-width: 20px;
+    text-align: center;
+    box-shadow: 0 2px 0 var(--border-default);
 }
 
 /* ===== TOAST ===== */
 .toast {
     position: fixed;
-    bottom: 80px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 24px;
+    left: 24px; /* Move to left */
+    transform: none; /* Remove center transform */
     padding: 12px 24px;
     background: var(--accent-primary);
     color: white;
     font-size: 0.875rem;
     font-weight: 600;
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-md); /* Less rounded */
     box-shadow: var(--shadow-lg);
     z-index: 1001;
     animation: toastIn 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
 @keyframes toastIn {
     from {
         opacity: 0;
-        transform: translateX(-50%) translateY(20px);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
-        transform: translateX(-50%) translateY(0);
+        transform: translateY(0);
     }
 }
 
@@ -1149,3 +1167,84 @@ h1 {
 .position-control-panel { display: flex; flex-direction: column; gap: var(--space-sm); }
 .drag-hint { display: none; }
 
+
+/* ===== MODAL ===== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-normal);
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-2xl);
+    padding: var(--space-xl);
+    width: 90%;
+    max-width: 400px;
+    transform: translateY(20px);
+    transition: all var(--transition-normal);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.modal-overlay.active .modal-content {
+    transform: translateY(0);
+}
+
+.modal-content h3 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--text-primary);
+}
+
+.modal-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.modal-input-group input {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-default);
+    color: var(--text-primary);
+    padding: 12px;
+    border-radius: var(--radius-md);
+    font-size: 1rem;
+    outline: none;
+    transition: all var(--transition-fast);
+}
+
+.modal-input-group input:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-sm);
+    margin-top: var(--space-sm);
+}
+
+.modal-actions .btn {
+    min-width: 80px;
+}

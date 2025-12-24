@@ -1,9 +1,10 @@
 # 🎥 Thumbnail Studio
 
-> AI-Powered YouTube Thumbnail Prompt Generator
+> AI-Powered YouTube Thumbnail Prompt Generator (v3.0)
 
 [![Live Demo](https://img.shields.io/badge/🚀_Live_Demo-thumbnail.odel.dev-8b5cf6?style=for-the-badge)](https://thumbnail.odel.dev)
 [![GitHub Pages](https://img.shields.io/badge/Hosted_on-GitHub_Pages-222?style=for-the-badge&logo=github)](https://github.com)
+[![Version](https://img.shields.io/badge/Version-3.0.0-blue?style=for-the-badge)](https://github.com)
 
 ---
 

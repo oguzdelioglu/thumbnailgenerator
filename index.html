@@ -13,6 +13,8 @@
     <!-- Favicon -->
     <link rel="icon" href="./assets/images/logo-v2.png" type="image/png">
 
+
+
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thumbnail.odel.dev/">
@@ -615,7 +617,8 @@
                             <div class="switch-item txt-pos-btn" id="txtpos-top" onclick="setTxtPos('top')"><span
                                     id="txt-txtpos-top">▲</span></div>
                             <div class="switch-item active txt-pos-btn" id="txtpos-auto" onclick="setTxtPos('auto')">
-                                <span id="txt-txtpos-auto">OTO</span></div>
+                                <span id="txt-txtpos-auto">OTO</span>
+                            </div>
                             <div class="switch-item txt-pos-btn" id="txtpos-bottom" onclick="setTxtPos('bottom')"><span
                                     id="txt-txtpos-bottom">▼</span></div>
                             <div class="switch-item txt-pos-btn" id="txtpos-right" onclick="setTxtPos('right')"><span
@@ -708,6 +711,20 @@
 
     <!-- Hidden file input -->
     <input type="file" id="import-file" accept=".json" style="display:none" onchange="handleImport(event)">
+
+    <!-- ===== FAVORITE NAME MODAL ===== -->
+    <div id="fav-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h3 id="modal-title">Favori İsmi</h3>
+            <div class="modal-input-group">
+                <input type="text" id="fav-name-input" placeholder="Örn: Youtube Gaming" autocomplete="off">
+            </div>
+            <div class="modal-actions">
+                <button id="btn-cancel-fav" class="btn btn-secondary">İptal</button>
+                <button id="btn-save-fav" class="btn btn-primary">Kaydet</button>
+            </div>
+        </div>
+    </div>
 
     <!-- JavaScript -->
     <script src="./js/app.js"></script>
