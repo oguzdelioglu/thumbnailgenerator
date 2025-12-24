@@ -534,45 +534,110 @@ function applyPreset(presetName) {
     showToast(currentLang === 'tr' ? `${presetName.toUpperCase()} şablonu uygulandı!` : `${presetName.toUpperCase()} preset applied!`);
 }
 
+// Global variable to store pending favorite settings
+let pendingFavoriteSettings = null;
+
 function toggleFavorite() {
     const currentSettings = getCurrentSettings();
     const hash = JSON.stringify(currentSettings);
 
     if (isFavorite) {
-        // If already favorite, remove it (confirm first maybe?)
+        // If already favorite, remove it with confirmation
         if (confirm(currentLang === 'tr' ? 'Bu favoriyi kaldırmak istiyor musunuz?' : 'Do you want to remove this favorite?')) {
             favorites = favorites.filter(f => JSON.stringify(f) !== hash);
             isFavorite = false;
             document.getElementById('fav-btn').classList.remove('saved');
+            localStorage.setItem('thumbStudioFavorites', JSON.stringify(favorites));
+            updateFavoritesCount();
+            renderFavoritesList();
             showToast(currentLang === 'tr' ? 'Favorilerden çıkarıldı!' : 'Removed from favorites!');
-        } else {
-            return; // Cancelled
         }
     } else {
-        // Add new favorite with custom name
-        const defaultName = currentLang === 'tr' ? 'Yeni Favori' : 'New Favorite';
-        const customName = prompt(currentLang === 'tr' ? 'Favori ismi girin:' : 'Enter favorite name:', defaultName);
-        
-        if (customName === null) return; // Cancelled
-        
-        // Add name to settings
-        currentSettings.name = customName || defaultName;
-        
-        // Re-hash because we added a name property (wait, actually we should store the name separately or part of the object but not affect the comparison hash if possible? 
-        // For simplicity, let's just push the object. The checkCurrentFavoriteStatus compares strict settings. 
-        // To avoid issues, let's just push it. The verification "isFavorite" might fail if we change the object structure, 
-        // but typically users want to save the current state.
-        
-        favorites.push(currentSettings);
-        isFavorite = true;
-        document.getElementById('fav-btn').classList.add('saved');
-        showToast(currentLang === 'tr' ? 'Favorilere eklendi!' : 'Added to favorites!');
+        // Prepare to add new favorite, open modal
+        pendingFavoriteSettings = currentSettings;
+        openFavModal();
     }
+}
 
+// Modal Functions
+function openFavModal() {
+    const modal = document.getElementById('fav-modal');
+    const input = document.getElementById('fav-name-input');
+    const title = document.getElementById('modal-title');
+    
+    // Set localization
+    title.innerText = currentLang === 'tr' ? 'Favori İsmi' : 'Favorite Name';
+    document.getElementById('btn-cancel-fav').innerText = currentLang === 'tr' ? 'İptal' : 'Cancel';
+    document.getElementById('btn-save-fav').innerText = currentLang === 'tr' ? 'Kaydet' : 'Save';
+    input.placeholder = currentLang === 'tr' ? 'Örn: Youtube Gaming' : 'Ex: Youtube Gaming';
+    
+    // Clear and focus input
+    input.value = '';
+    
+    // Show modal
+    modal.classList.add('active');
+    
+    // Focus input after transition
+    setTimeout(() => input.focus(), 100);
+}
+
+function closeFavModal() {
+    document.getElementById('fav-modal').classList.remove('active');
+    pendingFavoriteSettings = null;
+}
+
+function saveFavoriteFromModal() {
+    if (!pendingFavoriteSettings) return;
+    
+    const input = document.getElementById('fav-name-input');
+    const name = input.value.trim();
+    const defaultName = currentLang === 'tr' ? 'Yeni Favori' : 'New Favorite';
+    
+    // Update settings with name
+    pendingFavoriteSettings.name = name || defaultName;
+    
+    // Save to favorites array
+    favorites.push(pendingFavoriteSettings);
+    isFavorite = true;
+    
+    // Update UI
+    document.getElementById('fav-btn').classList.add('saved');
     localStorage.setItem('thumbStudioFavorites', JSON.stringify(favorites));
     updateFavoritesCount();
     renderFavoritesList();
-    showToast(isFavorite ? (currentLang === 'tr' ? 'Favorilere eklendi!' : 'Added to favorites!') : (currentLang === 'tr' ? 'Favorilerden çıkarıldı!' : 'Removed from favorites!'));
+    showToast(currentLang === 'tr' ? 'Favorilere eklendi!' : 'Added to favorites!');
+    
+    closeFavModal();
+}
+
+// Setup Modal Listeners
+function setupModalListeners() {
+    const saveBtn = document.getElementById('btn-save-fav');
+    const cancelBtn = document.getElementById('btn-cancel-fav');
+    const input = document.getElementById('fav-name-input');
+    const modal = document.getElementById('fav-modal');
+    
+    if (saveBtn) saveBtn.onclick = saveFavoriteFromModal;
+    if (cancelBtn) cancelBtn.onclick = closeFavModal;
+    
+    // Close on background click
+    if (modal) {
+        modal.onclick = (e) => {
+            if (e.target === modal) closeFavModal();
+        };
+    }
+    
+    // Input key listeners
+    if (input) {
+        input.onkeydown = (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                saveFavoriteFromModal();
+            } else if (e.key === 'Escape') {
+                closeFavModal();
+            }
+        };
+    }
 }
 
 function getCurrentSettings() {
