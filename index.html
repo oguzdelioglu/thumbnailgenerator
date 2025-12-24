@@ -1003,6 +1003,76 @@
             cursor: pointer;
             font-weight: 600;
         }
+
+        /* Position Control Panel */
+        .position-control-panel {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: var(--hud-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .position-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .position-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .drag-hint {
+            font-size: 0.75rem;
+            color: var(--accent);
+            opacity: 0.8;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 0.5;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Draggable Canvas Elements */
+        #preview-canvas {
+            cursor: grab;
+        }
+
+        #preview-canvas:active {
+            cursor: grabbing;
+        }
+
+        .canvas-drop-zone {
+            position: absolute;
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            transition: 0.3s;
+            pointer-events: none;
+        }
+
+        .canvas-drop-zone.active {
+            border-color: var(--primary);
+            background: rgba(139, 92, 246, 0.2);
+        }
     </style>
 </head>
 
@@ -1022,15 +1092,6 @@
                     9:16 (SHORTS)</div>
             </div>
 
-            <div class="pos-switch" role="group" aria-label="Character Position">
-                <div class="pos-btn" id="pos-left" onclick="setPos('left')" role="button" tabindex="0">⬅️ <span
-                        id="txt-pos-left">SOL</span></div>
-                <div class="pos-btn" id="pos-center" onclick="setPos('center')" role="button" tabindex="0">⚫ <span
-                        id="txt-pos-center">ORTA</span></div>
-                <div class="pos-btn active" id="pos-right" onclick="setPos('right')" role="button" tabindex="0">➡️ <span
-                        id="txt-pos-right">SAĞ</span></div>
-            </div>
-
             <div class="gender-switch" role="group" aria-label="Character Type">
                 <div class="gender-btn active" id="gender-male" onclick="setGender('male')" role="button" tabindex="0">
                     👨 <span id="txt-gender-male">ERKEK</span></div>
@@ -1042,27 +1103,52 @@
                 </div>
             </div>
 
-            <div class="txt-pos-switch" role="group" aria-label="Text Position">
-                <div class="txt-pos-btn" id="txtpos-left" onclick="setTxtPos('left')" role="button" tabindex="0">◀ <span
-                        id="txt-txtpos-left">SOL</span></div>
-                <div class="txt-pos-btn" id="txtpos-top" onclick="setTxtPos('top')" role="button" tabindex="0">▲ <span
-                        id="txt-txtpos-top">ÜST</span></div>
-                <div class="txt-pos-btn active" id="txtpos-auto" onclick="setTxtPos('auto')" role="button" tabindex="0">
-                    ⚡ <span id="txt-txtpos-auto">OTO</span></div>
-                <div class="txt-pos-btn" id="txtpos-bottom" onclick="setTxtPos('bottom')" role="button" tabindex="0">▼
-                    <span id="txt-txtpos-bottom">ALT</span>
-                </div>
-                <div class="txt-pos-btn" id="txtpos-right" onclick="setTxtPos('right')" role="button" tabindex="0">▶
-                    <span id="txt-txtpos-right">SAĞ</span>
-                </div>
-            </div>
-
             <div class="header-controls">
                 <button class="fav-btn" id="fav-btn" onclick="toggleFavorite()" aria-label="Save to favorites">⭐ <span
                         id="txt-fav">FAVORİ</span></button>
                 <button class="action-btn" onclick="toggleLang()">🇺🇸 EN / 🇹🇷 TR</button>
                 <button class="action-btn btn-reset" onclick="resetAll()">🗑️ <span
                         id="txt-reset">SIFIRLA</span></button>
+            </div>
+        </div>
+
+        <!-- Position Control Panel - Character & Text Together -->
+        <div class="position-control-panel">
+            <div class="position-group">
+                <div class="position-label">👤 <span id="lbl-char-pos">KARAKTER POZİSYONU</span></div>
+                <div class="pos-switch" role="group" aria-label="Character Position">
+                    <div class="pos-btn" id="pos-left" onclick="setPos('left')" role="button" tabindex="0">⬅️ <span
+                            id="txt-pos-left">SOL</span></div>
+                    <div class="pos-btn" id="pos-center" onclick="setPos('center')" role="button" tabindex="0">⚫ <span
+                            id="txt-pos-center">ORTA</span></div>
+                    <div class="pos-btn active" id="pos-right" onclick="setPos('right')" role="button" tabindex="0">➡️
+                        <span id="txt-pos-right">SAĞ</span>
+                    </div>
+                </div>
+            </div>
+            <div class="position-group">
+                <div class="position-label">🅰️ <span id="lbl-txt-pos">YAZI POZİSYONU</span></div>
+                <div class="txt-pos-switch" role="group" aria-label="Text Position">
+                    <div class="txt-pos-btn" id="txtpos-left" onclick="setTxtPos('left')" role="button" tabindex="0">◀
+                        <span id="txt-txtpos-left">SOL</span>
+                    </div>
+                    <div class="txt-pos-btn" id="txtpos-top" onclick="setTxtPos('top')" role="button" tabindex="0">▲
+                        <span id="txt-txtpos-top">ÜST</span>
+                    </div>
+                    <div class="txt-pos-btn active" id="txtpos-auto" onclick="setTxtPos('auto')" role="button"
+                        tabindex="0">
+                        ⚡ <span id="txt-txtpos-auto">OTO</span></div>
+                    <div class="txt-pos-btn" id="txtpos-bottom" onclick="setTxtPos('bottom')" role="button"
+                        tabindex="0">▼
+                        <span id="txt-txtpos-bottom">ALT</span>
+                    </div>
+                    <div class="txt-pos-btn" id="txtpos-right" onclick="setTxtPos('right')" role="button" tabindex="0">▶
+                        <span id="txt-txtpos-right">SAĞ</span>
+                    </div>
+                </div>
+            </div>
+            <div class="drag-hint">
+                <span id="drag-hint-text">💡 Canvas'ta elementleri sürükleyerek de pozisyon değiştirebilirsin!</span>
             </div>
         </div>
 
@@ -1547,6 +1633,7 @@
             loadFavorites();
             drawPreview();
             setupKeyboardShortcuts();
+            setupCanvasDrag();
         }
 
         function renderUI() {
@@ -1593,6 +1680,13 @@
 
             // Update preview on language change
             if (typeof drawPreview === 'function') drawPreview();
+
+            // Update position control labels
+            document.getElementById('lbl-char-pos').innerText = currentLang === 'tr' ? 'KARAKTER POZİSYONU' : 'CHARACTER POSITION';
+            document.getElementById('lbl-txt-pos').innerText = currentLang === 'tr' ? 'YAZI POZİSYONU' : 'TEXT POSITION';
+            document.getElementById('drag-hint-text').innerText = currentLang === 'tr'
+                ? '💡 Canvas\'ta elementleri sürükleyerek de pozisyon değiştirebilirsin!'
+                : '💡 You can also drag elements on the canvas to change positions!';
 
             // Loop through all categories (including new ones)
             const cats = ['expr', 'outfit', 'obj', 'bg', 'txt', 'light', 'angle', 'fx'];
@@ -2094,6 +2188,9 @@
             ctx.textBaseline = 'top';
             ctx.fillText(currentAr, w - 10, 10);
 
+            // Store element bounds for drag detection
+            updateElementBounds(charX, charY, charWidth, charHeight, txtX, txtY, txtWidth, txtHeight);
+
             // Update legend texts
             document.getElementById('legend-char').innerText = currentLang === 'tr' ? 'Karakter' : 'Character';
             document.getElementById('legend-text').innerText = currentLang === 'tr' ? 'Yazı' : 'Text';
@@ -2114,6 +2211,134 @@
             ctx.lineTo(x, y + radius);
             ctx.quadraticCurveTo(x, y, x + radius, y);
             ctx.closePath();
+        }
+
+        // =============================
+        // *** CANVAS DRAG & DROP ***
+        // =============================
+        let isDragging = false;
+        let dragTarget = null; // 'char' or 'text'
+        let dragStartX = 0;
+        let dragStartY = 0;
+
+        // Store element bounds for hit detection
+        let charBounds = { x: 0, y: 0, w: 0, h: 0 };
+        let textBounds = { x: 0, y: 0, w: 0, h: 0 };
+
+        function setupCanvasDrag() {
+            const canvas = document.getElementById('preview-canvas');
+
+            canvas.addEventListener('mousedown', handleDragStart);
+            canvas.addEventListener('mousemove', handleDragMove);
+            canvas.addEventListener('mouseup', handleDragEnd);
+            canvas.addEventListener('mouseleave', handleDragEnd);
+
+            // Touch support
+            canvas.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                const touch = e.touches[0];
+                handleDragStart({ clientX: touch.clientX, clientY: touch.clientY, target: canvas });
+            });
+            canvas.addEventListener('touchmove', (e) => {
+                e.preventDefault();
+                const touch = e.touches[0];
+                handleDragMove({ clientX: touch.clientX, clientY: touch.clientY, target: canvas });
+            });
+            canvas.addEventListener('touchend', handleDragEnd);
+        }
+
+        function getCanvasCoords(e) {
+            const canvas = document.getElementById('preview-canvas');
+            const rect = canvas.getBoundingClientRect();
+            const scaleX = canvas.width / rect.width;
+            const scaleY = canvas.height / rect.height;
+            return {
+                x: (e.clientX - rect.left) * scaleX,
+                y: (e.clientY - rect.top) * scaleY
+            };
+        }
+
+        function handleDragStart(e) {
+            const coords = getCanvasCoords(e);
+
+            // Check if clicking on character
+            if (isPointInBounds(coords.x, coords.y, charBounds)) {
+                isDragging = true;
+                dragTarget = 'char';
+                dragStartX = coords.x;
+            }
+            // Check if clicking on text
+            else if (isPointInBounds(coords.x, coords.y, textBounds)) {
+                isDragging = true;
+                dragTarget = 'text';
+                dragStartX = coords.x;
+            }
+
+            if (isDragging) {
+                document.getElementById('preview-canvas').style.cursor = 'grabbing';
+            }
+        }
+
+        function handleDragMove(e) {
+            if (!isDragging) {
+                // Change cursor based on hover
+                const coords = getCanvasCoords(e);
+                const canvas = document.getElementById('preview-canvas');
+                if (isPointInBounds(coords.x, coords.y, charBounds) || isPointInBounds(coords.x, coords.y, textBounds)) {
+                    canvas.style.cursor = 'grab';
+                } else {
+                    canvas.style.cursor = 'default';
+                }
+                return;
+            }
+
+            const coords = getCanvasCoords(e);
+            const canvas = document.getElementById('preview-canvas');
+            const w = canvas.width;
+
+            // Determine position based on x coordinate
+            let newPos;
+            if (coords.x < w / 3) {
+                newPos = 'left';
+            } else if (coords.x < w * 2 / 3) {
+                newPos = 'center';
+            } else {
+                newPos = 'right';
+            }
+
+            // Update the appropriate position
+            if (dragTarget === 'char' && newPos !== currentPos) {
+                setPos(newPos);
+            } else if (dragTarget === 'text') {
+                // For text, map horizontal position
+                if (newPos === 'left' && currentTxtPos !== 'left') {
+                    setTxtPos('left');
+                } else if (newPos === 'center' && currentTxtPos !== 'top') {
+                    setTxtPos('top');
+                } else if (newPos === 'right' && currentTxtPos !== 'right') {
+                    setTxtPos('right');
+                }
+            }
+        }
+
+        function handleDragEnd() {
+            if (isDragging) {
+                isDragging = false;
+                dragTarget = null;
+                document.getElementById('preview-canvas').style.cursor = 'grab';
+                showToast(currentLang === 'tr' ? 'Pozisyon güncellendi!' : 'Position updated!');
+            }
+        }
+
+        function isPointInBounds(x, y, bounds) {
+            return x >= bounds.x && x <= bounds.x + bounds.w &&
+                y >= bounds.y && y <= bounds.y + bounds.h;
+        }
+
+        // Update drawPreview to store bounds
+        function updateElementBounds(cX, cY, cW, cH, tX, tY, tW, tH) {
+            charBounds = { x: cX, y: cY, w: cW, h: cH };
+            textBounds = { x: tX, y: tY, w: tW, h: tH };
         }
 
         function generate() {
