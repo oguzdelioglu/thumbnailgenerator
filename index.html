@@ -10,10 +10,10 @@
     <meta name="keywords" content="youtube, thumbnail, ai, prompt, generator, midjourney, dalle, stable diffusion">
     <meta name="author" content="Thumbnail Studio">
 
-    <!-- Favicon - Inline SVG -->
+    <!-- Favicon -->
     <link rel="icon" href="./assets/images/logo-v2.png" type="image/png">
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thumbnail.odel.dev/">
     <meta property="og:title" content="Thumbnail Studio - AI Thumbnail Prompt Generator">
@@ -30,36 +30,18 @@
 
     <!-- PWA -->
     <link rel="manifest" href="./manifest.json">
-    <meta name="theme-color" content="#8b5cf6">
+    <meta name="theme-color" content="#7c3aed">
     <link rel="apple-touch-icon" href="./assets/icons/icon-192.svg">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="ThumbStudio">
 
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Thumbnail Studio",
-        "description": "AI-powered YouTube thumbnail prompt generator",
-        "url": "https://thumbnail.odel.dev/",
-        "applicationCategory": "DesignApplication",
-        "operatingSystem": "Any",
-        "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
-        }
-    }
-    </script>
-
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap"
         rel="stylesheet">
 
     <!-- Styles -->
@@ -67,63 +49,293 @@
 </head>
 
 <body>
+    <!-- SVG Icons Sprite -->
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="icon-expression" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+            <line x1="9" y1="9" x2="9.01" y2="9" />
+            <line x1="15" y1="9" x2="15.01" y2="9" />
+        </symbol>
+        <symbol id="icon-outfit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <path d="M16 10a4 4 0 0 1-8 0" />
+        </symbol>
+        <symbol id="icon-object" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+            <polyline points="3.29 7 12 12 20.71 7" />
+            <line x1="12" y1="22" x2="12" y2="12" />
+        </symbol>
+        <symbol id="icon-background" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+            <circle cx="8.5" cy="8.5" r="1.5" />
+            <polyline points="21 15 16 10 5 21" />
+        </symbol>
+        <symbol id="icon-text" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="4 7 4 4 20 4 20 7" />
+            <line x1="9" y1="20" x2="15" y2="20" />
+            <line x1="12" y1="4" x2="12" y2="20" />
+        </symbol>
+        <symbol id="icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5" />
+            <line x1="12" y1="1" x2="12" y2="3" />
+            <line x1="12" y1="21" x2="12" y2="23" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+            <line x1="1" y1="12" x2="3" y2="12" />
+            <line x1="21" y1="12" x2="23" y2="12" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </symbol>
+        <symbol id="icon-angle" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+            <circle cx="12" cy="13" r="4" />
+        </symbol>
+        <symbol id="icon-effects" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+        </symbol>
+        <symbol id="icon-generate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="5 3 19 12 5 21 5 3" />
+        </symbol>
+        <symbol id="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
+        </symbol>
+        <symbol id="icon-reset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="1 4 1 10 7 10" />
+            <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10" />
+        </symbol>
+        <symbol id="icon-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+        </symbol>
+        <symbol id="icon-export" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="17 8 12 3 7 8" />
+            <line x1="12" y1="3" x2="12" y2="15" />
+        </symbol>
+        <symbol id="icon-import" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+            <polyline points="7 10 12 15 17 10" />
+            <line x1="12" y1="15" x2="12" y2="3" />
+        </symbol>
+        <symbol id="icon-history" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+        </symbol>
+        <symbol id="icon-preset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7" />
+            <rect x="14" y="3" width="7" height="7" />
+            <rect x="14" y="14" width="7" height="7" />
+            <rect x="3" y="14" width="7" height="7" />
+        </symbol>
+        <symbol id="icon-language" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <line x1="2" y1="12" x2="22" y2="12" />
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+        </symbol>
+        <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12" />
+        </symbol>
+        <symbol id="icon-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="3 6 5 6 21 6" />
+            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+        </symbol>
+        <symbol id="icon-photo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+            <circle cx="8.5" cy="8.5" r="1.5" />
+            <polyline points="21 15 16 10 5 21" />
+        </symbol>
+        <symbol id="icon-random" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <circle cx="8" cy="8" r="1" fill="currentColor" />
+            <circle cx="16" cy="8" r="1" fill="currentColor" />
+            <circle cx="12" cy="12" r="1" fill="currentColor" />
+            <circle cx="8" cy="16" r="1" fill="currentColor" />
+            <circle cx="16" cy="16" r="1" fill="currentColor" />
+        </symbol>
+        <symbol id="icon-folder" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+        </symbol>
+        <symbol id="icon-male" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="10" cy="14" r="5" />
+            <line x1="19" y1="5" x2="13.6" y2="10.4" />
+            <polyline points="15 5 19 5 19 9" />
+        </symbol>
+        <symbol id="icon-female" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="5" />
+            <line x1="12" y1="13" x2="12" y2="21" />
+            <line x1="9" y1="18" x2="15" y2="18" />
+        </symbol>
+        <symbol id="icon-robot" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="10" rx="2" />
+            <circle cx="12" cy="5" r="2" />
+            <path d="M12 7v4" />
+            <line x1="8" y1="16" x2="8" y2="16" />
+            <line x1="16" y1="16" x2="16" y2="16" />
+        </symbol>
+        <symbol id="icon-preview" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+            <circle cx="12" cy="12" r="3" />
+        </symbol>
+    </svg>
 
-    <!-- Skip Link for Accessibility -->
+    <!-- Skip Link -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <div class="container" id="main-content" role="main">
-        <div class="header" role="banner">
-            <h1><img src="./assets/images/logo-v2.png" alt="Thumbnail Studio Logo" class="site-logo"> THUMBNAIL STUDIO
-                <span class="v8-badge">v2.0.0 FULL FEATURES</span>
-            </h1>
 
-            <div class="ar-switch" role="group" aria-label="Aspect Ratio">
-                <div class="ar-btn active" id="ar-169" onclick="setAr('16:9')" role="button" tabindex="0"
-                    aria-pressed="true">16:9 (YOUTUBE)</div>
-                <div class="ar-btn" id="ar-916" onclick="setAr('9:16')" role="button" tabindex="0" aria-pressed="false">
-                    9:16 (SHORTS)</div>
-            </div>
-
-            <div class="gender-switch" role="group" aria-label="Character Type">
-                <div class="gender-btn active" id="gender-male" onclick="setGender('male')" role="button" tabindex="0">
-                    👨 <span id="txt-gender-male">ERKEK</span></div>
-                <div class="gender-btn" id="gender-female" onclick="setGender('female')" role="button" tabindex="0">👩
-                    <span id="txt-gender-female">KADIN</span>
-                </div>
-                <div class="gender-btn" id="gender-char" onclick="setGender('character')" role="button" tabindex="0">🤖
-                    <span id="txt-gender-char">KARAKTER</span>
-                </div>
+        <!-- HEADER -->
+        <header class="header" role="banner">
+            <div class="header-brand">
+                <img src="./assets/images/logo-v2.png" alt="Thumbnail Studio" class="site-logo">
+                <h1>Thumbnail Studio</h1>
+                <span class="version-badge">v3.0</span>
             </div>
 
             <div class="header-controls">
+                <!-- Favorites -->
                 <div class="favorites-wrapper">
                     <button class="fav-btn" id="fav-btn" onclick="toggleFavorite()" aria-label="Save to favorites">
-                        ⭐ <span id="txt-fav">FAVORİ</span>
+                        <svg class="btn-icon">
+                            <use href="#icon-star" />
+                        </svg>
+                        <span id="txt-fav">FAVORİ</span>
                     </button>
-                    <button class="action-btn" id="fav-list-btn" onclick="toggleFavoritesDropdown()"
+                    <button class="btn btn-ghost" id="fav-list-btn" onclick="toggleFavoritesDropdown()"
                         aria-label="View favorites">
-                        📂 <span id="txt-fav-list">FAVORİLER</span><span class="fav-count" id="fav-count">0</span>
+                        <svg class="btn-icon">
+                            <use href="#icon-folder" />
+                        </svg>
+                        <span id="txt-fav-list">FAVORİLER</span>
+                        <span class="fav-count" id="fav-count">0</span>
                     </button>
                     <div class="favorites-dropdown" id="favorites-dropdown">
                         <div class="favorites-header">
-                            <h4>⭐ <span id="txt-my-favs">FAVORİLERİM</span></h4>
+                            <h4><span id="txt-my-favs">FAVORİLERİM</span></h4>
                             <button class="fav-clear-btn" onclick="clearAllFavorites()" id="fav-clear-all">TÜMÜNÜ
                                 SİL</button>
                         </div>
-                        <div id="favorites-list">
-                            <!-- Favorites will be rendered here -->
-                        </div>
+                        <div id="favorites-list"></div>
                     </div>
                 </div>
-                <button class="action-btn" onclick="toggleLang()">🇺🇸 EN / 🇹🇷 TR</button>
-                <button class="action-btn btn-reset" onclick="resetAll()">🗑️ <span
-                        id="txt-reset">SIFIRLA</span></button>
+
+                <!-- Language Toggle -->
+                <button class="btn btn-ghost" onclick="toggleLang()">
+                    <svg class="btn-icon">
+                        <use href="#icon-language" />
+                    </svg>
+                    <span>EN / TR</span>
+                </button>
+
+                <!-- Reset -->
+                <button class="btn btn-ghost btn-danger" onclick="resetAll()">
+                    <svg class="btn-icon">
+                        <use href="#icon-reset" />
+                    </svg>
+                    <span id="txt-reset">SIFIRLA</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- TOOLBAR -->
+        <div class="toolbar">
+            <div class="toolbar-section">
+                <span class="toolbar-label">Mod:</span>
+                <div class="switch-group">
+                    <div class="switch-item active" id="btn-ref" onclick="setMode('ref')" role="button" tabindex="0">
+                        <svg class="btn-icon">
+                            <use href="#icon-photo" />
+                        </svg>
+                        <span id="txt-ref">KENDİ FOTOĞRAFIM</span>
+                    </div>
+                    <div class="switch-item" id="btn-rnd" onclick="setMode('rnd')" role="button" tabindex="0">
+                        <svg class="btn-icon">
+                            <use href="#icon-random" />
+                        </svg>
+                        <span id="txt-rnd">RASTGELE</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="toolbar-section">
+                <span class="toolbar-label">Oran:</span>
+                <div class="switch-group">
+                    <div class="switch-item active ar-btn" id="ar-169" onclick="setAr('16:9')" role="button"
+                        tabindex="0">16:9</div>
+                    <div class="switch-item ar-btn" id="ar-916" onclick="setAr('9:16')" role="button" tabindex="0">9:16
+                    </div>
+                </div>
+            </div>
+
+            <div class="toolbar-section">
+                <span class="toolbar-label">Cinsiyet:</span>
+                <div class="switch-group">
+                    <div class="switch-item active gender-btn" id="gender-male" onclick="setGender('male')"
+                        role="button" tabindex="0">
+                        <svg class="btn-icon">
+                            <use href="#icon-male" />
+                        </svg>
+                        <span id="txt-gender-male">ERKEK</span>
+                    </div>
+                    <div class="switch-item gender-btn" id="gender-female" onclick="setGender('female')" role="button"
+                        tabindex="0">
+                        <svg class="btn-icon">
+                            <use href="#icon-female" />
+                        </svg>
+                        <span id="txt-gender-female">KADIN</span>
+                    </div>
+                    <div class="switch-item gender-btn" id="gender-char" onclick="setGender('character')" role="button"
+                        tabindex="0">
+                        <svg class="btn-icon">
+                            <use href="#icon-robot" />
+                        </svg>
+                        <span id="txt-gender-char">KARAKTER</span>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Presets Panel -->
-        <div class="presets-container">
-            <div class="presets-title">🎨 <span id="txt-presets-title">HAZIR ŞABLONLAR // QUICK PRESETS</span></div>
+        <!-- Mode Description -->
+        <div id="mode-desc"></div>
+
+        <!-- PRESETS -->
+        <section class="presets-section">
+            <div class="presets-header">
+                <svg class="btn-icon">
+                    <use href="#icon-preset" />
+                </svg>
+                <span class="presets-title" id="txt-presets-title">HAZIR ŞABLONLAR</span>
+            </div>
             <div class="presets-grid" id="presets-grid">
                 <div class="preset-btn" onclick="applyPreset('clickbait')">
                     <div class="preset-icon">🔥</div>
@@ -151,7 +363,7 @@
                 </div>
                 <div class="preset-btn" onclick="applyPreset('money')">
                     <div class="preset-icon">💰</div>
-                    <div class="preset-label" id="preset-money">PARA/FİNANS</div>
+                    <div class="preset-label" id="preset-money">FİNANS</div>
                 </div>
                 <div class="preset-btn" onclick="applyPreset('horror')">
                     <div class="preset-icon">👻</div>
@@ -169,298 +381,332 @@
                     <div class="preset-icon">⭐</div>
                     <div class="preset-label" id="preset-review">İNCELEME</div>
                 </div>
-                <div class="preset-btn" onclick="applyPreset('unboxing')">
-                    <div class="preset-icon">📦</div>
-                    <div class="preset-label" id="preset-unboxing">KUTU AÇILIMI</div>
-                </div>
-                <div class="preset-btn" onclick="applyPreset('cooking')">
-                    <div class="preset-icon">🍳</div>
-                    <div class="preset-label" id="preset-cooking">YEMEKTARİFİ</div>
-                </div>
-                <div class="preset-btn" onclick="applyPreset('travel')">
-                    <div class="preset-icon">✈️</div>
-                    <div class="preset-label" id="preset-travel">SEYAHAT</div>
-                </div>
-                <div class="preset-btn" onclick="applyPreset('fitness')">
-                    <div class="preset-icon">💪</div>
-                    <div class="preset-label" id="preset-fitness">FİTNESS</div>
-                </div>
                 <div class="preset-btn" onclick="applyPreset('tech')">
                     <div class="preset-icon">🤖</div>
                     <div class="preset-label" id="preset-tech">TEKNOLOJİ</div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- Position Control Panel - Character & Text Together -->
-        <div class="position-control-panel">
-            <div class="position-group">
-                <div class="position-label">👤 <span id="lbl-char-pos">KARAKTER POZİSYONU</span></div>
-                <div class="pos-switch" role="group" aria-label="Character Position">
-                    <div class="pos-btn" id="pos-left" onclick="setPos('left')" role="button" tabindex="0">⬅️ <span
-                            id="txt-pos-left">SOL</span></div>
-                    <div class="pos-btn" id="pos-center" onclick="setPos('center')" role="button" tabindex="0">⚫ <span
-                            id="txt-pos-center">ORTA</span></div>
-                    <div class="pos-btn active" id="pos-right" onclick="setPos('right')" role="button" tabindex="0">➡️
-                        <span id="txt-pos-right">SAĞ</span>
+        <!-- MAIN LAYOUT -->
+        <div class="main-layout">
+
+            <!-- INPUT SECTIONS -->
+            <div class="input-panel">
+
+                <!-- 1. Expression -->
+                <div class="input-section section">
+                    <div class="section-header">
+                        <div class="section-title">
+                            <svg>
+                                <use href="#icon-expression" />
+                            </svg>
+                            <span>1. YÜZ İFADESİ</span>
+                        </div>
+                        <span class="section-count" id="count-expr">0</span>
+                    </div>
+                    <div class="input-wrapper input-group">
+                        <svg class="input-icon">
+                            <use href="#icon-expression" />
+                        </svg>
+                        <input type="text" class="input-field" id="inp-expr" oninput="updateHud()"
+                            placeholder="Örn: Şaşkın, Mutlu, Sinirli...">
+                    </div>
+                    <div class="chips-container" id="list-expr"></div>
+                </div>
+
+                <!-- 2. Outfit -->
+                <div class="input-section section">
+                    <div class="section-header">
+                        <div class="section-title">
+                            <svg>
+                                <use href="#icon-outfit" />
+                            </svg>
+                            <span>2. KIYAFET</span>
+                        </div>
+                        <span class="section-count" id="count-outfit">0</span>
+                    </div>
+                    <div class="input-wrapper input-group">
+                        <svg class="input-icon">
+                            <use href="#icon-outfit" />
+                        </svg>
+                        <input type="text" class="input-field" id="inp-outfit" oninput="updateHud()"
+                            placeholder="Örn: Siyah Hoodie, Takım Elbise...">
+                    </div>
+                    <div class="chips-container" id="list-outfit"></div>
+                </div>
+
+                <!-- 3. Object -->
+                <div class="input-section section">
+                    <div class="section-header">
+                        <div class="section-title">
+                            <svg>
+                                <use href="#icon-object" />
+                            </svg>
+                            <span>3. ELDEKİ NESNE</span>
+                        </div>
+                        <span class="section-count" id="count-obj">0</span>
+                    </div>
+                    <div class="input-wrapper input-group">
+                        <svg class="input-icon">
+                            <use href="#icon-object" />
+                        </svg>
+                        <input type="text" class="input-field" id="inp-obj" oninput="updateHud()"
+                            placeholder="Örn: Para, Telefon, Kutu...">
+                    </div>
+                    <div class="chips-container" id="list-obj"></div>
+                </div>
+
+                <!-- 4. Background -->
+                <div class="input-section section">
+                    <div class="section-header">
+                        <div class="section-title">
+                            <svg>
+                                <use href="#icon-background" />
+                            </svg>
+                            <span>4. ARKA PLAN</span>
+                        </div>
+                        <span class="section-count" id="count-bg">0</span>
+                    </div>
+                    <div class="input-wrapper input-group">
+                        <svg class="input-icon">
+                            <use href="#icon-background" />
+                        </svg>
+                        <input type="text" class="input-field" id="inp-bg" oninput="updateHud()"
+                            placeholder="Örn: Stüdyo, Şehir, Orman...">
+                    </div>
+                    <div class="chips-container" id="list-bg"></div>
+                </div>
+
+                <!-- 5. Text Overlay -->
+                <div class="input-section section">
+                    <div class="section-header">
+                        <div class="section-title">
+                            <svg>
+                                <use href="#icon-text" />
+                            </svg>
+                            <span>5. YAZI OVERLAY</span>
+                        </div>
+                        <span class="section-count" id="count-txt">0</span>
+                    </div>
+                    <div class="input-wrapper input-group">
+                        <svg class="input-icon">
+                            <use href="#icon-text" />
+                        </svg>
+                        <input type="text" class="input-field" id="inp-txt" oninput="updateHud()"
+                            placeholder="Örn: NASIL?, $100K, GİZLİ...">
+                    </div>
+                    <div class="chips-container" id="list-txt"></div>
+                </div>
+
+                <!-- 6. Lighting -->
+                <div class="input-section section">
+                    <div class="section-header">
+                        <div class="section-title">
+                            <svg>
+                                <use href="#icon-light" />
+                            </svg>
+                            <span>6. IŞIK & MOD</span>
+                        </div>
+                        <span class="section-count" id="count-light">0</span>
+                    </div>
+                    <div class="input-wrapper input-group">
+                        <svg class="input-icon">
+                            <use href="#icon-light" />
+                        </svg>
+                        <input type="text" class="input-field" id="inp-light" oninput="updateHud()"
+                            placeholder="Örn: Sinematik, Neon, Golden Hour...">
+                    </div>
+                    <div class="chips-container" id="list-light"></div>
+                </div>
+
+                <!-- 7. Camera Angle -->
+                <div class="input-section section">
+                    <div class="section-header">
+                        <div class="section-title">
+                            <svg>
+                                <use href="#icon-angle" />
+                            </svg>
+                            <span>7. KAMERA AÇISI</span>
+                        </div>
+                        <span class="section-count" id="count-angle">0</span>
+                    </div>
+                    <div class="input-wrapper input-group">
+                        <svg class="input-icon">
+                            <use href="#icon-angle" />
+                        </svg>
+                        <input type="text" class="input-field" id="inp-angle" oninput="updateHud()"
+                            placeholder="Örn: Geniş Açı, Yakın Çekim...">
+                    </div>
+                    <div class="chips-container" id="list-angle"></div>
+                </div>
+
+                <!-- 8. Visual Effects -->
+                <div class="input-section section">
+                    <div class="section-header">
+                        <div class="section-title">
+                            <svg>
+                                <use href="#icon-effects" />
+                            </svg>
+                            <span>8. GÖRSEL EFEKTLER</span>
+                        </div>
+                        <span class="section-count" id="count-fx">0</span>
+                    </div>
+                    <div class="input-wrapper input-group">
+                        <svg class="input-icon">
+                            <use href="#icon-effects" />
+                        </svg>
+                        <input type="text" class="input-field" id="inp-fx" oninput="updateHud()"
+                            placeholder="Örn: Duman, Kıvılcım, Bokeh...">
+                    </div>
+                    <div class="chips-container" id="list-fx"></div>
+                </div>
+
+            </div>
+
+            <!-- SIDEBAR -->
+            <aside class="sidebar">
+
+                <!-- Preview Card -->
+                <div class="preview-card preview-container">
+                    <div class="preview-header">
+                        <div class="preview-title">
+                            <svg>
+                                <use href="#icon-preview" />
+                            </svg>
+                            <span id="txt-preview-title">ÖNİZLEME</span>
+                        </div>
+                    </div>
+                    <canvas id="preview-canvas" width="640" height="360"></canvas>
+                    <div class="preview-legend">
+                        <div class="legend-item">
+                            <div class="legend-dot" style="background: #7c3aed;"></div>
+                            <span id="legend-char">Karakter</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-dot" style="background: #06b6d4;"></div>
+                            <span id="legend-text">Yazı</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-dot" style="background: rgba(255,255,255,0.2);"></div>
+                            <span id="legend-bg">Arka Plan</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="position-group">
-                <div class="position-label">🅰️ <span id="lbl-txt-pos">YAZI POZİSYONU</span></div>
-                <div class="txt-pos-switch" role="group" aria-label="Text Position">
-                    <div class="txt-pos-btn" id="txtpos-left" onclick="setTxtPos('left')" role="button" tabindex="0">◀
-                        <span id="txt-txtpos-left">SOL</span>
+
+                <!-- Position Controls -->
+                <div class="position-controls position-control-panel">
+                    <div class="position-row position-group">
+                        <span class="position-label" id="lbl-char-pos">KARAKTER</span>
+                        <div class="switch-group pos-switch">
+                            <div class="switch-item pos-btn" id="pos-left" onclick="setPos('left')"><span
+                                    id="txt-pos-left">SOL</span></div>
+                            <div class="switch-item pos-btn" id="pos-center" onclick="setPos('center')"><span
+                                    id="txt-pos-center">ORTA</span></div>
+                            <div class="switch-item active pos-btn" id="pos-right" onclick="setPos('right')"><span
+                                    id="txt-pos-right">SAĞ</span></div>
+                        </div>
                     </div>
-                    <div class="txt-pos-btn" id="txtpos-top" onclick="setTxtPos('top')" role="button" tabindex="0">▲
-                        <span id="txt-txtpos-top">ÜST</span>
+                    <div class="position-row position-group">
+                        <span class="position-label" id="lbl-txt-pos">YAZI</span>
+                        <div class="switch-group txt-pos-switch">
+                            <div class="switch-item txt-pos-btn" id="txtpos-left" onclick="setTxtPos('left')"><span
+                                    id="txt-txtpos-left">◀</span></div>
+                            <div class="switch-item txt-pos-btn" id="txtpos-top" onclick="setTxtPos('top')"><span
+                                    id="txt-txtpos-top">▲</span></div>
+                            <div class="switch-item active txt-pos-btn" id="txtpos-auto" onclick="setTxtPos('auto')">
+                                <span id="txt-txtpos-auto">OTO</span></div>
+                            <div class="switch-item txt-pos-btn" id="txtpos-bottom" onclick="setTxtPos('bottom')"><span
+                                    id="txt-txtpos-bottom">▼</span></div>
+                            <div class="switch-item txt-pos-btn" id="txtpos-right" onclick="setTxtPos('right')"><span
+                                    id="txt-txtpos-right">▶</span></div>
+                        </div>
                     </div>
-                    <div class="txt-pos-btn active" id="txtpos-auto" onclick="setTxtPos('auto')" role="button"
-                        tabindex="0">
-                        ⚡ <span id="txt-txtpos-auto">OTO</span></div>
-                    <div class="txt-pos-btn" id="txtpos-bottom" onclick="setTxtPos('bottom')" role="button"
-                        tabindex="0">▼
-                        <span id="txt-txtpos-bottom">ALT</span>
-                    </div>
-                    <div class="txt-pos-btn" id="txtpos-right" onclick="setTxtPos('right')" role="button" tabindex="0">▶
-                        <span id="txt-txtpos-right">SAĞ</span>
-                    </div>
                 </div>
-            </div>
-            <div class="drag-hint">
-                <span id="drag-hint-text">💡 Canvas'ta elementleri sürükleyerek de pozisyon değiştirebilirsin!</span>
-            </div>
+
+            </aside>
         </div>
 
-        <div class="mode-wrapper">
-            <div class="mode-btn active" id="btn-ref" onclick="setMode('ref')">
-                <i>🖼️</i> <span id="txt-ref">KENDİ FOTOĞRAFIM</span>
-            </div>
-            <div class="mode-btn" id="btn-rnd" onclick="setMode('rnd')">
-                <i>🎲</i> <span id="txt-rnd">RASTGELE KARAKTER</span>
-            </div>
-        </div>
-        <div id="mode-desc"></div>
-
-        <div class="grid">
-            <div class="section">
-                <div class="section-header">
-                    <div class="section-title">😀 1. YÜZ İFADESİ</div>
-                    <span class="count-badge" id="count-expr">0</span>
-                </div>
-                <div class="input-group">
-                    <span class="input-icon">🎭</span>
-                    <input type="text" id="inp-expr" oninput="updateHud()">
-                </div>
-                <div class="chips-container" id="list-expr"></div>
-            </div>
-
-            <div class="section">
-                <div class="section-header">
-                    <div class="section-title">👕 2. KIYAFET</div>
-                    <span class="count-badge" id="count-outfit">0</span>
-                </div>
-                <div class="input-group">
-                    <span class="input-icon">👔</span>
-                    <input type="text" id="inp-outfit" oninput="updateHud()">
-                </div>
-                <div class="chips-container" id="list-outfit"></div>
-            </div>
-
-            <div class="section">
-                <div class="section-header">
-                    <div class="section-title">🤲 3. ELDEKİ NESNE</div>
-                    <span class="count-badge" id="count-obj">0</span>
-                </div>
-                <div class="input-group">
-                    <span class="input-icon">🎒</span>
-                    <input type="text" id="inp-obj" oninput="updateHud()">
-                </div>
-                <div class="chips-container" id="list-obj"></div>
-            </div>
-
-            <div class="section">
-                <div class="section-header">
-                    <div class="section-title">🏙️ 4. ARKA PLAN</div>
-                    <span class="count-badge" id="count-bg">0</span>
-                </div>
-                <div class="input-group">
-                    <span class="input-icon">🗺️</span>
-                    <input type="text" id="inp-bg" oninput="updateHud()">
-                </div>
-                <div class="chips-container" id="list-bg"></div>
-            </div>
-
-            <div class="section" style="grid-column: span 2;">
-                <div class="section-header">
-                    <div class="section-title">🅰️ 5. SOLDAKİ YAZI</div>
-                    <span class="count-badge" id="count-txt">0</span>
-                </div>
-                <div class="input-group">
-                    <span class="input-icon">💬</span>
-                    <input type="text" id="inp-txt" oninput="updateHud()">
-                </div>
-                <div class="chips-container" id="list-txt" style="height: 100px;"></div>
-            </div>
-
-            <div class="section">
-                <div class="section-header">
-                    <div class="section-title">💡 6. IŞIK & MOD</div>
-                    <span class="count-badge" id="count-light">0</span>
-                </div>
-                <div class="input-group">
-                    <span class="input-icon">☀️</span>
-                    <input type="text" id="inp-light" oninput="updateHud()">
-                </div>
-                <div class="chips-container" id="list-light" style="height: 120px;"></div>
-            </div>
-
-            <div class="section">
-                <div class="section-header">
-                    <div class="section-title">🎥 7. KAMERA AÇISI</div>
-                    <span class="count-badge" id="count-angle">0</span>
-                </div>
-                <div class="input-group">
-                    <span class="input-icon">📐</span>
-                    <input type="text" id="inp-angle" oninput="updateHud()">
-                </div>
-                <div class="chips-container" id="list-angle" style="height: 120px;"></div>
-            </div>
-
-            <div class="section" style="grid-column: span 2;">
-                <div class="section-header">
-                    <div class="section-title">✨ 8. GÖRSEL EFEKTLER (FX)</div>
-                    <span class="count-badge" id="count-fx">0</span>
-                </div>
-                <div class="input-group">
-                    <span class="input-icon">⚡</span>
-                    <input type="text" id="inp-fx" oninput="updateHud()">
-                </div>
-                <div class="chips-container" id="list-fx" style="height: 100px;"></div>
-            </div>
-
-        </div>
-
-        <div class="hud-panel">
-            <div class="hud-title">⚙️ SYSTEM_MONITOR // LIVE_PREVIEW</div>
-            <div class="hud-grid">
-                <div class="hud-item">
-                    <span class="hud-label" id="hl-mode">SOURCE</span>
-                    <span class="hud-value" id="hv-mode" style="color:#eab308">PHOTO_REF</span>
-                </div>
-                <div class="hud-item">
-                    <span class="hud-label" id="hl-pos">POSITION</span>
-                    <span class="hud-value" id="hv-pos" style="color:#f472b6">RIGHT</span>
-                </div>
-                <div class="hud-item">
-                    <span class="hud-label" id="hl-expr">EXPRESSION</span>
-                    <span class="hud-value" id="hv-expr">N/A</span>
-                </div>
-                <div class="hud-item">
-                    <span class="hud-label" id="hl-outfit">OUTFIT</span>
-                    <span class="hud-value" id="hv-outfit">N/A</span>
-                </div>
-                <div class="hud-item">
-                    <span class="hud-label" id="hl-obj">OBJECT</span>
-                    <span class="hud-value" id="hv-obj">N/A</span>
-                </div>
-                <div class="hud-item">
-                    <span class="hud-label" id="hl-bg">BG</span>
-                    <span class="hud-value" id="hv-bg">N/A</span>
-                </div>
-                <div class="hud-item">
-                    <span class="hud-label" id="hl-light">LIGHT</span>
-                    <span class="hud-value" id="hv-light">N/A</span>
-                </div>
-                <div class="hud-item">
-                    <span class="hud-label" id="hl-txt">TEXT</span>
-                    <span class="hud-value" id="hv-txt" style="color:#38bdf8">N/A</span>
-                </div>
-                <div class="hud-item">
-                    <span class="hud-label" id="hl-angle">ANGLE</span>
-                    <span class="hud-value" id="hv-angle">N/A</span>
-                </div>
-                <div class="hud-item">
-                    <span class="hud-label" id="hl-fx">FX</span>
-                    <span class="hud-value" id="hv-fx">N/A</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="preview-container">
-            <div class="preview-title">🖼️ <span id="txt-preview-title">ÖNİZLEME // LAYOUT PREVIEW</span></div>
-            <canvas id="preview-canvas" width="640" height="360"></canvas>
-            <div class="preview-legend">
-                <div class="legend-item">
-                    <div class="legend-color" style="background: #8b5cf6;"></div>
-                    <span id="legend-char">Karakter</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color" style="background: #38bdf8;"></div>
-                    <span id="legend-text">Yazı</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color" style="background: rgba(255,255,255,0.1);"></div>
-                    <span id="legend-bg">Arka Plan</span>
-                </div>
-            </div>
-        </div>
-
-        <button class="btn-gen" id="btn-gen" onclick="generate()">INITIALIZE PROMPT GENERATION</button>
-
-        <div class="output-container">
-            <textarea id="output" readonly></textarea>
-            <button class="copy-btn" onclick="copyResult()">
-                <i>📋</i> KOPYALA
+        <!-- GENERATE BUTTON -->
+        <section class="generate-section">
+            <button class="btn-generate btn-gen" id="btn-gen" onclick="generate()">
+                <svg>
+                    <use href="#icon-generate" />
+                </svg>
+                <span>PROMPT OLUŞTUR</span>
             </button>
-        </div>
+        </section>
 
-        <div class="history-container">
+        <!-- OUTPUT -->
+        <section class="output-section output-container">
+            <div class="output-header">
+                <span class="output-title">Oluşturulan Prompt</span>
+                <div class="output-actions">
+                    <button class="btn btn-primary copy-btn" onclick="copyResult()">
+                        <svg class="btn-icon">
+                            <use href="#icon-copy" />
+                        </svg>
+                        <span>KOPYALA</span>
+                    </button>
+                </div>
+            </div>
+            <textarea class="output-textarea" id="output" readonly placeholder="Prompt burada görünecek..."></textarea>
+
+            <div class="prompt-stats" id="prompt-stats" style="display: none;">
+                <div class="stat-item">
+                    <span class="stat-value" id="stat-chars">0</span>
+                    <span class="stat-label" id="stat-chars-label">KARAKTER</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="stat-words">0</span>
+                    <span class="stat-label" id="stat-words-label">KELİME</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="stat-tokens">0</span>
+                    <span class="stat-label" id="stat-tokens-label">TOKEN (≈)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- HISTORY -->
+        <section class="history-section history-container">
             <div class="history-header">
-                <div class="history-title">📜 <span id="txt-history">GEÇMİŞ PROMPTLAR</span></div>
-                <button class="h-btn" onclick="clearHistory()" id="btn-clear-hist" style="font-size:0.7rem">TÜMÜNÜ
-                    SİL</button>
+                <div class="history-title">
+                    <svg>
+                        <use href="#icon-history" />
+                    </svg>
+                    <span id="txt-history">GEÇMİŞ PROMPTLAR</span>
+                </div>
+                <button class="h-btn" onclick="clearHistory()" id="btn-clear-hist">TÜMÜNÜ SİL</button>
             </div>
-            <div class="history-list" id="history-list">
-            </div>
-        </div>
+            <div class="history-list" id="history-list"></div>
+        </section>
 
-
-        <!-- Export/Import Panel -->
-        <div class="export-import-panel">
+        <!-- EXPORT/IMPORT -->
+        <section class="export-import-section export-import-panel">
             <button class="exp-imp-btn" onclick="exportSettings()">
-                📤 <span id="txt-export">AYARLARI DIŞA AKTAR</span>
+                <svg class="btn-icon">
+                    <use href="#icon-export" />
+                </svg>
+                <span id="txt-export">AYARLARI DIŞA AKTAR</span>
             </button>
             <button class="exp-imp-btn" onclick="importSettings()">
-                📥 <span id="txt-import">AYARLARI İÇE AKTAR</span>
+                <svg class="btn-icon">
+                    <use href="#icon-import" />
+                </svg>
+                <span id="txt-import">AYARLARI İÇE AKTAR</span>
             </button>
-        </div>
-
-        <!-- Prompt Stats -->
-        <div class="prompt-stats" id="prompt-stats" style="display: none;">
-            <div class="stat-item">
-                <span class="stat-value" id="stat-chars">0</span>
-                <span class="stat-label" id="stat-chars-label">KARAKTER</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-value" id="stat-words">0</span>
-                <span class="stat-label" id="stat-words-label">KELİME</span>
-            </div>
-            <div class="stat-item">
-                <span class="stat-value" id="stat-tokens">0</span>
-                <span class="stat-label" id="stat-tokens-label">TOKEN (≈)</span>
-            </div>
-        </div>
+        </section>
 
     </div>
 
-    <!-- Keyboard Shortcuts Hint -->
+    <!-- Keyboard Shortcuts -->
     <div class="shortcuts-hint" id="shortcuts-hint">
         <kbd class="kbd">Ctrl</kbd>+<kbd class="kbd">Enter</kbd> <span id="txt-shortcut-gen">Oluştur</span> |
         <kbd class="kbd">Ctrl</kbd>+<kbd class="kbd">C</kbd> <span id="txt-shortcut-copy">Kopyala</span>
     </div>
 
-    <!-- Hidden file input for import -->
+    <!-- Hidden file input -->
     <input type="file" id="import-file" accept=".json" style="display:none" onchange="handleImport(event)">
 
     <!-- JavaScript -->

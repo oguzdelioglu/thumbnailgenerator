@@ -399,11 +399,10 @@ function renderUI() {
     if (typeof drawPreview === 'function') drawPreview();
 
     // Update position control labels
-    document.getElementById('lbl-char-pos').innerText = currentLang === 'tr' ? 'KARAKTER POZİSYONU' : 'CHARACTER POSITION';
-    document.getElementById('lbl-txt-pos').innerText = currentLang === 'tr' ? 'YAZI POZİSYONU' : 'TEXT POSITION';
-    document.getElementById('drag-hint-text').innerText = currentLang === 'tr'
-        ? '💡 Canvas\'ta elementleri sürükleyerek de pozisyon değiştirebilirsin!'
-        : '💡 You can also drag elements on the canvas to change positions!';
+    const charPosEl = document.getElementById('lbl-char-pos');
+    const txtPosEl = document.getElementById('lbl-txt-pos');
+    if (charPosEl) charPosEl.innerText = currentLang === 'tr' ? 'KARAKTER' : 'CHARACTER';
+    if (txtPosEl) txtPosEl.innerText = currentLang === 'tr' ? 'YAZI' : 'TEXT';
 
     // Loop through all categories (including new ones)
     const cats = ['expr', 'outfit', 'obj', 'bg', 'txt', 'light', 'angle', 'fx'];
@@ -476,33 +475,33 @@ function setMode(mode) {
     currentMode = mode;
     const d = dataPool[currentLang];
 
-    document.getElementById('btn-ref').className = mode === 'ref' ? 'mode-btn active' : 'mode-btn';
-    document.getElementById('btn-rnd').className = mode === 'rnd' ? 'mode-btn active' : 'mode-btn';
+    document.getElementById('btn-ref').className = mode === 'ref' ? 'switch-item active' : 'switch-item';
+    document.getElementById('btn-rnd').className = mode === 'rnd' ? 'switch-item active' : 'switch-item';
     document.getElementById('mode-desc').innerText = mode === 'ref' ? d.modeDescRef : d.modeDescRnd;
     updateHud();
 }
 
 function setAr(ar) {
     currentAr = ar;
-    document.getElementById('ar-169').className = ar === '16:9' ? 'ar-btn active' : 'ar-btn';
-    document.getElementById('ar-916').className = ar === '9:16' ? 'ar-btn active' : 'ar-btn';
+    document.getElementById('ar-169').className = ar === '16:9' ? 'switch-item active ar-btn' : 'switch-item ar-btn';
+    document.getElementById('ar-916').className = ar === '9:16' ? 'switch-item active ar-btn' : 'switch-item ar-btn';
     drawPreview();
 }
 
 function setPos(pos) {
     currentPos = pos;
-    document.getElementById('pos-left').className = pos === 'left' ? 'pos-btn active' : 'pos-btn';
-    document.getElementById('pos-center').className = pos === 'center' ? 'pos-btn active' : 'pos-btn';
-    document.getElementById('pos-right').className = pos === 'right' ? 'pos-btn active' : 'pos-btn';
+    document.getElementById('pos-left').className = pos === 'left' ? 'switch-item pos-btn active' : 'switch-item pos-btn';
+    document.getElementById('pos-center').className = pos === 'center' ? 'switch-item pos-btn active' : 'switch-item pos-btn';
+    document.getElementById('pos-right').className = pos === 'right' ? 'switch-item pos-btn active' : 'switch-item pos-btn';
     updateHud();
     drawPreview();
 }
 
 function setGender(gender) {
     currentGender = gender;
-    document.getElementById('gender-male').className = gender === 'male' ? 'gender-btn active' : 'gender-btn';
-    document.getElementById('gender-female').className = gender === 'female' ? 'gender-btn active' : 'gender-btn';
-    document.getElementById('gender-char').className = gender === 'character' ? 'gender-btn active' : 'gender-btn';
+    document.getElementById('gender-male').className = gender === 'male' ? 'switch-item gender-btn active' : 'switch-item gender-btn';
+    document.getElementById('gender-female').className = gender === 'female' ? 'switch-item gender-btn active' : 'switch-item gender-btn';
+    document.getElementById('gender-char').className = gender === 'character' ? 'switch-item gender-btn active' : 'switch-item gender-btn';
     updateHud();
     drawPreview();
 }
@@ -510,7 +509,7 @@ function setGender(gender) {
 function setTxtPos(pos) {
     currentTxtPos = pos;
     ['left', 'top', 'auto', 'bottom', 'right'].forEach(p => {
-        document.getElementById(`txtpos-${p}`).className = pos === p ? 'txt-pos-btn active' : 'txt-pos-btn';
+        document.getElementById(`txtpos-${p}`).className = pos === p ? 'switch-item txt-pos-btn active' : 'switch-item txt-pos-btn';
     });
     updateHud();
     drawPreview();
