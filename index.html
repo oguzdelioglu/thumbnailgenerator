@@ -761,11 +761,11 @@
             box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
         }
 
-        /* Presets Panel */
+        /* Presets Panel - Enhanced */
         .presets-container {
-            margin: 25px 0;
-            padding: 20px;
-            background: var(--hud-bg);
+            margin: 15px 0;
+            padding: 15px 20px;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(56, 189, 248, 0.05));
             border: 1px solid var(--glass-border);
             border-radius: 16px;
         }
@@ -775,7 +775,7 @@
             color: var(--accent);
             font-size: 0.85rem;
             letter-spacing: 1px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -783,15 +783,15 @@
 
         .presets-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-            gap: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 8px;
         }
 
         .preset-btn {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            padding: 12px;
+            border-radius: 10px;
+            padding: 10px 8px;
             cursor: pointer;
             transition: 0.3s;
             text-align: center;
@@ -804,14 +804,163 @@
         }
 
         .preset-icon {
-            font-size: 1.5rem;
-            margin-bottom: 5px;
+            font-size: 1.3rem;
+            margin-bottom: 3px;
         }
 
         .preset-label {
-            font-size: 0.75rem;
+            font-size: 0.65rem;
             color: var(--text-muted);
             font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Favorites Dropdown */
+        .favorites-wrapper {
+            position: relative;
+        }
+
+        .favorites-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 8px;
+            width: 320px;
+            max-height: 400px;
+            overflow-y: auto;
+            background: var(--hud-bg);
+            border: 1px solid var(--hud-border);
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: none;
+            padding: 8px;
+        }
+
+        .favorites-dropdown.show {
+            display: block;
+            animation: fadeInScale 0.2s ease;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: translateY(-10px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .favorites-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--glass-border);
+            margin-bottom: 8px;
+        }
+
+        .favorites-header h4 {
+            margin: 0;
+            font-size: 0.85rem;
+            color: var(--hud-border);
+        }
+
+        .fav-clear-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 0.7rem;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: 0.2s;
+        }
+
+        .fav-clear-btn:hover {
+            background: rgba(239, 68, 68, 0.2);
+            color: var(--danger);
+        }
+
+        .fav-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 12px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            margin-bottom: 6px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .fav-item:hover {
+            background: rgba(139, 92, 246, 0.15);
+            border-color: var(--primary);
+        }
+
+        .fav-item-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .fav-item-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-bright);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .fav-item-meta {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+
+        .fav-item-actions {
+            display: flex;
+            gap: 4px;
+        }
+
+        .fav-action-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            transition: 0.2s;
+        }
+
+        .fav-action-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .fav-action-btn.delete:hover {
+            color: var(--danger);
+            background: rgba(239, 68, 68, 0.2);
+        }
+
+        .fav-empty {
+            text-align: center;
+            padding: 30px 20px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .fav-empty-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            opacity: 0.5;
         }
 
         /* Favorites */
@@ -839,6 +988,15 @@
             background: var(--hud-border);
             color: #000;
             border-color: var(--hud-border);
+        }
+
+        .fav-count {
+            background: var(--primary);
+            color: white;
+            font-size: 0.65rem;
+            padding: 2px 6px;
+            border-radius: 10px;
+            margin-left: 4px;
         }
 
         /* Export/Import Panel */
@@ -1104,11 +1262,99 @@
             </div>
 
             <div class="header-controls">
-                <button class="fav-btn" id="fav-btn" onclick="toggleFavorite()" aria-label="Save to favorites">⭐ <span
-                        id="txt-fav">FAVORİ</span></button>
+                <div class="favorites-wrapper">
+                    <button class="fav-btn" id="fav-btn" onclick="toggleFavorite()" aria-label="Save to favorites">
+                        ⭐ <span id="txt-fav">FAVORİ</span>
+                    </button>
+                    <button class="action-btn" id="fav-list-btn" onclick="toggleFavoritesDropdown()"
+                        aria-label="View favorites">
+                        📂 <span id="txt-fav-list">FAVORİLER</span><span class="fav-count" id="fav-count">0</span>
+                    </button>
+                    <div class="favorites-dropdown" id="favorites-dropdown">
+                        <div class="favorites-header">
+                            <h4>⭐ <span id="txt-my-favs">FAVORİLERİM</span></h4>
+                            <button class="fav-clear-btn" onclick="clearAllFavorites()" id="fav-clear-all">TÜMÜNÜ
+                                SİL</button>
+                        </div>
+                        <div id="favorites-list">
+                            <!-- Favorites will be rendered here -->
+                        </div>
+                    </div>
+                </div>
                 <button class="action-btn" onclick="toggleLang()">🇺🇸 EN / 🇹🇷 TR</button>
                 <button class="action-btn btn-reset" onclick="resetAll()">🗑️ <span
                         id="txt-reset">SIFIRLA</span></button>
+            </div>
+        </div>
+
+        <!-- Presets Panel - MOVED TO TOP -->
+        <div class="presets-container">
+            <div class="presets-title">🎨 <span id="txt-presets-title">HAZIR ŞABLONLAR // QUICK PRESETS</span></div>
+            <div class="presets-grid" id="presets-grid">
+                <div class="preset-btn" onclick="applyPreset('clickbait')">
+                    <div class="preset-icon">🔥</div>
+                    <div class="preset-label" id="preset-clickbait">CLICKBAIT</div>
+                </div>
+                <div class="preset-btn" onclick="applyPreset('minimal')">
+                    <div class="preset-icon">✨</div>
+                    <div class="preset-label" id="preset-minimal">MİNİMAL</div>
+                </div>
+                <div class="preset-btn" onclick="applyPreset('gaming')">
+                    <div class="preset-icon">🎮</div>
+                    <div class="preset-label" id="preset-gaming">GAMING</div>
+                </div>
+                <div class="preset-btn" onclick="applyPreset('tutorial')">
+                    <div class="preset-icon">📚</div>
+                    <div class="preset-label" id="preset-tutorial">TUTORIAL</div>
+                </div>
+                <div class="preset-btn" onclick="applyPreset('vlog')">
+                    <div class="preset-icon">🎬</div>
+                    <div class="preset-label" id="preset-vlog">VLOG</div>
+                </div>
+                <div class="preset-btn" onclick="applyPreset('mystery')">
+                    <div class="preset-icon">🔮</div>
+                    <div class="preset-label" id="preset-mystery">GİZEM</div>
+                </div>
+                <div class="preset-btn" onclick="applyPreset('money')">
+                    <div class="preset-icon">💰</div>
+                    <div class="preset-label" id="preset-money">PARA/FİNANS</div>
+                </div>
+                <div class="preset-btn" onclick="applyPreset('horror')">
+                    <div class="preset-icon">👻</div>
+                    <div class="preset-label" id="preset-horror">KORKU</div>
+                </div>
+                <div class="preset-btn" onclick="applyPreset('storytime')">
+                    <div class="preset-icon">📖</div>
+                    <div class="preset-label" id="preset-storytime">HİKAYE</div>
+                </div>
+                <div class="preset-btn" onclick="applyPreset('reaction')">
+                    <div class="preset-icon">😱</div>
+                    <div class="preset-label" id="preset-reaction">REAKSİYON</div>
+                </div>
+                <div class="preset-btn" onclick="applyPreset('review')">
+                    <div class="preset-icon">⭐</div>
+                    <div class="preset-label" id="preset-review">İNCELEME</div>
+                </div>
+                <div class="preset-btn" onclick="applyPreset('unboxing')">
+                    <div class="preset-icon">📦</div>
+                    <div class="preset-label" id="preset-unboxing">KUTU AÇILIMI</div>
+                </div>
+                <div class="preset-btn" onclick="applyPreset('cooking')">
+                    <div class="preset-icon">🍳</div>
+                    <div class="preset-label" id="preset-cooking">YEMEKTARİFİ</div>
+                </div>
+                <div class="preset-btn" onclick="applyPreset('travel')">
+                    <div class="preset-icon">✈️</div>
+                    <div class="preset-label" id="preset-travel">SEYAHAT</div>
+                </div>
+                <div class="preset-btn" onclick="applyPreset('fitness')">
+                    <div class="preset-icon">💪</div>
+                    <div class="preset-label" id="preset-fitness">FİTNESS</div>
+                </div>
+                <div class="preset-btn" onclick="applyPreset('tech')">
+                    <div class="preset-icon">🤖</div>
+                    <div class="preset-label" id="preset-tech">TEKNOLOJİ</div>
+                </div>
             </div>
         </div>
 
@@ -1345,44 +1591,6 @@
             </div>
         </div>
 
-        <!-- Presets Panel -->
-        <div class="presets-container">
-            <div class="presets-title">🎨 <span id="txt-presets-title">HAZIR ŞABLONLAR // QUICK PRESETS</span></div>
-            <div class="presets-grid" id="presets-grid">
-                <div class="preset-btn" onclick="applyPreset('clickbait')">
-                    <div class="preset-icon">🔥</div>
-                    <div class="preset-label" id="preset-clickbait">CLICKBAIT</div>
-                </div>
-                <div class="preset-btn" onclick="applyPreset('minimal')">
-                    <div class="preset-icon">✨</div>
-                    <div class="preset-label" id="preset-minimal">MİNİMAL</div>
-                </div>
-                <div class="preset-btn" onclick="applyPreset('gaming')">
-                    <div class="preset-icon">🎮</div>
-                    <div class="preset-label" id="preset-gaming">GAMING</div>
-                </div>
-                <div class="preset-btn" onclick="applyPreset('tutorial')">
-                    <div class="preset-icon">📚</div>
-                    <div class="preset-label" id="preset-tutorial">TUTORIAL</div>
-                </div>
-                <div class="preset-btn" onclick="applyPreset('vlog')">
-                    <div class="preset-icon">🎬</div>
-                    <div class="preset-label" id="preset-vlog">VLOG</div>
-                </div>
-                <div class="preset-btn" onclick="applyPreset('mystery')">
-                    <div class="preset-icon">🔮</div>
-                    <div class="preset-label" id="preset-mystery">GİZEM</div>
-                </div>
-                <div class="preset-btn" onclick="applyPreset('money')">
-                    <div class="preset-icon">💰</div>
-                    <div class="preset-label" id="preset-money">PARA/FİNANS</div>
-                </div>
-                <div class="preset-btn" onclick="applyPreset('horror')">
-                    <div class="preset-icon">👻</div>
-                    <div class="preset-label" id="preset-horror">KORKU</div>
-                </div>
-            </div>
-        </div>
 
         <!-- Export/Import Panel -->
         <div class="export-import-panel">
@@ -1446,7 +1654,7 @@
                 txtExport: "AYARLARI DIŞA AKTAR",
                 txtImport: "AYARLARI İÇE AKTAR",
                 txtPresets: "HAZIR ŞABLONLAR // QUICK PRESETS",
-                presetLabels: { clickbait: "CLICKBAIT", minimal: "MİNİMAL", gaming: "GAMING", tutorial: "TUTORIAL", vlog: "VLOG", mystery: "GİZEM", money: "PARA/FİNANS", horror: "KORKU" },
+                presetLabels: { clickbait: "CLICKBAIT", minimal: "MİNİMAL", gaming: "GAMING", tutorial: "TUTORIAL", vlog: "VLOG", mystery: "GİZEM", money: "PARA/FİNANS", horror: "KORKU", storytime: "HİKAYE", reaction: "REAKSİYON", review: "İNCELEME", unboxing: "KUTU AÇILIMI", cooking: "YEMEKTARİFİ", travel: "SEYAHAT", fitness: "FİTNESS", tech: "TEKNOLOJİ" },
                 statLabels: { chars: "KARAKTER", words: "KELİME", tokens: "TOKEN (≈)" },
                 shortcutLabels: { gen: "Oluştur", copy: "Kopyala" },
 
@@ -1584,7 +1792,7 @@
                 txtExport: "EXPORT SETTINGS",
                 txtImport: "IMPORT SETTINGS",
                 txtPresets: "QUICK PRESETS // TEMPLATES",
-                presetLabels: { clickbait: "CLICKBAIT", minimal: "MINIMAL", gaming: "GAMING", tutorial: "TUTORIAL", vlog: "VLOG", mystery: "MYSTERY", money: "MONEY/FINANCE", horror: "HORROR" },
+                presetLabels: { clickbait: "CLICKBAIT", minimal: "MINIMAL", gaming: "GAMING", tutorial: "TUTORIAL", vlog: "VLOG", mystery: "MYSTERY", money: "MONEY/FINANCE", horror: "HORROR", storytime: "STORYTIME", reaction: "REACTION", review: "REVIEW", unboxing: "UNBOXING", cooking: "COOKING", travel: "TRAVEL", fitness: "FITNESS", tech: "TECH" },
                 statLabels: { chars: "CHARACTERS", words: "WORDS", tokens: "TOKEN (≈)" },
                 shortcutLabels: { gen: "Generate", copy: "Copy" },
 
@@ -1737,7 +1945,15 @@
             vlog: { expr: 'Happy', outfit: 'Casual', bg: 'Living Room', obj: '', txt: '', light: 'warm golden hour sunset lighting', angle: 'selfie angle', fx: 'bokeh depth of field' },
             mystery: { expr: 'Suspicious', outfit: 'Dark hoodie', bg: 'Dark alley', obj: 'Mystery Box', txt: 'THE TRUTH', light: 'moody dark rembrandt lighting', angle: 'dutch angle tilted', fx: 'floating dust particles' },
             money: { expr: 'Greedy', outfit: 'Luxury Suit', bg: 'Bank Vault', obj: 'Stack of Money', txt: '$100,000', light: 'dramatic teal and orange cinematic lighting', angle: 'low angle hero shot', fx: 'floating money bills' },
-            horror: { expr: 'Terrified', outfit: 'Torn clothes', bg: 'Abandoned house', obj: '', txt: 'RUN!', light: 'eerie green toxic horror lighting', angle: 'dutch angle tilted', fx: 'fog and mist atmosphere' }
+            horror: { expr: 'Terrified', outfit: 'Torn clothes', bg: 'Abandoned house', obj: '', txt: 'RUN!', light: 'eerie green toxic horror lighting', angle: 'dutch angle tilted', fx: 'fog and mist atmosphere' },
+            storytime: { expr: 'Happy', outfit: 'Cozy sweater', bg: 'Cozy bedroom', obj: 'Coffee mug', txt: 'MY STORY', light: 'warm golden hour sunset lighting', angle: 'eye level portrait', fx: 'bokeh depth of field' },
+            reaction: { expr: 'Shocked', outfit: 'Casual T-Shirt', bg: 'Gaming Room', obj: '', txt: 'WATCH THIS!', light: 'vibrant neon cyberpunk pink and blue lighting', angle: 'wide angle gopro style', fx: 'floating dust particles' },
+            review: { expr: 'Thinking', outfit: 'Casual smart', bg: 'clean studio', obj: 'Product Box', txt: 'HONEST REVIEW', light: 'bright high-key studio lighting', angle: 'eye level portrait', fx: 'clean no effects' },
+            unboxing: { expr: 'Happy', outfit: 'Casual', bg: 'clean studio', obj: 'Gift Box', txt: 'UNBOXING!', light: 'bright high-key studio lighting', angle: 'overhead top-down', fx: 'bokeh depth of field' },
+            cooking: { expr: 'Happy', outfit: 'Chef Apron', bg: 'Modern Kitchen', obj: 'Cooking Pan', txt: 'RECIPE', light: 'warm golden hour sunset lighting', angle: 'overhead top-down', fx: 'steam and smoke atmosphere' },
+            travel: { expr: 'Happy', outfit: 'Casual summer', bg: 'Beach Paradise', obj: 'Passport', txt: 'TRAVEL VLOG', light: 'warm golden hour sunset lighting', angle: 'wide angle gopro style', fx: 'lens flare sunlight' },
+            fitness: { expr: 'Determined', outfit: 'Gym clothes', bg: 'Gym Environment', obj: 'Dumbbell', txt: 'WORKOUT', light: 'dramatic teal and orange cinematic lighting', angle: 'low angle hero shot', fx: 'floating dust particles' },
+            tech: { expr: 'Curious', outfit: 'Modern casual', bg: 'clean studio', obj: 'Smartphone', txt: 'TECH REVIEW', light: 'vibrant neon cyberpunk pink and blue lighting', angle: 'eye level portrait', fx: 'digital glitch distortion effect' }
         };
 
         function init() {
@@ -1772,6 +1988,12 @@
             document.getElementById('txt-presets-title').innerText = d.txtPresets;
             document.getElementById('txt-shortcut-gen').innerText = d.shortcutLabels.gen;
             document.getElementById('txt-shortcut-copy').innerText = d.shortcutLabels.copy;
+
+            // Favorites dropdown texts
+            document.getElementById('txt-fav-list').innerText = currentLang === 'tr' ? 'FAVORİLER' : 'FAVORITES';
+            document.getElementById('txt-my-favs').innerText = currentLang === 'tr' ? 'FAVORİLERİM' : 'MY FAVORITES';
+            document.getElementById('fav-clear-all').innerText = currentLang === 'tr' ? 'TÜMÜNÜ SİL' : 'CLEAR ALL';
+            renderFavoritesList();
 
             // Update gender labels
             document.getElementById('txt-gender-male').innerText = d.genderLabels.male;
@@ -1954,6 +2176,8 @@
             }
 
             localStorage.setItem('thumbStudioFavorites', JSON.stringify(favorites));
+            updateFavoritesCount();
+            renderFavoritesList();
             showToast(isFavorite ? (currentLang === 'tr' ? 'Favorilere eklendi!' : 'Added to favorites!') : (currentLang === 'tr' ? 'Favorilerden çıkarıldı!' : 'Removed from favorites!'));
         }
 
@@ -2000,7 +2224,114 @@
             if (saved) {
                 favorites = JSON.parse(saved);
             }
+            updateFavoritesCount();
+            renderFavoritesList();
         }
+
+        function toggleFavoritesDropdown() {
+            const dropdown = document.getElementById('favorites-dropdown');
+            dropdown.classList.toggle('show');
+            if (dropdown.classList.contains('show')) {
+                renderFavoritesList();
+            }
+        }
+
+        function updateFavoritesCount() {
+            const countEl = document.getElementById('fav-count');
+            if (countEl) {
+                countEl.innerText = favorites.length;
+            }
+        }
+
+        function renderFavoritesList() {
+            const container = document.getElementById('favorites-list');
+            if (!container) return;
+
+            if (favorites.length === 0) {
+                container.innerHTML = `
+                    <div class="fav-empty">
+                        <div class="fav-empty-icon">⭐</div>
+                        <div>${currentLang === 'tr' ? 'Henüz favori yok' : 'No favorites yet'}</div>
+                        <div style="font-size: 0.7rem; margin-top: 5px; opacity: 0.7">
+                            ${currentLang === 'tr' ? 'Ayarları kaydetmek için FAVORİ butonuna tıklayın' : 'Click FAVORITE button to save settings'}
+                        </div>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = favorites.map((fav, index) => {
+                const title = fav.expr || fav.bg || fav.outfit || (currentLang === 'tr' ? 'Favori' : 'Favorite');
+                const meta = [
+                    fav.pos ? (currentLang === 'tr' ? 'Poz: ' : 'Pos: ') + fav.pos : '',
+                    fav.txt ? '"' + fav.txt + '"' : ''
+                ].filter(Boolean).join(' | ') || (currentLang === 'tr' ? 'Özel ayarlar' : 'Custom settings');
+
+                return `
+                    <div class="fav-item" onclick="applyFavorite(${index})">
+                        <div class="fav-item-content">
+                            <div class="fav-item-title">${title}</div>
+                            <div class="fav-item-meta">${meta}</div>
+                        </div>
+                        <div class="fav-item-actions">
+                            <button class="fav-action-btn delete" onclick="event.stopPropagation(); deleteFavorite(${index})" title="${currentLang === 'tr' ? 'Sil' : 'Delete'}">🗑️</button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function applyFavorite(index) {
+            if (index < 0 || index >= favorites.length) return;
+            saveUndoState();
+            applySettings(favorites[index]);
+            document.getElementById('favorites-dropdown').classList.remove('show');
+            showToast(currentLang === 'tr' ? 'Favori uygulandı!' : 'Favorite applied!');
+        }
+
+        function deleteFavorite(index) {
+            if (index < 0 || index >= favorites.length) return;
+            favorites.splice(index, 1);
+            localStorage.setItem('thumbStudioFavorites', JSON.stringify(favorites));
+            updateFavoritesCount();
+            renderFavoritesList();
+            checkCurrentFavoriteStatus();
+            showToast(currentLang === 'tr' ? 'Favori silindi!' : 'Favorite deleted!');
+        }
+
+        function clearAllFavorites() {
+            if (favorites.length === 0) return;
+            if (!confirm(currentLang === 'tr' ? 'Tüm favorileri silmek istediğinize emin misiniz?' : 'Are you sure you want to delete all favorites?')) return;
+            favorites = [];
+            localStorage.setItem('thumbStudioFavorites', JSON.stringify(favorites));
+            updateFavoritesCount();
+            renderFavoritesList();
+            checkCurrentFavoriteStatus();
+            showToast(currentLang === 'tr' ? 'Tüm favoriler silindi!' : 'All favorites deleted!');
+        }
+
+        function checkCurrentFavoriteStatus() {
+            const currentSettings = getCurrentSettings();
+            const hash = JSON.stringify(currentSettings);
+            isFavorite = favorites.some(f => JSON.stringify(f) === hash);
+            const favBtn = document.getElementById('fav-btn');
+            if (favBtn) {
+                if (isFavorite) {
+                    favBtn.classList.add('saved');
+                } else {
+                    favBtn.classList.remove('saved');
+                }
+            }
+        }
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function (e) {
+            const dropdown = document.getElementById('favorites-dropdown');
+            const wrapper = e.target.closest('.favorites-wrapper');
+            if (!wrapper && dropdown && dropdown.classList.contains('show')) {
+                dropdown.classList.remove('show');
+            }
+        });
 
         function exportSettings() {
             const settings = getCurrentSettings();
