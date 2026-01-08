@@ -77,13 +77,30 @@ export function renderUI() {
     if (charPosEl) charPosEl.innerText = currentLang === 'tr' ? 'KARAKTER' : 'CHARACTER';
     if (txtPosEl) txtPosEl.innerText = currentLang === 'tr' ? 'YAZI' : 'TEXT';
 
-    // Loop through all categories
+    // Loop through all categories and update placeholders
     const cats = ['expr', 'outfit', 'obj', 'bg', 'txt', 'txtColor', 'light', 'angle', 'fx'];
 
-    cats.forEach((cat, i) => {
+    cats.forEach((cat) => {
         const inputEl = document.getElementById(`inp-${cat}`);
-        if (inputEl && inputEl.value === "") {
-            inputEl.placeholder = d.placeholders[i];
+        if (inputEl) {
+            // Update placeholder based on category
+            const placeholderMap = {
+                'expr': d.placeholders[0],
+                'outfit': d.placeholders[1],
+                'obj': d.placeholders[2],
+                'bg': d.placeholders[3],
+                'txt': d.placeholders[4],
+                'light': d.placeholders[5],
+                'angle': d.placeholders[6],
+                'fx': d.placeholders[7]
+            };
+
+            // txtColor placeholder is special
+            if (cat === 'txtColor') {
+                inputEl.placeholder = currentLang === 'tr' ? 'Örn: Beyaz, Sarı...' : 'Ex: white, yellow...';
+            } else if (placeholderMap[cat]) {
+                inputEl.placeholder = placeholderMap[cat];
+            }
         }
 
         // Render Chips
@@ -137,7 +154,10 @@ function renderCategoryChips(cat, currentLang) {
         chip.onclick = async () => {
             const input = document.getElementById(`inp-${cat}`);
             if (input) {
-                input.value = valueToSet;
+                // Show localized value in input (for display)
+                input.value = item.l;
+                // Store English value in data attribute (for prompt generation)
+                input.dataset.enValue = valuesData[index].l;
 
                 // Visual feedback
                 input.style.borderColor = 'var(--accent)';

@@ -11,6 +11,7 @@
 import { getState, setLanguage, setAr, setPosition, setGender, setTextPos, saveUndoState, addFavorite as addFavoriteState, removeFavorite as removeFavoriteState, clearFavorites as clearFavoritesState, getFavorites, getHistory } from './modules/core/state.js';
 import * as storage from './modules/core/storage.js';
 import { getPreset, getPositionPreset } from './modules/core/presets.js';
+import { dataPool } from './data/index.js';
 import * as generator from './modules/features/generator.js';
 import * as favorites from './modules/features/favorites.js';
 import * as history from './modules/features/history.js';
@@ -82,11 +83,38 @@ window.applyPreset = async function(presetName) {
 
     saveUndoState(getCurrentSettings());
 
-    const fields = ['expr', 'outfit', 'obj', 'bg', 'txt', 'txtColor', 'light', 'angle', 'fx'];
+    const { currentLang } = getState();
+    const fields = ['expr', 'outfit', 'obj', 'bg', 'txtColor', 'light', 'angle', 'fx'];
+
     fields.forEach(f => {
         const el = document.getElementById(`inp-${f}`);
-        if (el) el.value = preset[f] || '';
+        if (el && preset[f]) {
+            // Store English value for prompt generation
+            el.dataset.enValue = preset[f];
+
+            // Find and display localized value
+            const enData = dataPool['en'][f];
+            const trData = dataPool['tr'][f];
+
+            if (enData && trData) {
+                const index = enData.findIndex(item => item.l === preset[f]);
+                if (index !== -1 && trData[index]) {
+                    el.value = currentLang === 'tr' ? trData[index].l : enData[index].l;
+                } else {
+                    // If not found in datasets, use the preset value directly
+                    el.value = preset[f];
+                }
+            } else {
+                el.value = preset[f];
+            }
+        }
     });
+
+    // Handle txt field separately (user input, stays as-is)
+    const txtEl = document.getElementById('inp-txt');
+    if (txtEl && preset.txt) {
+        txtEl.value = preset.txt;
+    }
 
     // Apply font from preset
     if (preset.font && typeof fonts.setSelectedFont === 'function') {
@@ -104,7 +132,6 @@ window.applyPreset = async function(presetName) {
     updateHud();
     await drawPreview();
 
-    const { currentLang } = getState();
     const message = currentLang === 'tr'
         ? `${presetName.toUpperCase()} şablonu uygulandı!`
         : `${presetName.toUpperCase()} preset applied!`;

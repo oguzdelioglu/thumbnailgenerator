@@ -11,102 +11,102 @@ export const dataPool = {
     en: englishData
 };
 
-// Preset definitions with positions
+// Preset definitions with positions (all values in English for prompt generation)
 export const presets = {
     clickbait: {
-        expr: 'Şok Olmuş', outfit: 'Siyah Hoodie', obj: 'Para Destesi',
-        bg: 'Neon Stüdyo', txt: 'İNANILMAZ!', light: 'Sinematik teal & turuncu',
-        angle: 'Geniş Açı (GoPro)', fx: 'Toz zerrecikleri',
-        font: 'impact', charPos: 'right', txtPos: 'left', txtColor: 'Sarı'
+        expr: 'shocked expression', outfit: 'black hoodie', obj: 'cash stack',
+        bg: 'neon studio', txt: 'İNANILMAZ!', light: 'cinematic teal and orange lighting',
+        angle: 'wide angle GoPro shot', fx: 'dust particles effect',
+        font: 'impact', charPos: 'right', txtPos: 'left', txtColor: 'bright yellow'
     },
     minimal: {
-        expr: 'Mutlu', outfit: 'Beyaz T-Shirt', obj: '', bg: 'Temiz stüdyo',
-        txt: '', light: 'Parlak high-key stüdyo', angle: 'Göz hizası', fx: 'Temiz (efekt yok)',
-        font: 'montserrat', charPos: 'center', txtPos: 'top', txtColor: 'Beyaz'
+        expr: 'happy expression', outfit: 'white t-shirt', obj: '', bg: 'clean studio',
+        txt: '', light: 'bright high-key studio lighting', angle: 'eye-level shot', fx: 'clean no effects',
+        font: 'montserrat', charPos: 'center', txtPos: 'top', txtColor: 'pure white'
     },
     gaming: {
-        expr: 'Beyni yanmış', outfit: 'Gaming kulaklığı', bg: 'RGB Oyun Odası',
-        obj: 'Oyun kolu', txt: 'EPİK', light: 'Neon cyberpunk pembe-mavi',
-        angle: 'Dutch (eğik)', fx: 'Digital glitch bozulma',
-        font: 'titan-one', charPos: 'center', txtPos: 'bottom', txtColor: 'Neon Mavi'
+        expr: 'mind blown expression', outfit: 'gaming headset', bg: 'rgb gaming room',
+        obj: 'game controller', txt: 'EPİK', light: 'neon cyberpunk pink-blue lighting',
+        angle: 'dutch angle', fx: 'digital glitch effect',
+        font: 'titan-one', charPos: 'center', txtPos: 'bottom', txtColor: 'neon blue glow'
     },
     tutorial: {
-        expr: 'Düşünceli', outfit: 'Klasik takım', bg: 'Ofis',
-        obj: 'Laptop', txt: 'NASIL?', light: 'Parlak stüdyo',
-        angle: 'Göz hizası portre', fx: 'Temiz',
-        font: 'roboto', charPos: 'left', txtPos: 'right', txtColor: 'Beyaz'
+        expr: 'thoughtful expression', outfit: 'classic suit', bg: 'office',
+        obj: 'laptop', txt: 'NASIL?', light: 'bright studio lighting',
+        angle: 'eye-level portrait shot', fx: 'clean no effects',
+        font: 'roboto', charPos: 'left', txtPos: 'right', txtColor: 'pure white'
     },
     vlog: {
-        expr: 'Mutlu', outfit: 'Günlük', bg: 'Salon',
-        obj: '', txt: '', light: 'Sıcak golden hour',
-        angle: 'Selfie açısı', fx: 'Bokeh arka plan blur',
-        font: 'poppins', charPos: 'right', txtPos: 'left', txtColor: 'Beyaz'
+        expr: 'happy expression', outfit: 'casual clothes', bg: 'living room',
+        obj: '', txt: '', light: 'warm golden hour lighting',
+        angle: 'selfie angle shot', fx: 'bokeh background blur effect',
+        font: 'poppins', charPos: 'right', txtPos: 'left', txtColor: 'pure white'
     },
     mystery: {
-        expr: 'Şüpheci', outfit: 'Koyu hoodie', bg: 'Karanlık sokak',
-        obj: 'Gizemli kutu', txt: 'GERÇEK', light: 'Karanlık rembrandt',
-        angle: 'Dutch (eğik)', fx: 'Toz/duman',
-        font: 'anton', charPos: 'left', txtPos: 'right', txtColor: 'Beyaz'
+        expr: 'skeptical expression', outfit: 'dark hoodie', bg: 'dark street',
+        obj: 'mystery box', txt: 'GERÇEK', light: 'dark rembrandt lighting',
+        angle: 'dutch angle', fx: 'dust and atmosphere effect',
+        font: 'anton', charPos: 'left', txtPos: 'right', txtColor: 'pure white'
     },
     money: {
-        expr: 'Para gözlü', outfit: 'Lüks takım elbise', bg: 'Banka kasası',
-        obj: 'Para destesi', txt: '100.000$', light: 'Sinematik teal & turuncu',
-        angle: 'Alttan kahraman', fx: 'Uçan para',
-        font: 'alfa-slab', charPos: 'center', txtPos: 'top', txtColor: 'Altın (Gold)'
+        expr: 'money hungry expression', outfit: 'luxury suit', bg: 'bank vault',
+        obj: 'cash stack', txt: '100.000$', light: 'cinematic teal and orange lighting',
+        angle: 'low angle hero shot', fx: 'flying money effect',
+        font: 'alfa-slab', charPos: 'center', txtPos: 'top', txtColor: 'metallic gold'
     },
     horror: {
-        expr: 'Korkmuş', outfit: 'Yırtık kıyafetler', bg: 'Terk edilmiş ev',
-        obj: '', txt: 'KAÇ!', light: 'Yeşil zehirli korku',
-        angle: 'Dutch (eğik)', fx: 'Sis/duman atmosferi',
-        font: 'creepster', charPos: 'left', txtPos: 'right', txtColor: 'Kırmızı'
+        expr: 'scared expression', outfit: 'tattered clothes', bg: 'abandoned house',
+        obj: '', txt: 'KAÇ!', light: 'poisonous green horror lighting',
+        angle: 'dutch angle', fx: 'fog and mist atmosphere effect',
+        font: 'creepster', charPos: 'left', txtPos: 'right', txtColor: 'intense red'
     },
     storytime: {
-        expr: 'Mutlu', outfit: 'Kazak', bg: 'Koşu yatak odası',
-        obj: 'Kahve fincanı', txt: 'HİKAYEM', light: 'Sıcak golden hour',
-        angle: 'Göz hizası portre', fx: 'Bokeh blur',
-        font: 'comfortaa', charPos: 'right', txtPos: 'left', txtColor: 'Beyaz'
+        expr: 'happy expression', outfit: 'sweater', bg: 'cozy bedroom',
+        obj: 'coffee cup', txt: 'HİKAYEM', light: 'warm golden hour lighting',
+        angle: 'eye-level portrait shot', fx: 'bokeh blur effect',
+        font: 'comfortaa', charPos: 'right', txtPos: 'left', txtColor: 'pure white'
     },
     reaction: {
-        expr: 'Şok', outfit: 'T-shirt', bg: 'RGB Oyun Odası',
-        obj: '', txt: 'BUNU İZLEYİN!', light: 'Neon cyberpunk pembe-mavi',
-        angle: 'Geniş açı', fx: 'Toz',
-        font: 'bebas-neue', charPos: 'center', txtPos: 'bottom', txtColor: 'Turuncu'
+        expr: 'shocked expression', outfit: 't-shirt', bg: 'rgb gaming room',
+        obj: '', txt: 'BUNU İZLEYİN!', light: 'neon cyberpunk pink-blue lighting',
+        angle: 'wide angle shot', fx: 'dust particles effect',
+        font: 'bebas-neue', charPos: 'center', txtPos: 'bottom', txtColor: 'vibrant orange'
     },
     review: {
-        expr: 'Düşünceli', outfit: 'Smart casual', bg: 'Temiz stüdyo',
-        obj: 'Ürün kutusu', txt: 'DÜRÜST İNCELEME', light: 'Parlak stüdyo',
-        angle: 'Göz hizası portre', fx: 'Temiz',
-        font: 'raleway', charPos: 'left', txtPos: 'right', txtColor: 'Beyaz'
+        expr: 'thoughtful expression', outfit: 'smart casual outfit', bg: 'clean studio',
+        obj: 'product box', txt: 'DÜRÜST İNCELEME', light: 'bright studio lighting',
+        angle: 'eye-level portrait shot', fx: 'clean no effects',
+        font: 'raleway', charPos: 'left', txtPos: 'right', txtColor: 'pure white'
     },
     unboxing: {
-        expr: 'Mutlu', outfit: 'Günlük', bg: 'Temiz stüdyo',
-        obj: 'Hediye kutusu', txt: 'KUTU AÇILIYORUZ!', light: 'Parlak stüdyo',
-        angle: 'Üstten bakış (top-down)', fx: 'Bokeh',
-        font: 'bangers', charPos: 'center', txtPos: 'top', txtColor: 'Pembe'
+        expr: 'happy expression', outfit: 'casual clothes', bg: 'clean studio',
+        obj: 'gift box', txt: 'KUTU AÇILIYORUZ!', light: 'bright studio lighting',
+        angle: 'top-down view shot', fx: 'bokeh blur effect',
+        font: 'bangers', charPos: 'center', txtPos: 'top', txtColor: 'hot pink'
     },
     cooking: {
-        expr: 'Mutlu', outfit: 'Chef önlüğü', bg: 'Modern mutfak',
-        obj: 'Tava', txt: 'TARİF', light: 'Sıcak golden hour',
-        angle: 'Üstten bakış', fx: 'Buğu/duman',
-        font: 'luckiest-guy', charPos: 'right', txtPos: 'left', txtColor: 'Turuncu'
+        expr: 'happy expression', outfit: 'chef apron', bg: 'modern kitchen',
+        obj: 'cooking pan', txt: 'TARİF', light: 'warm golden hour lighting',
+        angle: 'top-down view shot', fx: 'steam and mist effect',
+        font: 'luckiest-guy', charPos: 'right', txtPos: 'left', txtColor: 'vibrant orange'
     },
     travel: {
-        expr: 'Mutlu', outfit: 'Yazlık', bg: 'Tropik plaj',
-        obj: 'Pasaport', txt: 'SEYAHAT VLOG', light: 'Golden hour',
-        angle: 'Geniş açı (GoPro)', fx: 'Lens parlaması',
-        font: 'righteous', charPos: 'left', txtPos: 'right', txtColor: 'Beyaz'
+        expr: 'happy expression', outfit: 'summer outfit', bg: 'tropical beach',
+        obj: 'passport', txt: 'SEYAHAT VLOG', light: 'golden hour lighting',
+        angle: 'wide angle GoPro shot', fx: 'lens flare effect',
+        font: 'righteous', charPos: 'left', txtPos: 'right', txtColor: 'pure white'
     },
     fitness: {
-        expr: 'Kararlı', outfit: 'Spor kıyafeti', bg: 'Spor salonu',
-        obj: 'Dumbbell', txt: 'ANTRENMAN', light: 'Sinematik teal & turuncu',
-        angle: 'Alttan kahraman', fx: 'Toz',
-        font: 'black-ops', charPos: 'center', txtPos: 'top', txtColor: 'Kırmızı'
+        expr: 'determined expression', outfit: 'sportswear', bg: 'gym',
+        obj: 'dumbbell', txt: 'ANTRENMAN', light: 'cinematic teal and orange lighting',
+        angle: 'low angle hero shot', fx: 'dust particles effect',
+        font: 'black-ops', charPos: 'center', txtPos: 'top', txtColor: 'intense red'
     },
     tech: {
-        expr: 'Meraklı', outfit: 'Modern casual', bg: 'Temiz stüdyo',
-        obj: 'Telefon', txt: 'TEKNOLOJİ İNCELEME', light: 'Neon cyberpunk',
-        angle: 'Göz hizası portre', fx: 'Digital glitch',
-        font: 'orbitron', charPos: 'right', txtPos: 'left', txtColor: 'Mavi'
+        expr: 'curious expression', outfit: 'modern casual outfit', bg: 'clean studio',
+        obj: 'smartphone', txt: 'TEKNOLOJİ İNCELEME', light: 'neon cyberpunk lighting',
+        angle: 'eye-level portrait shot', fx: 'digital glitch effect',
+        font: 'orbitron', charPos: 'right', txtPos: 'left', txtColor: 'electric blue'
     }
 };
 

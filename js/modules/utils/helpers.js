@@ -10,21 +10,31 @@ import { getSelectedFont, setSelectedFont } from '../features/fonts.js';
  */
 export function getCurrentSettings() {
     const selectedFont = getSelectedFont();
+
+    // Helper function to get English value from input
+    const getInputValue = (id) => {
+        const input = document.getElementById(id);
+        if (!input) return '';
+
+        // If there's an English value stored, use it; otherwise use the visible value
+        return input.dataset.enValue || input.value;
+    };
+
     return {
         mode: getState().currentMode,
         ar: getState().currentAr,
         pos: getState().currentPos,
         gender: getState().currentGender,
         txtPos: getState().currentTxtPos,
-        expr: document.getElementById('inp-expr')?.value || '',
-        outfit: document.getElementById('inp-outfit')?.value || '',
-        obj: document.getElementById('inp-obj')?.value || '',
-        bg: document.getElementById('inp-bg')?.value || '',
-        txt: document.getElementById('inp-txt')?.value || '',
-        txtColor: document.getElementById('inp-txtColor')?.value || '',
-        light: document.getElementById('inp-light')?.value || '',
-        angle: document.getElementById('inp-angle')?.value || '',
-        fx: document.getElementById('inp-fx')?.value || '',
+        expr: getInputValue('inp-expr'),
+        outfit: getInputValue('inp-outfit'),
+        obj: getInputValue('inp-obj'),
+        bg: getInputValue('inp-bg'),
+        txt: document.getElementById('inp-txt')?.value || '', // txt stays as-is (user input)
+        txtColor: getInputValue('inp-txtColor'),
+        light: getInputValue('inp-light'),
+        angle: getInputValue('inp-angle'),
+        fx: getInputValue('inp-fx'),
         font: selectedFont ? selectedFont.id : 'impact'
     };
 }
