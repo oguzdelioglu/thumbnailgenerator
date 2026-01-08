@@ -212,7 +212,10 @@ export async function drawPreview() {
 
     // Use the selected font directly
     const fontSize = Math.floor(txtHeight * 0.4);
-    const fontFamily = selectedFont ? selectedFont.family : 'Impact, sans-serif';
+    // Remove outer quotes from fontFamily if present (e.g., "'Titan One'" -> "Titan One")
+    const fontFamily = selectedFont
+        ? selectedFont.family.replace(/^['"]|['"]$/g, '')
+        : 'Impact, sans-serif';
     const fontWeight = selectedFont && selectedFont.style ? selectedFont.style : 'bold';
     const fontSpec = `${fontWeight} ${fontSize}px "${fontFamily}"`;
 
