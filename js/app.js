@@ -19,6 +19,9 @@ import { getCurrentSettings, applySettings, copyResult as copyResultUtil, showTo
 import { drawPreview, setupCanvasDrag } from './modules/ui/canvas.js';
 import { renderUI, updateHud, updateModeButtons, updateArButtons, updatePositionButtons, updateGenderButtons, updateTextPosButtons, toggleLanguage, resetAll, undo, updatePromptStats, setupKeyboardShortcuts } from './modules/ui/renderer.js';
 
+// Make drawPreview available globally for font module
+window.drawPreview = drawPreview;
+
 // =========================================
 // GLOBAL FUNCTIONS (for HTML onclick handlers)
 // =========================================

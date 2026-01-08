@@ -1813,12 +1813,14 @@ h1 {
 /* ===== FOOTER ===== */
 .app-footer {
     margin-top: var(--space-xl);
-    padding: var(--space-lg) 0;
+    padding: var(--space-lg);
     border-top: 1px solid var(--border-subtle);
     background: linear-gradient(180deg, transparent 0%, rgba(139, 92, 246, 0.03) 100%);
 }
 
 .footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
