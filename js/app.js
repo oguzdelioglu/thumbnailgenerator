@@ -85,6 +85,11 @@ window.applyPreset = function(presetName) {
         if (el) el.value = preset[f] || '';
     });
 
+    // Apply font from preset
+    if (preset.font && typeof fonts.setSelectedFont === 'function') {
+        fonts.setSelectedFont(preset.font);
+    }
+
     updateHud();
     drawPreview();
 

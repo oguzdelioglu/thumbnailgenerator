@@ -3,11 +3,13 @@
  */
 
 import { getState, setMode, setAr, setPosition, setGender, setTextPos } from '../core/state.js';
+import { getSelectedFont, setSelectedFont } from '../features/fonts.js';
 
 /**
  * Get current settings from form inputs
  */
 export function getCurrentSettings() {
+    const selectedFont = getSelectedFont();
     return {
         mode: getState().currentMode,
         ar: getState().currentAr,
@@ -21,7 +23,8 @@ export function getCurrentSettings() {
         txt: document.getElementById('inp-txt')?.value || '',
         light: document.getElementById('inp-light')?.value || '',
         angle: document.getElementById('inp-angle')?.value || '',
-        fx: document.getElementById('inp-fx')?.value || ''
+        fx: document.getElementById('inp-fx')?.value || '',
+        font: selectedFont ? selectedFont.id : 'impact'
     };
 }
 
@@ -42,6 +45,11 @@ export function applySettings(settings) {
             el.value = settings[field];
         }
     });
+
+    // Apply font setting
+    if (settings.font) {
+        setSelectedFont(settings.font);
+    }
 }
 
 /**

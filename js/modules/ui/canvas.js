@@ -5,7 +5,7 @@
 import { getState } from '../core/state.js';
 import { dataPool } from '../../data/index.js';
 import { roundRect, isPointInBounds, getCanvasCoords } from '../utils/helpers.js';
-import { getFontCSS } from '../features/fonts.js';
+import { getFontCSS, getSelectedFont } from '../features/fonts.js';
 
 // Drag state
 let isDragging = false;
@@ -30,6 +30,9 @@ export function drawPreview() {
     const ctx = canvas.getContext('2d');
     const { currentAr, currentPos, currentTxtPos, currentLang } = getState();
     const d = dataPool[currentLang];
+
+    // Get the selected font info directly
+    const selectedFont = getSelectedFont();
 
     // Set canvas size based on aspect ratio
     if (currentAr === '16:9') {
@@ -162,18 +165,23 @@ export function drawPreview() {
 
     // Text label inside with selected font
     const overlayText = document.getElementById('inp-txt')?.value || (currentLang === 'tr' ? 'YAZI' : 'TEXT');
-    const fontCSS = getFontCSS();
+
+    // Use the selected font directly
+    const fontSize = Math.floor(txtHeight * 0.4);
+    const fontFamily = selectedFont ? selectedFont.family : 'Impact, sans-serif';
+    const fontWeight = selectedFont && selectedFont.style ? selectedFont.style : 'bold';
+    const fontSpec = `${fontWeight} ${fontSize}px "${fontFamily}"`;
 
     ctx.fillStyle = '#fff';
-    ctx.font = `${fontCSS.weight} ${txtHeight * 0.4}px ${fontCSS.family}`;
+    ctx.font = fontSpec;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
 
     // Draw text with shadow for better visibility
-    ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
-    ctx.shadowBlur = 4;
-    ctx.shadowOffsetX = 2;
-    ctx.shadowOffsetY = 2;
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
+    ctx.shadowBlur = 6;
+    ctx.shadowOffsetX = 3;
+    ctx.shadowOffsetY = 3;
 
     ctx.fillText(overlayText.substring(0, 12), txtX + txtWidth / 2, txtY + txtHeight / 2);
 

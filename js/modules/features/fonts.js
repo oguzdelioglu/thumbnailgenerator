@@ -144,6 +144,12 @@ export function setSelectedFont(fontId) {
         selectedFont = font;
         updateFontPreview();
         updateActiveFontInGrid();
+
+        // Update canvas with new font
+        if (typeof window.drawPreview === 'function') {
+            window.drawPreview();
+        }
+
         return font;
     }
     return null;

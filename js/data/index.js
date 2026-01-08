@@ -16,80 +16,80 @@ export const presets = {
     clickbait: {
         expr: 'Shocked', outfit: 'Black Hoodie', obj: 'Stack of Money',
         bg: 'Neon Studio', txt: 'OMG!', light: 'dramatic teal and orange cinematic lighting',
-        angle: 'wide angle gopro style', fx: 'floating dust particles'
+        angle: 'wide angle gopro style', fx: 'floating dust particles', font: 'impact'
     },
     minimal: {
         expr: 'Happy', outfit: 'White T-Shirt', obj: '', bg: 'clean studio',
-        txt: '', light: 'bright high-key studio lighting', angle: 'eye level portrait', fx: 'clean no effects'
+        txt: '', light: 'bright high-key studio lighting', angle: 'eye level portrait', fx: 'clean no effects', font: 'montserrat'
     },
     gaming: {
         expr: 'Mind Blown', outfit: 'Gaming headset', bg: 'Gaming Room',
         obj: 'Gamepad', txt: 'EPIC', light: 'vibrant neon cyberpunk pink and blue lighting',
-        angle: 'dutch angle tilted', fx: 'digital glitch distortion effect'
+        angle: 'dutch angle tilted', fx: 'digital glitch distortion effect', font: 'titan-one'
     },
     tutorial: {
         expr: 'Thinking', outfit: 'Casual smart', bg: 'Office',
         obj: 'Laptop', txt: 'HOW TO', light: 'bright high-key studio lighting',
-        angle: 'eye level portrait', fx: 'clean no effects'
+        angle: 'eye level portrait', fx: 'clean no effects', font: 'roboto'
     },
     vlog: {
         expr: 'Happy', outfit: 'Casual', bg: 'Living Room',
         obj: '', txt: '', light: 'warm golden hour sunset lighting',
-        angle: 'selfie angle', fx: 'bokeh depth of field'
+        angle: 'selfie angle', fx: 'bokeh depth of field', font: 'poppins'
     },
     mystery: {
         expr: 'Suspicious', outfit: 'Dark hoodie', bg: 'Dark alley',
         obj: 'Mystery Box', txt: 'THE TRUTH', light: 'moody dark rembrandt lighting',
-        angle: 'dutch angle tilted', fx: 'floating dust particles'
+        angle: 'dutch angle tilted', fx: 'floating dust particles', font: 'anton'
     },
     money: {
         expr: 'Greedy', outfit: 'Luxury Suit', bg: 'Bank Vault',
         obj: 'Stack of Money', txt: '$100,000', light: 'dramatic teal and orange cinematic lighting',
-        angle: 'low angle hero shot', fx: 'floating money bills'
+        angle: 'low angle hero shot', fx: 'floating money bills', font: 'alfa-slab'
     },
     horror: {
         expr: 'Terrified', outfit: 'Torn clothes', bg: 'Abandoned house',
         obj: '', txt: 'RUN!', light: 'eerie green toxic horror lighting',
-        angle: 'dutch angle tilted', fx: 'fog and mist atmosphere'
+        angle: 'dutch angle tilted', fx: 'fog and mist atmosphere', font: 'creepster'
     },
     storytime: {
         expr: 'Happy', outfit: 'Cozy sweater', bg: 'Cozy bedroom',
         obj: 'Coffee mug', txt: 'MY STORY', light: 'warm golden hour sunset lighting',
-        angle: 'eye level portrait', fx: 'bokeh depth of field'
+        angle: 'eye level portrait', fx: 'bokeh depth of field', font: 'comfortaa'
     },
     reaction: {
         expr: 'Shocked', outfit: 'Casual T-Shirt', bg: 'Gaming Room',
         obj: '', txt: 'WATCH THIS!', light: 'vibrant neon cyberpunk pink and blue lighting',
-        angle: 'wide angle gopro style', fx: 'floating dust particles'
+        angle: 'wide angle gopro style', fx: 'floating dust particles', font: 'bebas-neue'
     },
     review: {
         expr: 'Thinking', outfit: 'Casual smart', bg: 'clean studio',
         obj: 'Product Box', txt: 'HONEST REVIEW', light: 'bright high-key studio lighting',
-        angle: 'eye level portrait', fx: 'clean no effects'
+        angle: 'eye level portrait', fx: 'clean no effects', font: 'raleway'
     },
     unboxing: {
         expr: 'Happy', outfit: 'Casual', bg: 'clean studio',
         obj: 'Gift Box', txt: 'UNBOXING!', light: 'bright high-key studio lighting',
-        angle: 'overhead top-down', fx: 'bokeh depth of field'
+        angle: 'overhead top-down', fx: 'bokeh depth of field', font: 'bangers'
     },
     cooking: {
         expr: 'Happy', outfit: 'Chef Apron', bg: 'Modern Kitchen',
         obj: 'Cooking Pan', txt: 'RECIPE', light: 'warm golden hour sunset lighting',
-        angle: 'overhead top-down', fx: 'steam and smoke atmosphere'
+        angle: 'overhead top-down', fx: 'steam and smoke atmosphere', font: 'luckiest-guy'
     },
     travel: {
         expr: 'Happy', outfit: 'Casual summer', bg: 'Beach Paradise',
         obj: 'Passport', txt: 'TRAVEL VLOG', light: 'warm golden hour sunset lighting',
-        angle: 'wide angle gopro style', fx: 'lens flare sunlight'
+        angle: 'wide angle gopro style', fx: 'lens flare sunlight', font: 'righteous'
     },
     fitness: {
         expr: 'Determined', outfit: 'Gym clothes', bg: 'Gym Environment',
         obj: 'Dumbbell', txt: 'WORKOUT', light: 'dramatic teal and orange cinematic lighting',
-        angle: 'low angle hero shot', fx: 'floating dust particles'
+        angle: 'low angle hero shot', fx: 'floating dust particles', font: 'black-ops'
     },
     tech: {
         expr: 'Curious', outfit: 'Modern casual', bg: 'clean studio',
         obj: 'Smartphone', txt: 'TECH REVIEW', light: 'vibrant neon cyberpunk pink and blue lighting',
-        angle: 'eye level portrait', fx: 'digital glitch distortion effect'
+        angle: 'eye level portrait', fx: 'digital glitch distortion effect', font: 'orbitron'
     }
 };
