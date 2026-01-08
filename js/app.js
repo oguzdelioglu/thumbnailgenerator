@@ -8,7 +8,7 @@
  */
 
 // Import all modules
-import { getState, setLanguage, setAr, setPosition, setGender, setTextPos, saveUndoState } from './modules/core/state.js';
+import { getState, setLanguage, setAr, setPosition, setGender, setTextPos, saveUndoState, addFavorite as addFavoriteState, removeFavorite as removeFavoriteState, clearFavorites as clearFavoritesState, getFavorites, getHistory } from './modules/core/state.js';
 import * as storage from './modules/core/storage.js';
 import { getPreset } from './modules/core/presets.js';
 import * as generator from './modules/features/generator.js';
@@ -122,7 +122,7 @@ window.clearHistory = function() {
 
 window.exportSettings = function() {
     const settings = getCurrentSettings();
-    storage.exportSettings(settings, favorites.getFavorites(), history.getHistory());
+    storage.exportSettings(settings, getFavorites(), getHistory());
 
     const { currentLang } = getState();
     const message = currentLang === 'tr' ? 'Ayarlar dışa aktarıldı!' : 'Settings exported!';
@@ -159,10 +159,10 @@ window.handleImport = async function(event) {
         // Import favorites and history if available
         if (settings.favorites && Array.isArray(settings.favorites)) {
             // Clear and add new favorites
-            while (favorites.getFavorites().length > 0) {
-                favorites.removeFavorite(0);
+            while (getFavorites().length > 0) {
+                removeFavoriteState(0);
             }
-            settings.favorites.forEach(f => favorites.addFavorite(f));
+            settings.favorites.forEach(f => addFavoriteState(f));
             storage.saveFavorites(settings.favorites);
         }
 
@@ -199,7 +199,7 @@ function init() {
     history.renderHistoryList();
 
     const favoritesData = storage.loadFavorites();
-    favoritesData.forEach(f => favorites.addFavorite(f));
+    favoritesData.forEach(f => addFavoriteState(f));
     storage.saveFavorites(favoritesData);
 
     // Initialize UI
@@ -238,7 +238,7 @@ function init() {
 
     // Update favorites count
     const favCount = document.getElementById('fav-count');
-    if (favCount) favCount.innerText = favorites.getFavorites().length;
+    if (favCount) favCount.innerText = getFavorites().length;
 
     // Update hud with initial state
     updateHud();
