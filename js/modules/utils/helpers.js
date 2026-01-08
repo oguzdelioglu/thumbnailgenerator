@@ -4,6 +4,7 @@
 
 import { getState, setMode, setAr, setPosition, setGender, setTextPos } from '../core/state.js';
 import { getSelectedFont, setSelectedFont } from '../features/fonts.js';
+import { t } from '../../i18n/index.js';
 
 /**
  * Get current settings from form inputs
@@ -77,7 +78,7 @@ export function copyResult(currentLang) {
     const btn = document.querySelector('.copy-btn');
     if (btn) {
         const oldHTML = btn.innerHTML;
-        const successText = currentLang === 'tr' ? '✅ KOPYALANDI!' : '✅ COPIED!';
+        const successText = t('messages.copied');
         btn.innerHTML = `<i>${successText}</i>`;
         btn.style.background = '#22c55e';
         btn.style.borderColor = '#22c55e';

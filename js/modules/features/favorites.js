@@ -5,6 +5,7 @@
 import * as storage from '../core/storage.js';
 import { addFavorite, removeFavorite, clearFavorites, getFavorites, setIsFavorite, checkFavoriteStatus } from '../core/state.js';
 import { getCurrentSettings, applySettings } from '../utils/helpers.js';
+import { t } from '../../i18n/index.js';
 
 // Re-export state functions for external access
 export { addFavorite, removeFavorite, clearFavorites, getFavorites, setIsFavorite, checkFavoriteStatus };
@@ -23,11 +24,7 @@ export function toggleFavorite(currentLang) {
 
     if (isCurrentlyFavorite) {
         // Remove favorite
-        const message = currentLang === 'tr'
-            ? 'Bu favoriyi kaldırmak istiyor musunuz?'
-            : 'Do you want to remove this favorite?';
-
-        if (confirm(message)) {
+        if (confirm(t('modal.removeConfirm'))) {
             const filtered = favorites.filter(f => JSON.stringify(f) !== hash);
             // Update state and storage
             while (getFavorites().length > 0) {
@@ -39,8 +36,7 @@ export function toggleFavorite(currentLang) {
             updateFavoritesCount();
             renderFavoritesList(currentLang);
 
-            const toastMsg = currentLang === 'tr' ? 'Favorilerden çıkarıldı!' : 'Removed from favorites!';
-            showToast(toastMsg);
+            showToast(t('modal.remove')); // Generic "removed" message
         }
     } else {
         // Prepare to add new favorite
@@ -57,11 +53,11 @@ export function openFavModal(currentLang) {
     const input = document.getElementById('fav-name-input');
     const title = document.getElementById('modal-title');
 
-    // Set localization
-    title.innerText = currentLang === 'tr' ? 'Favori İsmi' : 'Favorite Name';
-    document.getElementById('btn-cancel-fav').innerText = currentLang === 'tr' ? 'İptal' : 'Cancel';
-    document.getElementById('btn-save-fav').innerText = currentLang === 'tr' ? 'Kaydet' : 'Save';
-    input.placeholder = currentLang === 'tr' ? 'Örn: Youtube Gaming' : 'Ex: Youtube Gaming';
+    // Set localization using i18n
+    title.innerText = t('modal.saveFavoriteTitle');
+    document.getElementById('btn-cancel-fav').innerText = t('modal.cancel');
+    document.getElementById('btn-save-fav').innerText = t('modal.save');
+    input.placeholder = t('modal.placeholder');
 
     // Clear and focus input
     input.value = '';
@@ -85,7 +81,7 @@ export function saveFavoriteFromModal(currentLang) {
 
     const input = document.getElementById('fav-name-input');
     const name = input.value.trim();
-    const defaultName = currentLang === 'tr' ? 'Yeni Favori' : 'New Favorite';
+    const defaultName = t('ui.txtMyFavs'); // Use "MY FAVORITES" / "FAVORİLERİM" as default
 
     // Update settings with name
     pendingFavoriteSettings.name = name || defaultName;
@@ -102,8 +98,7 @@ export function saveFavoriteFromModal(currentLang) {
     updateFavoritesCount();
     renderFavoritesList(currentLang);
 
-    const toastMsg = currentLang === 'tr' ? 'Favorilere eklendi!' : 'Added to favorites!';
-    showToast(toastMsg);
+    showToast(t('modal.save')); // Generic "saved" message
 
     closeFavModal();
 }
@@ -118,8 +113,7 @@ export function applyFavorite(index, currentLang) {
     applySettings(favorites[index]);
     document.getElementById('favorites-dropdown').classList.remove('show');
 
-    const toastMsg = currentLang === 'tr' ? 'Favori uygulandı!' : 'Favorite applied!';
-    showToast(toastMsg);
+    showToast(t('modal.save')); // Reuse "saved" message for "applied"
 }
 
 /**
@@ -132,8 +126,7 @@ export function deleteFavorite(index, currentLang) {
     renderFavoritesList(currentLang);
     checkCurrentFavoriteStatus();
 
-    const toastMsg = currentLang === 'tr' ? 'Favori silindi!' : 'Favorite deleted!';
-    showToast(toastMsg);
+    showToast(t('modal.remove')); // Generic "removed" message
 }
 
 /**
@@ -143,11 +136,7 @@ export function clearAllFavoritesFn(currentLang) {
     const favorites = getFavorites();
     if (favorites.length === 0) return;
 
-    const message = currentLang === 'tr'
-        ? 'Tüm favorileri silmek istediğinize emin misiniz?'
-        : 'Are you sure you want to delete all favorites?';
-
-    if (!confirm(message)) return;
+    if (!confirm(t('ui.btnClearAll') + '?')) return;
 
     clearFavorites();
     storage.saveFavorites([]);
@@ -155,8 +144,7 @@ export function clearAllFavoritesFn(currentLang) {
     renderFavoritesList(currentLang);
     checkCurrentFavoriteStatus();
 
-    const toastMsg = currentLang === 'tr' ? 'Tüm favoriler silindi!' : 'All favorites deleted!';
-    showToast(toastMsg);
+    showToast(t('modal.remove')); // Generic "removed" message
 }
 
 /**
@@ -191,12 +179,17 @@ function renderFavoritesList(currentLang) {
         return;
     }
 
+    const posLabel = currentLang === 'tr' ? 'Poz: ' : 'Pos: ';
+    const defaultTitle = currentLang === 'tr' ? 'Favori' : 'Favorite';
+    const customSettings = currentLang === 'tr' ? 'Özel ayarlar' : 'Custom settings';
+    const deleteTitle = currentLang === 'tr' ? 'Sil' : 'Delete';
+
     container.innerHTML = favorites.map((fav, index) => {
-        const title = fav.name || fav.expr || fav.bg || fav.outfit || (currentLang === 'tr' ? 'Favori' : 'Favorite');
+        const title = fav.name || fav.expr || fav.bg || fav.outfit || defaultTitle;
         const meta = [
-            fav.pos ? (currentLang === 'tr' ? 'Poz: ' : 'Pos: ') + fav.pos : '',
+            fav.pos ? posLabel + fav.pos : '',
             fav.txt ? '"' + fav.txt + '"' : ''
-        ].filter(Boolean).join(' | ') || (currentLang === 'tr' ? 'Özel ayarlar' : 'Custom settings');
+        ].filter(Boolean).join(' | ') || customSettings;
 
         return `
             <div class="fav-item" onclick="window.applyFavorite(${index})">
@@ -205,7 +198,7 @@ function renderFavoritesList(currentLang) {
                     <div class="fav-item-meta">${meta}</div>
                 </div>
                 <div class="fav-item-actions">
-                    <button class="fav-action-btn delete" onclick="event.stopPropagation(); window.deleteFavorite(${index})" title="${currentLang === 'tr' ? 'Sil' : 'Delete'}">🗹️</button>
+                    <button class="fav-action-btn delete" onclick="event.stopPropagation(); window.deleteFavorite(${index})" title="${deleteTitle}">🗹️</button>
                 </div>
             </div>
         `;

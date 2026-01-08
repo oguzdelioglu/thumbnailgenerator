@@ -6,6 +6,7 @@ import { getState, setLanguage, setMode, setAr, setPosition, setGender, setTextP
 import { dataPool } from '../../data/index.js';
 import { saveUndoState, popUndoState, hasUndoStates } from '../core/state.js';
 import { showToast } from '../utils/helpers.js';
+import { t, getLocale, setLocale } from '../../i18n/index.js';
 
 /**
  * Render all UI elements based on current language
@@ -14,68 +15,75 @@ export function renderUI() {
     const { currentLang } = getState();
     const d = dataPool[currentLang];
 
-    // Static Texts
-    setText('txt-ref', d.modeRefTxt);
-    setText('txt-rnd', d.modeRndTxt);
-    setText('btn-gen', d.btnGen);
-    setText('txt-reset', d.txtReset);
-    setText('txt-history', d.txtHistory);
-    setText('btn-clear-hist', currentLang === 'tr' ? "TÜMÜNÜ SİL" : "CLEAR ALL");
+    // Static Texts - using i18n
+    setText('txt-ref', t('ui.modeRef'));
+    setText('txt-rnd', t('ui.modeRnd'));
+    setText('btn-gen', t('ui.btnGen'));
+    setText('txt-reset', t('ui.txtReset'));
+    setText('txt-history', t('ui.txtHistory'));
+    setText('btn-clear-hist', t('ui.btnClearAll'));
 
     // New UI texts
-    setText('txt-fav', d.txtFav);
-    setText('txt-export', d.txtExport);
-    setText('txt-import', d.txtImport);
-    setText('txt-presets-title', d.txtPresets);
-    setText('txt-shortcut-gen', d.shortcutLabels.gen);
-    setText('txt-shortcut-copy', d.shortcutLabels.copy);
+    setText('txt-fav', t('ui.txtFav'));
+    setText('txt-export', t('ui.txtExport'));
+    setText('txt-import', t('ui.txtImport'));
+    setText('txt-presets-title', t('ui.txtPresets'));
+    setText('txt-shortcut-gen', t('shortcuts.gen'));
+    setText('txt-shortcut-copy', t('shortcuts.copy'));
 
     // Favorites dropdown texts
-    setText('txt-fav-list', currentLang === 'tr' ? 'FAVORİLER' : 'FAVORITES');
-    setText('txt-my-favs', currentLang === 'tr' ? 'FAVORİLERİM' : 'MY FAVORITES');
-    setText('fav-clear-all', currentLang === 'tr' ? 'TÜMÜNÜ SİL' : 'CLEAR ALL');
+    setText('txt-fav-list', t('ui.txtFavorites'));
+    setText('txt-my-favs', t('ui.txtMyFavs'));
+    setText('fav-clear-all', t('ui.btnClearAll'));
 
     // Update gender labels
-    setText('txt-gender-male', d.genderLabels.male);
-    setText('txt-gender-female', d.genderLabels.female);
-    setText('txt-gender-char', d.genderLabels.character);
+    setText('txt-gender-male', t('gender.male'));
+    setText('txt-gender-female', t('gender.female'));
+    setText('txt-gender-char', t('gender.character'));
 
     // Update text position labels
-    setText('txt-txtpos-left', d.txtPosLabels.left);
-    setText('txt-txtpos-top', d.txtPosLabels.top);
-    setText('txt-txtpos-auto', d.txtPosLabels.auto);
-    setText('txt-txtpos-bottom', d.txtPosLabels.bottom);
-    setText('txt-txtpos-right', d.txtPosLabels.right);
+    setText('txt-txtpos-left', t('textPos.left'));
+    setText('txt-txtpos-top', t('textPos.top'));
+    setText('txt-txtpos-auto', t('textPos.auto'));
+    setText('txt-txtpos-bottom', t('textPos.bottom'));
+    setText('txt-txtpos-right', t('textPos.right'));
 
     // Update preset labels
     Object.keys(d.presetLabels).forEach(key => {
         const el = document.getElementById(`preset-${key}`);
-        if (el) el.innerText = d.presetLabels[key];
+        if (el) el.innerText = t(`presets.${key}`);
     });
 
     // Update position preset labels
-    if (d.positionPresetLabels) {
-        Object.keys(d.positionPresetLabels).forEach(key => {
-            const el = document.getElementById(`pos-${key}`);
-            if (el) el.innerText = d.positionPresetLabels[key];
-        });
-    }
+    const positionKeyMap = {
+        'focus-left': 'focusLeft',
+        'focus-center': 'focusCenter',
+        'focus-right': 'focusRight',
+        'classic-rule': 'classicRule',
+        'center-symmetry': 'centerSymmetry',
+        'dramatic-diagonal': 'dramaticDiagonal',
+        'text-top-hero': 'textTopHero',
+        'side-by-side': 'sideBySide'
+    };
+
+    Object.keys(positionKeyMap).forEach(key => {
+        const el = document.getElementById(`pos-${key}`);
+        if (el) el.innerText = t(`positionPresets.${positionKeyMap[key]}`);
+    });
 
     // Update position presets title
-    if (d.txtPositionPresets) {
-        setText('txt-position-presets-title', d.txtPositionPresets);
-    }
+    setText('txt-position-presets-title', t('ui.txtPositionPresets'));
 
     // Update stat labels
-    setText('stat-chars-label', d.statLabels.chars);
-    setText('stat-words-label', d.statLabels.words);
-    setText('stat-tokens-label', d.statLabels.tokens);
+    setText('stat-chars-label', t('stats.chars'));
+    setText('stat-words-label', t('stats.words'));
+    setText('stat-tokens-label', t('stats.tokens'));
 
     // Update position control labels
     const charPosEl = document.getElementById('lbl-char-pos');
     const txtPosEl = document.getElementById('lbl-txt-pos');
-    if (charPosEl) charPosEl.innerText = currentLang === 'tr' ? 'KARAKTER' : 'CHARACTER';
-    if (txtPosEl) txtPosEl.innerText = currentLang === 'tr' ? 'YAZI' : 'TEXT';
+    if (charPosEl) charPosEl.innerText = t('hud.characterPos');
+    if (txtPosEl) txtPosEl.innerText = t('hud.textPos');
 
     // Loop through all categories and update placeholders
     const cats = ['expr', 'outfit', 'obj', 'bg', 'txt', 'txtColor', 'light', 'angle', 'fx'];
@@ -83,24 +91,18 @@ export function renderUI() {
     cats.forEach((cat) => {
         const inputEl = document.getElementById(`inp-${cat}`);
         if (inputEl) {
-            // Update placeholder based on category
-            const placeholderMap = {
-                'expr': d.placeholders[0],
-                'outfit': d.placeholders[1],
-                'obj': d.placeholders[2],
-                'bg': d.placeholders[3],
-                'txt': d.placeholders[4],
-                'light': d.placeholders[5],
-                'angle': d.placeholders[6],
-                'fx': d.placeholders[7]
+            const placeholderKeyMap = {
+                'expr': 'placeholders.expr',
+                'outfit': 'placeholders.outfit',
+                'obj': 'placeholders.obj',
+                'bg': 'placeholders.bg',
+                'txt': 'placeholders.txt',
+                'light': 'placeholders.light',
+                'angle': 'placeholders.angle',
+                'fx': 'placeholders.fx',
+                'txtColor': 'placeholders.txtColor'
             };
-
-            // txtColor placeholder is special
-            if (cat === 'txtColor') {
-                inputEl.placeholder = currentLang === 'tr' ? 'Örn: Beyaz, Sarı...' : 'Ex: white, yellow...';
-            } else if (placeholderMap[cat]) {
-                inputEl.placeholder = placeholderMap[cat];
-            }
+            inputEl.placeholder = t(placeholderKeyMap[cat]);
         }
 
         // Render Chips
@@ -182,24 +184,20 @@ function renderCategoryChips(cat, currentLang) {
  * Update HUD (mode description, position labels)
  */
 export function updateHud() {
-    const { currentLang } = getState();
-    const d = dataPool[currentLang];
-
     // Update position button labels
-    setText('txt-pos-left', d.posLabels.left);
-    setText('txt-pos-center', d.posLabels.center);
-    setText('txt-pos-right', d.posLabels.right);
+    setText('txt-pos-left', t('position.left'));
+    setText('txt-pos-center', t('position.center'));
+    setText('txt-pos-right', t('position.right'));
 }
 
 /**
  * Update mode description
  */
 export function updateModeDescription() {
-    const { currentMode, currentLang } = getState();
-    const d = dataPool[currentLang];
+    const { currentMode } = getState();
     const modeDescEl = document.getElementById('mode-desc');
     if (modeDescEl) {
-        modeDescEl.innerText = currentMode === 'ref' ? d.modeDescRef : d.modeDescRnd;
+        modeDescEl.innerText = currentMode === 'ref' ? t('ui.modeDescRef') : t('ui.modeDescRnd');
     }
 }
 
@@ -271,6 +269,7 @@ export function toggleLanguage() {
     const { currentLang } = getState();
     const newLang = currentLang === 'tr' ? 'en' : 'tr';
     setLanguage(newLang);
+    setLocale(newLang); // Update i18n locale
     renderUI();
     updateModeDescription();
     updateHud();
@@ -280,9 +279,7 @@ export function toggleLanguage() {
  * Reset all settings
  */
 export function resetAll() {
-    const { currentLang } = getState();
-    const message = currentLang === 'tr' ? 'Tüm ayarlar sıfırlansın mı?' : 'Reset all settings?';
-    if (!confirm(message)) return;
+    if (!confirm(t('messages.resetConfirm'))) return;
 
     const settings = {
         mode: getState().currentMode,
@@ -297,7 +294,11 @@ export function resetAll() {
     const fields = ['expr', 'outfit', 'obj', 'bg', 'txt', 'txtColor', 'light', 'angle', 'fx'];
     fields.forEach(f => {
         const el = document.getElementById(`inp-${f}`);
-        if (el) el.value = '';
+        if (el) {
+            el.value = '';
+            // Clear enValue as well
+            delete el.dataset.enValue;
+        }
     });
 
     const output = document.getElementById('output');
@@ -321,7 +322,7 @@ export function undo() {
     const state = popUndoState();
     if (state) {
         applySettingsFromUndo(state);
-        showToast(getState().currentLang === 'tr' ? 'Geri alındı!' : 'Undone!');
+        showToast(t('messages.undone'));
     }
 }
 

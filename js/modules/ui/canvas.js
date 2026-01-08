@@ -6,6 +6,7 @@ import { getState } from '../core/state.js';
 import { dataPool } from '../../data/index.js';
 import { roundRect, isPointInBounds, getCanvasCoords } from '../utils/helpers.js';
 import { getFontCSS, getSelectedFont } from '../features/fonts.js';
+import { t } from '../../i18n/index.js';
 
 // Drag state
 let isDragging = false;
@@ -310,10 +311,10 @@ export async function drawPreview() {
     const legendBg = document.getElementById('legend-bg');
     const previewTitle = document.getElementById('txt-preview-title');
 
-    if (legendChar) legendChar.innerText = currentLang === 'tr' ? 'Karakter' : 'Character';
-    if (legendText) legendText.innerText = currentLang === 'tr' ? 'Yazı' : 'Text';
-    if (legendBg) legendBg.innerText = currentLang === 'tr' ? 'Arka Plan' : 'Background';
-    if (previewTitle) previewTitle.innerText = currentLang === 'tr' ? 'ÖNİZLEME // LAYOUT PREVIEW' : 'PREVIEW // LAYOUT PREVIEW';
+    if (legendChar) legendChar.innerText = t('preview.character');
+    if (legendText) legendText.innerText = t('preview.text');
+    if (legendBg) legendBg.innerText = t('preview.background');
+    if (previewTitle) previewTitle.innerText = t('preview.title');
 }
 
 /**

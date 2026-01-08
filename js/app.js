@@ -19,6 +19,7 @@ import * as fonts from './modules/features/fonts.js';
 import { getCurrentSettings, applySettings, copyResult as copyResultUtil, showToast } from './modules/utils/helpers.js';
 import { drawPreview, setupCanvasDrag } from './modules/ui/canvas.js';
 import { renderUI, updateHud, updateModeButtons, updateArButtons, updatePositionButtons, updateGenderButtons, updateTextPosButtons, toggleLanguage, resetAll, undo, updatePromptStats, setupKeyboardShortcuts } from './modules/ui/renderer.js';
+import { t, getLocale, setLocale } from './i18n/index.js';
 
 // Make drawPreview available globally for font module
 window.drawPreview = drawPreview;
@@ -132,10 +133,7 @@ window.applyPreset = async function(presetName) {
     updateHud();
     await drawPreview();
 
-    const message = currentLang === 'tr'
-        ? `${presetName.toUpperCase()} şablonu uygulandı!`
-        : `${presetName.toUpperCase()} preset applied!`;
-    showToast(message);
+    showToast(t('messages.presetApplied', { name: presetName.toUpperCase() }));
 };
 
 window.applyPositionPreset = async function(positionPresetName) {
@@ -155,12 +153,8 @@ window.applyPositionPreset = async function(positionPresetName) {
     updateHud();
     await drawPreview();
 
-    const { currentLang } = getState();
     const label = currentLang === 'tr' ? positionPreset.name : positionPreset.nameEn;
-    const message = currentLang === 'tr'
-        ? `${label} pozisyonu uygulandı!`
-        : `${label} position applied!`;
-    showToast(message);
+    showToast(t('messages.positionPresetApplied', { name: label }));
 };
 
 window.generate = function() {
@@ -192,10 +186,7 @@ window.clearHistory = function() {
 window.exportSettings = function() {
     const settings = getCurrentSettings();
     storage.exportSettings(settings, getFavorites(), getHistory());
-
-    const { currentLang } = getState();
-    const message = currentLang === 'tr' ? 'Ayarlar dışa aktarıldı!' : 'Settings exported!';
-    showToast(message);
+    showToast(t('messages.settingsExported'));
 };
 
 window.importSettings = function() {
@@ -216,10 +207,16 @@ window.handleImport = async function(event) {
         if (settings.gender) updateGenderButtons(settings.gender);
         if (settings.txtPos) updateTextPosButtons(settings.txtPos);
 
-        const fields = ['expr', 'outfit', 'obj', 'bg', 'txt', 'light', 'angle', 'fx'];
+        const fields = ['expr', 'outfit', 'obj', 'bg', 'txt', 'txtColor', 'light', 'angle', 'fx'];
         fields.forEach(f => {
             const el = document.getElementById(`inp-${f}`);
-            if (el && settings[f]) el.value = settings[f];
+            if (el && settings[f]) {
+                el.value = settings[f];
+                // Store English value if available
+                if (settings[`${f}En`]) {
+                    el.dataset.enValue = settings[`${f}En`];
+                }
+            }
         });
 
         // Apply font setting
@@ -248,13 +245,9 @@ window.handleImport = async function(event) {
 
         history.renderHistoryList();
 
-        const { currentLang } = getState();
-        const message = currentLang === 'tr' ? 'Ayarlar içe aktarıldı!' : 'Settings imported!';
-        showToast(message);
+        showToast(t('messages.settingsImported'));
     } catch (err) {
-        const { currentLang } = getState();
-        const message = currentLang === 'tr' ? 'Hatalı dosya formatı!' : 'Invalid file format!';
-        showToast(message);
+        showToast(t('messages.invalidFile'));
     }
 
     event.target.value = '';

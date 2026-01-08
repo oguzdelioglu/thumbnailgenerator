@@ -3,6 +3,11 @@
  * with proper Google Fonts loading and keyboard navigation
  */
 
+import { getState } from '../core/state.js';
+import { drawPreview } from '../ui/canvas.js';
+import { showToast } from '../utils/helpers.js';
+import { t } from '../../i18n/index.js';
+
 // Available fonts with their CSS font-family values
 export const fontList = [
     // ===== MOST POPULAR THUMBNAIL FONTS =====
@@ -219,14 +224,20 @@ export function renderFontSelector(currentLang) {
     const container = document.getElementById('font-selector-container');
     if (!container) return;
 
+    // Get translations for font selector (keep simple for now, using hardcoded values for complex UI)
+    const title = currentLang === 'tr' ? 'YAZI FONTU' : 'TEXT FONT';
+    const hint = currentLang === 'tr' ? '← → yön tuşları ile geçiş yapabilirsiniz' : 'Use ← → arrow keys to navigate';
+    const loading = currentLang === 'tr' ? 'Fontlar yükleniyor...' : 'Loading fonts...';
+    const example = currentLang === 'tr' ? 'ÖRNEK' : 'EXAMPLE';
+
     container.innerHTML = `
         <div class="font-selector-header">
-            <span class="font-selector-title">${currentLang === 'tr' ? 'YAZI FONTU' : 'TEXT FONT'}</span>
-            <span class="font-selector-hint">${currentLang === 'tr' ? '← → yön tuşları ile geçiş yapabilirsiniz' : 'Use ← → arrow keys to navigate'}</span>
+            <span class="font-selector-title">${title}</span>
+            <span class="font-selector-hint">${hint}</span>
         </div>
         <div class="font-preview-box" id="font-preview-box">
-            ${fontsLoading ? `<div class="font-loading">${currentLang === 'tr' ? 'Fontlar yükleniyor...' : 'Loading fonts...'}</div>` : ''}
-            <span class="font-preview-text" id="font-preview-text" style="display: ${fontsLoaded ? 'block' : 'none'}">${currentLang === 'tr' ? 'ÖRNEK' : 'EXAMPLE'}</span>
+            ${fontsLoading ? `<div class="font-loading">${loading}</div>` : ''}
+            <span class="font-preview-text" id="font-preview-text" style="display: ${fontsLoaded ? 'block' : 'none'}">${example}</span>
         </div>
         <div class="font-grid" id="font-grid"></div>
     `;
@@ -303,11 +314,7 @@ function setupKeyboardNavigation() {
             const newFont = await navigateFonts(direction);
 
             if (newFont) {
-                const currentLang = getState()?.currentLang || 'tr';
-                const message = currentLang === 'tr'
-                    ? `${newFont.name} seçildi`
-                    : `${newFont.name} selected`;
-                showToast(message);
+                showToast(`${newFont.name} selected`);
             }
         }
     };
@@ -325,7 +332,8 @@ export function updateFontPreview() {
     const textInput = document.getElementById('inp-txt');
 
     if (previewBox && previewText) {
-        const text = textInput?.value || (getState()?.currentLang === 'tr' ? 'ÖRNEK' : 'EXAMPLE');
+        const currentLang = getState()?.currentLang || 'tr';
+        const text = textInput?.value || (currentLang === 'tr' ? 'ÖRNEK' : 'EXAMPLE');
         previewText.textContent = text;
         previewText.style.fontFamily = selectedFont.family;
 
