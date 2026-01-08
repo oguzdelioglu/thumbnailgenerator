@@ -6,6 +6,9 @@ import * as storage from '../core/storage.js';
 import { addFavorite, removeFavorite, clearFavorites, getFavorites, setIsFavorite, checkFavoriteStatus } from '../core/state.js';
 import { getCurrentSettings, applySettings } from '../utils/helpers.js';
 
+// Re-export state functions for external access
+export { addFavorite, removeFavorite, clearFavorites, getFavorites, setIsFavorite, checkFavoriteStatus };
+
 let pendingFavoriteSettings = null;
 
 /**

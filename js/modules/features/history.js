@@ -86,3 +86,6 @@ export function renderHistoryList() {
         list.appendChild(el);
     });
 }
+
+// Export getHistory for external access
+export { getHistory };
