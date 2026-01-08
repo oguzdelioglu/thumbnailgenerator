@@ -5,6 +5,7 @@
 import { getState } from '../core/state.js';
 import { dataPool } from '../../data/index.js';
 import { roundRect, isPointInBounds, getCanvasCoords } from '../utils/helpers.js';
+import { getFontCSS } from '../features/fonts.js';
 
 // Drag state
 let isDragging = false;
@@ -18,6 +19,14 @@ let textBounds = { x: 0, y: 0, w: 0, h: 0 };
 // Export bounds for external access
 export function getCharBounds() { return charBounds; }
 export function getTextBounds() { return textBounds; }
+
+/**
+ * Load custom fonts for canvas
+ */
+export function loadCanvasFonts() {
+    // Wait for Google Fonts to load
+    return document.fonts.ready;
+}
 
 /**
  * Draw preview canvas
@@ -159,13 +168,28 @@ export function drawPreview() {
     // Reset shadow
     ctx.shadowBlur = 0;
 
-    // Text label inside
+    // Text label inside with selected font
     const overlayText = document.getElementById('inp-txt')?.value || (currentLang === 'tr' ? 'YAZI' : 'TEXT');
+    const fontCSS = getFontCSS();
+
     ctx.fillStyle = '#fff';
-    ctx.font = 'bold ' + (txtHeight * 0.4) + 'px Inter';
+    ctx.font = `${fontCSS.weight} ${txtHeight * 0.4}px ${fontCSS.family}`;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
+
+    // Draw text with shadow for better visibility
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
+    ctx.shadowBlur = 4;
+    ctx.shadowOffsetX = 2;
+    ctx.shadowOffsetY = 2;
+
     ctx.fillText(overlayText.substring(0, 12), txtX + txtWidth / 2, txtY + txtHeight / 2);
+
+    // Reset shadow
+    ctx.shadowColor = 'transparent';
+    ctx.shadowBlur = 0;
+    ctx.shadowOffsetX = 0;
+    ctx.shadowOffsetY = 0;
 
     // Draw aspect ratio indicator
     ctx.fillStyle = 'rgba(255,255,255,0.5)';

@@ -14,6 +14,7 @@ import { getPreset } from './modules/core/presets.js';
 import * as generator from './modules/features/generator.js';
 import * as favorites from './modules/features/favorites.js';
 import * as history from './modules/features/history.js';
+import * as fonts from './modules/features/fonts.js';
 import { getCurrentSettings, applySettings, copyResult as copyResultUtil, showToast } from './modules/utils/helpers.js';
 import { drawPreview, setupCanvasDrag } from './modules/ui/canvas.js';
 import { renderUI, updateHud, updateModeButtons, updateArButtons, updatePositionButtons, updateGenderButtons, updateTextPosButtons, toggleLanguage, resetAll, undo, updatePromptStats, setupKeyboardShortcuts } from './modules/ui/renderer.js';
@@ -209,6 +210,10 @@ function init() {
     updatePositionButtons('right');
     updateGenderButtons('male');
     updateTextPosButtons('auto');
+
+    // Initialize font selector
+    fonts.initFontSelector(getState().currentLang);
+
     drawPreview();
 
     // Setup canvas drag handlers
