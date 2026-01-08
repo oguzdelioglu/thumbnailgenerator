@@ -24,6 +24,42 @@ export function getTextBounds() { return textBounds; }
 const loadedFonts = new Set();
 
 /**
+ * Ensure a font is loaded and ready for canvas rendering
+ */
+async function ensureFontLoaded(font) {
+    if (!font || !font.google) return true;
+
+    const fontKey = `${font.family}`;
+
+    // Always try to load the font, even if we think it's loaded
+    try {
+        // Try multiple font specifications to ensure it loads
+        const fontSpecs = [
+            `bold 12px "${font.family}"`,
+            `bold 100px "${font.family}"`,
+            `normal 12px "${font.family}"`
+        ];
+
+        for (const spec of fontSpecs) {
+            await document.fonts.load(spec);
+        }
+
+        // Wait for fonts to be ready
+        await document.fonts.ready;
+
+        // Wait a bit more to ensure the font is actually ready for canvas
+        await new Promise(resolve => setTimeout(resolve, 150));
+
+        loadedFonts.add(fontKey);
+        console.log(`✅ Loaded font: ${font.name}`);
+        return true;
+    } catch (e) {
+        console.warn(`⚠️ Font load failed for ${font.name}, using fallback`);
+        return false;
+    }
+}
+
+/**
  * Draw preview canvas
  */
 export async function drawPreview() {
@@ -39,18 +75,7 @@ export async function drawPreview() {
 
     // Wait for Google Font to load if it's a web font
     if (selectedFont && selectedFont.google) {
-        const fontKey = `${selectedFont.family}`;
-
-        if (!loadedFonts.has(fontKey)) {
-            try {
-                // Explicitly load the font
-                await document.fonts.load(`bold 12px "${selectedFont.family}"`);
-                loadedFonts.add(fontKey);
-                console.log(`✅ Loaded font: ${selectedFont.name}`);
-            } catch (e) {
-                console.warn(`⚠️ Font load failed for ${selectedFont.name}, using fallback`);
-            }
-        }
+        await ensureFontLoaded(selectedFont);
     }
 
     // Set canvas size based on aspect ratio

@@ -260,14 +260,10 @@ function renderFontGrid(currentLang) {
 
     // Add click handlers
     grid.querySelectorAll('.font-item').forEach(item => {
-        item.addEventListener('click', () => {
+        item.addEventListener('click', async () => {
             const fontId = item.dataset.fontId;
-            setSelectedFont(fontId);
-
-            // Update canvas
-            if (typeof window.drawPreview === 'function') {
-                window.drawPreview();
-            }
+            await setSelectedFont(fontId);
+            // drawPreview is already called inside setSelectedFont
         });
     });
 }
