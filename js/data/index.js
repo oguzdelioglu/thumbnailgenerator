@@ -11,101 +11,101 @@ export const dataPool = {
     en: englishData
 };
 
-// Preset definitions with positions (all values in English for prompt generation)
+// Preset definitions with positions (all values MUST match dataset-en.js exactly!)
 export const presets = {
     clickbait: {
-        expr: 'shocked expression', outfit: 'black hoodie', obj: 'cash stack',
-        bg: 'neon studio', txt: 'İNANILMAZ!', light: 'cinematic teal and orange lighting',
-        angle: 'wide angle GoPro shot', fx: 'dust particles effect',
+        expr: 'Shocked open mouth', outfit: 'Black Hoodie with hood up', obj: 'Stack of Money',
+        bg: 'neon-lit professional YouTube studio', txt: 'İNANILMAZ!', light: 'dramatic teal and orange cinematic color grading',
+        angle: 'wide-angle fisheye lens distortion', fx: 'floating cinematic dust particles',
         font: 'impact', charPos: 'right', txtPos: 'left', txtColor: 'bright yellow'
     },
     minimal: {
-        expr: 'happy expression', outfit: 'white t-shirt', obj: '', bg: 'clean studio',
-        txt: '', light: 'bright high-key studio lighting', angle: 'eye-level shot', fx: 'clean no effects',
+        expr: 'Happy smiling', outfit: 'White cotton T-Shirt', obj: '', bg: 'professional photography studio',
+        txt: '', light: 'bright high-key studio lighting clean white', angle: 'eye-level straight on shot', fx: 'clean sharp focus, no particles',
         font: 'montserrat', charPos: 'center', txtPos: 'top', txtColor: 'pure white'
     },
     gaming: {
-        expr: 'mind blown expression', outfit: 'gaming headset', bg: 'rgb gaming room',
-        obj: 'game controller', txt: 'EPİK', light: 'neon cyberpunk pink-blue lighting',
-        angle: 'dutch angle', fx: 'digital glitch effect',
+        expr: 'Mind blown exploding head', outfit: 'Gaming headset', bg: 'RGB-lit gaming room',
+        obj: 'Gamepad', txt: 'EPİK', light: 'vibrant neon cyberpunk pink and blue lighting',
+        angle: 'tilted dutch angle dynamic', fx: 'digital glitch distortion effect',
         font: 'titan-one', charPos: 'center', txtPos: 'bottom', txtColor: 'neon blue glow'
     },
     tutorial: {
-        expr: 'thoughtful expression', outfit: 'classic suit', bg: 'office',
-        obj: 'laptop', txt: 'NASIL?', light: 'bright studio lighting',
-        angle: 'eye-level portrait shot', fx: 'clean no effects',
+        expr: 'Thinking pondering', outfit: 'Luxury three-piece suit', bg: 'professional office',
+        obj: 'Laptop', txt: 'NASIL?', light: 'bright high-key studio lighting clean white',
+        angle: 'eye-level straight on shot', fx: 'clean sharp focus, no particles',
         font: 'roboto', charPos: 'left', txtPos: 'right', txtColor: 'pure white'
     },
     vlog: {
-        expr: 'happy expression', outfit: 'casual clothes', bg: 'living room',
-        obj: '', txt: '', light: 'warm golden hour lighting',
-        angle: 'selfie angle shot', fx: 'bokeh background blur effect',
+        expr: 'Happy smiling', outfit: 'Black Hoodie with hood up', bg: 'cozy living room',
+        obj: '', txt: '', light: 'warm golden hour magic hour lighting',
+        angle: 'selfie angle hand holding phone', fx: 'bokeh depth of field background blur',
         font: 'poppins', charPos: 'right', txtPos: 'left', txtColor: 'pure white'
     },
     mystery: {
-        expr: 'skeptical expression', outfit: 'dark hoodie', bg: 'dark street',
-        obj: 'mystery box', txt: 'GERÇEK', light: 'dark rembrandt lighting',
-        angle: 'dutch angle', fx: 'dust and atmosphere effect',
+        expr: 'Focused analyzing', outfit: 'Black Hoodie with hood up', bg: 'dark alley street',
+        obj: 'Mystery Box', txt: 'GERÇEK', light: 'rembrandt dramatic triangle light',
+        angle: 'tilted dutch angle dynamic', fx: 'floating cinematic dust particles',
         font: 'anton', charPos: 'left', txtPos: 'right', txtColor: 'pure white'
     },
     money: {
-        expr: 'money hungry expression', outfit: 'luxury suit', bg: 'bank vault',
-        obj: 'cash stack', txt: '100.000$', light: 'cinematic teal and orange lighting',
-        angle: 'low angle hero shot', fx: 'flying money effect',
+        expr: 'Greedy money eyes', outfit: 'Luxury three-piece suit', bg: 'bank vault gold stacks',
+        obj: 'Stack of Money', txt: '100.000$', light: 'dramatic teal and orange cinematic color grading',
+        angle: 'low-angle hero shot looking up powerful', fx: 'falling dollar bills raining down',
         font: 'alfa-slab', charPos: 'center', txtPos: 'top', txtColor: 'metallic gold'
     },
     horror: {
-        expr: 'scared expression', outfit: 'tattered clothes', bg: 'abandoned house',
-        obj: '', txt: 'KAÇ!', light: 'poisonous green horror lighting',
-        angle: 'dutch angle', fx: 'fog and mist atmosphere effect',
+        expr: 'Terrified scared', outfit: 'Zombie torn bloody clothes', bg: 'haunted house interior',
+        obj: '', txt: 'KAÇ!', light: 'eerie toxic green horror lighting',
+        angle: 'tilted dutch angle dynamic', fx: 'thick volumetric fog and smoke',
         font: 'creepster', charPos: 'left', txtPos: 'right', txtColor: 'intense red'
     },
     storytime: {
-        expr: 'happy expression', outfit: 'sweater', bg: 'cozy bedroom',
-        obj: 'coffee cup', txt: 'HİKAYEM', light: 'warm golden hour lighting',
-        angle: 'eye-level portrait shot', fx: 'bokeh blur effect',
+        expr: 'Happy smiling', outfit: 'Black Hoodie with hood up', bg: 'bedroom interior',
+        obj: 'Coffee cup', txt: 'HİKAYEM', light: 'warm golden hour magic hour lighting',
+        angle: 'eye-level straight on shot', fx: 'bokeh depth of field background blur',
         font: 'comfortaa', charPos: 'right', txtPos: 'left', txtColor: 'pure white'
     },
     reaction: {
-        expr: 'shocked expression', outfit: 't-shirt', bg: 'rgb gaming room',
-        obj: '', txt: 'BUNU İZLEYİN!', light: 'neon cyberpunk pink-blue lighting',
-        angle: 'wide angle shot', fx: 'dust particles effect',
+        expr: 'Shocked open mouth', outfit: 'Black graphic T-Shirt', bg: 'RGB-lit gaming room',
+        obj: '', txt: 'BUNU İZLEYİN!', light: 'vibrant neon cyberpunk pink and blue lighting',
+        angle: 'wide-angle fisheye lens distortion', fx: 'floating cinematic dust particles',
         font: 'bebas-neue', charPos: 'center', txtPos: 'bottom', txtColor: 'vibrant orange'
     },
     review: {
-        expr: 'thoughtful expression', outfit: 'smart casual outfit', bg: 'clean studio',
-        obj: 'product box', txt: 'DÜRÜST İNCELEME', light: 'bright studio lighting',
-        angle: 'eye-level portrait shot', fx: 'clean no effects',
+        expr: 'Thinking pondering', outfit: 'V-neck cashmere sweater', bg: 'professional photography studio',
+        obj: 'Product box', txt: 'DÜRÜST İNCELEME', light: 'bright high-key studio lighting clean white',
+        angle: 'eye-level straight on shot', fx: 'clean sharp focus, no particles',
         font: 'raleway', charPos: 'left', txtPos: 'right', txtColor: 'pure white'
     },
     unboxing: {
-        expr: 'happy expression', outfit: 'casual clothes', bg: 'clean studio',
-        obj: 'gift box', txt: 'KUTU AÇILIYORUZ!', light: 'bright studio lighting',
-        angle: 'top-down view shot', fx: 'bokeh blur effect',
+        expr: 'Happy smiling', outfit: 'Black Hoodie with hood up', bg: 'professional photography studio',
+        obj: 'Wrapped Gift Box', txt: 'KUTU AÇILIYORUZ!', light: 'bright high-key studio lighting clean white',
+        angle: 'bird\'s eye view overhead', fx: 'bokeh depth of field background blur',
         font: 'bangers', charPos: 'center', txtPos: 'top', txtColor: 'hot pink'
     },
     cooking: {
-        expr: 'happy expression', outfit: 'chef apron', bg: 'modern kitchen',
-        obj: 'cooking pan', txt: 'TARİF', light: 'warm golden hour lighting',
-        angle: 'top-down view shot', fx: 'steam and mist effect',
+        expr: 'Happy smiling', outfit: 'Chef whites with hat', bg: 'luxury modern kitchen',
+        obj: 'Cooking pan', txt: 'TARİF', light: 'warm golden hour magic hour lighting',
+        angle: 'bird\'s eye view overhead', fx: 'thick volumetric fog and smoke',
         font: 'luckiest-guy', charPos: 'right', txtPos: 'left', txtColor: 'vibrant orange'
     },
     travel: {
-        expr: 'happy expression', outfit: 'summer outfit', bg: 'tropical beach',
-        obj: 'passport', txt: 'SEYAHAT VLOG', light: 'golden hour lighting',
-        angle: 'wide angle GoPro shot', fx: 'lens flare effect',
+        expr: 'Happy smiling', outfit: 'Colorful Hawaiian shirt', bg: 'tropical beach with palm trees',
+        obj: 'Passport', txt: 'SEYAHAT VLOG', light: 'warm golden hour magic hour lighting',
+        angle: 'wide-angle fisheye lens distortion', fx: 'lens flare anamorphic streaks',
         font: 'righteous', charPos: 'left', txtPos: 'right', txtColor: 'pure white'
     },
     fitness: {
-        expr: 'determined expression', outfit: 'sportswear', bg: 'gym',
-        obj: 'dumbbell', txt: 'ANTRENMAN', light: 'cinematic teal and orange lighting',
-        angle: 'low angle hero shot', fx: 'dust particles effect',
+        expr: 'Determined confident', outfit: 'Fitness gym wear', bg: 'gym with weights equipment',
+        obj: 'Dumbbell', txt: 'ANTRENMAN', light: 'dramatic teal and orange cinematic color grading',
+        angle: 'low-angle hero shot looking up powerful', fx: 'floating cinematic dust particles',
         font: 'black-ops', charPos: 'center', txtPos: 'top', txtColor: 'intense red'
     },
     tech: {
-        expr: 'curious expression', outfit: 'modern casual outfit', bg: 'clean studio',
-        obj: 'smartphone', txt: 'TEKNOLOJİ İNCELEME', light: 'neon cyberpunk lighting',
-        angle: 'eye-level portrait shot', fx: 'digital glitch effect',
+        expr: 'Focused analyzing', outfit: 'Oversized grey hoodie', bg: 'professional photography studio',
+        obj: 'Smartphone', txt: 'TEKNOLOJİ İNCELEME', light: 'vibrant neon cyberpunk pink and blue lighting',
+        angle: 'eye-level straight on shot', fx: 'digital glitch distortion effect',
         font: 'orbitron', charPos: 'right', txtPos: 'left', txtColor: 'electric blue'
     }
 };

@@ -90,31 +90,46 @@ window.applyPreset = async function(presetName) {
     fields.forEach(f => {
         const el = document.getElementById(`inp-${f}`);
         if (el && preset[f]) {
-            // Store English value for prompt generation
+            // ALWAYS store English value for prompt generation
             el.dataset.enValue = preset[f];
 
-            // Find and display localized value
+            // Try to find localized value in datasets
             const enData = dataPool['en'][f];
             const trData = dataPool['tr'][f];
 
             if (enData && trData) {
-                const index = enData.findIndex(item => item.l === preset[f]);
-                if (index !== -1 && trData[index]) {
+                // Find the preset value in English dataset (partial match)
+                const index = enData.findIndex(item => item.l.toLowerCase().includes(preset[f].toLowerCase()) ||
+                                                     preset[f].toLowerCase().includes(item.l.toLowerCase()));
+
+                if (index !== -1) {
+                    // Found match, use corresponding localized value
                     el.value = currentLang === 'tr' ? trData[index].l : enData[index].l;
                 } else {
-                    // If not found in datasets, use the preset value directly
-                    el.value = preset[f];
+                    // Not found, try direct match first
+                    const directIndex = enData.findIndex(item => item.l === preset[f]);
+                    if (directIndex !== -1) {
+                        el.value = currentLang === 'tr' ? trData[directIndex].l : enData[directIndex].l;
+                    } else {
+                        // Use English value as fallback (will show in UI but prompt will still work)
+                        el.value = preset[f];
+                    }
                 }
             } else {
+                // No datasets available, use preset value
                 el.value = preset[f];
             }
+        } else {
+            // Field empty in preset, clear input
+            el.value = '';
+            delete el.dataset.enValue;
         }
     });
 
     // Handle txt field separately (user input, stays as-is)
     const txtEl = document.getElementById('inp-txt');
-    if (txtEl && preset.txt) {
-        txtEl.value = preset.txt;
+    if (txtEl) {
+        txtEl.value = preset.txt || '';
     }
 
     // Apply font from preset

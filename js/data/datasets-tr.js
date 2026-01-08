@@ -63,6 +63,7 @@ export const turkishData = {
         { i: "🧥", l: "Siyah Hoodie" }, { i: "👕", l: "Beyaz T-Shirt" }, { i: "👕", l: "Siyah T-Shirt" }, { i: "🎽", l: "Kolsuz Atlet" }, { i: "👖", l: "Yırtık Kot" },
         { i: "🧢", l: "Snapback Şapka" }, { i: "🧥", l: "Oversize Hoodie" }, { i: "🧥", l: "Fermuarlı Hoodie" }, { i: "👟", l: "Spor Ayakkabı" }, { i: "🥾", l: "Bot" },
         { i: "🧥", l: "Bomber Ceket" }, { i: "🧥", l: "Deri Ceket" }, { i: "🧥", l: "Kot Ceket" }, { i: "🧥", l: "Varsity Ceket" }, { i: "🧣", l: "Şal/Atkı" },
+        { i: "🎧", l: "Gaming kulaklığı" },
         // Formal & Business
         { i: "👔", l: "Takım Elbise" }, { i: "🕴️", l: "Smokin" }, { i: "👔", l: "Gömlek & Kravat" }, { i: "🎩", l: "Fötr Şapka" }, { i: "👞", l: "Klasik Ayakkabı" },
         { i: "👔", l: "Blazer Ceket" }, { i: "👔", l: "V Yaka Kazak" }, { i: "📿", l: "Altın Zincir" }, { i: "⌚", l: "Lüks Saat" }, { i: "👓", l: "Gözlük" },
@@ -83,7 +84,9 @@ export const turkishData = {
         { i: "❓", l: "Gizemli Kutu" }, { i: "🍔", l: "Hamburger" }, { i: "🎤", l: "Mikrofon" }, { i: "📸", l: "Kamera" }, { i: "🚁", l: "Drone" },
         { i: "₿", l: "Bitcoin" }, { i: "🏆", l: "Kupa" }, { i: "🔫", l: "Oyuncak Silah" }, { i: "💳", l: "Kredi Kartı" }, { i: "🕶️", l: "VR Gözlük" },
         { i: "🏎️", l: "Direksiyon" }, { i: "💊", l: "Hap/İlaç" }, { i: "🧱", l: "Altın Külçe" }, { i: "⏱️", l: "Kronometre" }, { i: "🔍", l: "Büyüteç" },
-        { i: "🥤", l: "Enerji İçeceği" }, { i: "🎈", l: "Kırmızı Balon" }, { i: "🎁", l: "Hediye Paketi" }, { i: "🌶️", l: "Acı Biber" }
+        { i: "🥤", l: "Enerji İçeceği" }, { i: "🎈", l: "Kırmızı Balon" }, { i: "🎁", l: "Hediye Paketi" }, { i: "🌶️", l: "Acı Biber" },
+        // Ekstra öğeler
+        { i: "☕", l: "Kahve fincanı" }, { i: "📦", l: "Ürün kutusu" }, { i: "🍳", l: "Tava" }, { i: "🛂", l: "Pasaport" }, { i: "🏋️", l: "Dambıl" }, { i: "📱", l: "Akıllı telefon" }
     ],
     bg: [
         // Studio & Indoor

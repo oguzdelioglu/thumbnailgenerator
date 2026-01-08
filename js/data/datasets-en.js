@@ -63,6 +63,7 @@ export const englishData = {
         { i: "🧥", l: "Black Hoodie with hood up" }, { i: "👕", l: "White cotton T-Shirt" }, { i: "👕", l: "Black graphic T-Shirt" }, { i: "🎽", l: "Sleeveless tank top" }, { i: "👖", l: "Ripped blue jeans" },
         { i: "🧢", l: "Snapback baseball cap" }, { i: "🧥", l: "Oversized grey hoodie" }, { i: "🧥", l: "Zip-up hoodie" }, { i: "👟", l: "Nike sneakers" }, { i: "🥾", l: "Combat boots" },
         { i: "🧥", l: "Black bomber jacket" }, { i: "🧥", l: "Brown leather biker jacket" }, { i: "🧥", l: "Denim jacket" }, { i: "🧥", l: "Varsity letterman jacket" }, { i: "🧣", l: "Wool scarf" },
+        { i: "🎧", l: "Gaming headset" },
         // Formal & Business
         { i: "👔", l: "Luxury three-piece suit" }, { i: "🕴️", l: "Black tuxedo with bowtie" }, { i: "👔", l: "White shirt with silk tie" }, { i: "🎩", l: "Black fedora hat" }, { i: "👞", l: "Polished Oxford shoes" },
         { i: "👔", l: "Navy blue blazer" }, { i: "👔", l: "V-neck cashmere sweater" }, { i: "📿", l: "Heavy gold chain necklace" }, { i: "⌚", l: "Luxury Rolex watch" }, { i: "👓", l: "Designer glasses" },
@@ -83,7 +84,9 @@ export const englishData = {
         { i: "❓", l: "Mystery Box" }, { i: "🍔", l: "Giant Burger" }, { i: "🎤", l: "Microphone" }, { i: "📸", l: "Camera" }, { i: "🚁", l: "Drone" },
         { i: "₿", l: "Bitcoin Coin" }, { i: "🏆", l: "Golden Trophy" }, { i: "🔫", l: "Toy Nerf Gun" }, { i: "💳", l: "Black Credit Card" }, { i: "🕶️", l: "VR Headset" },
         { i: "🏎️", l: "Racing Steering Wheel" }, { i: "💊", l: "Red and Blue Pills" }, { i: "🧱", l: "Gold Bars" }, { i: "⏱️", l: "Stopwatch" }, { i: "🔍", l: "Magnifying Glass" },
-        { i: "🥤", l: "Energy Drink Can" }, { i: "🎈", l: "Red Balloon" }, { i: "🎁", l: "Wrapped Gift Box" }, { i: "🌶️", l: "Hot Chili Pepper" }
+        { i: "🥤", l: "Energy Drink Can" }, { i: "🎈", l: "Red Balloon" }, { i: "🎁", l: "Wrapped Gift Box" }, { i: "🌶️", l: "Hot Chili Pepper" },
+        // Additional items
+        { i: "☕", l: "Coffee cup" }, { i: "📦", l: "Product box" }, { i: "🍳", l: "Cooking pan" }, { i: "🛂", l: "Passport" }, { i: "🏋️", l: "Dumbbell" }, { i: "📱", l: "Smartphone" }
     ],
     bg: [
         // Studio & Indoor
