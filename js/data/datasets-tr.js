@@ -154,5 +154,15 @@ export const turkishData = {
         { i: "💻", l: "Matrix Kodları" }, { i: "⚡", l: "Elektrik/Yıldırım" }, { i: "🌫️", l: "Duman/Sis" },
         { i: "💧", l: "Su Sıçraması" }, { i: "💥", l: "Patlama" }, { i: "📷", l: "Bokeh (Arka Plan Bulanık)" }, { i: "📺", l: "Glitch (Bozulma)" },
         { i: "❄️", l: "Kar Tanesi/Buz" }, { i: "🎨", l: "Yağlı Boya Dokusu" }, { i: "🕸️", l: "Örümcek Ağları" }
+    ],
+    txtColor: [
+        // Bright & Vibrant
+        { i: "⚪", l: "Beyaz" }, { i: "🟡", l: "Sarı" }, { i: "🟠", l: "Turuncu" }, { i: "🔴", l: "Kırmızı" },
+        { i: "🟣", l: "Mor" }, { i: "🔵", l: "Mavi" }, { i: "🟢", l: "Yeşil" }, { i: "🩷", l: "Pembe" },
+        // Dark & Bold
+        { i: "⚫", l: "Siyah" }, { i: "🟤", l: "Kahverengi" }, { i: "🔶", l: "Koyu Turuncu" }, { i: "🟥", l: "Koyu Kırmızı" },
+        // Special Effects
+        { i: "✨", l: "Altın (Gold)" }, { i: "💎", l: "Gümüş (Silver)" }, { i: "🌈", l: "Gökkuşağı (Rainbow)" },
+        { i: "⚡", l: "Neon Mavi" }, { i: "🔥", l: "Alev Kırmızı" }, { i: "💀", l: "Kemik Beyaz" }, { i: "👻", l: "Hayalet Beyaz" }
     ]
 };

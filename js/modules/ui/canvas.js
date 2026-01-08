@@ -60,6 +60,59 @@ async function ensureFontLoaded(font) {
 }
 
 /**
+ * Get color value from localized color name
+ */
+function getColorValue(colorName, currentLang) {
+    // Map of localized color names to hex values
+    const colorMap = {
+        'tr': {
+            'Beyaz': '#FFFFFF',
+            'Sarı': '#FFFF00',
+            'Turuncu': '#FFA500',
+            'Kırmızı': '#FF0000',
+            'Mor': '#9B59B6',
+            'Mavi': '#3498DB',
+            'Yeşil': '#2ECC71',
+            'Pembe': '#FF69B4',
+            'Siyah': '#000000',
+            'Kahverengi': '#8B4513',
+            'Koyu Turuncu': '#FF8C00',
+            'Koyu Kırmızı': '#8B0000',
+            'Altın (Gold)': '#FFD700',
+            'Gümüş (Silver)': '#C0C0C0',
+            'Gökkuşağı (Rainbow)': '#FF6B6B',
+            'Neon Mavi': '#00FFFF',
+            'Alev Kırmızı': '#FF4500',
+            'Kemik Beyaz': '#F5F5DC',
+            'Hayalet Beyaz': '#F8F8FF'
+        },
+        'en': {
+            'pure white': '#FFFFFF',
+            'bright yellow': '#FFFF00',
+            'vibrant orange': '#FFA500',
+            'intense red': '#FF0000',
+            'deep purple': '#9B59B6',
+            'electric blue': '#3498DB',
+            'vivid green': '#2ECC71',
+            'hot pink': '#FF69B4',
+            'solid black': '#000000',
+            'dark brown': '#8B4513',
+            'dark orange': '#FF8C00',
+            'dark red': '#8B0000',
+            'metallic gold': '#FFD700',
+            'metallic silver': '#C0C0C0',
+            'rainbow gradient': '#FF6B6B',
+            'neon blue glow': '#00FFFF',
+            'fire red with glow': '#FF4500',
+            'bone white': '#F5F5DC',
+            'ghostly white': '#F8F8FF'
+        }
+    };
+
+    return colorMap[currentLang]?.[colorName] || '#FFFFFF';
+}
+
+/**
  * Draw preview canvas
  */
 export async function drawPreview() {
@@ -209,6 +262,8 @@ export async function drawPreview() {
 
     // Text label inside with selected font
     const overlayText = document.getElementById('inp-txt')?.value || (currentLang === 'tr' ? 'YAZI' : 'TEXT');
+    const txtColorName = document.getElementById('inp-txtColor')?.value || (currentLang === 'tr' ? 'Beyaz' : 'pure white');
+    const txtColor = getColorValue(txtColorName, currentLang);
 
     // Use the selected font directly
     const fontSize = Math.floor(txtHeight * 0.4);
@@ -219,7 +274,7 @@ export async function drawPreview() {
     const fontWeight = selectedFont && selectedFont.style ? selectedFont.style : 'bold';
     const fontSpec = `${fontWeight} ${fontSize}px "${fontFamily}"`;
 
-    ctx.fillStyle = '#fff';
+    ctx.fillStyle = txtColor;
     ctx.font = fontSpec;
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';

@@ -21,6 +21,7 @@ export function getCurrentSettings() {
         obj: document.getElementById('inp-obj')?.value || '',
         bg: document.getElementById('inp-bg')?.value || '',
         txt: document.getElementById('inp-txt')?.value || '',
+        txtColor: document.getElementById('inp-txtColor')?.value || '',
         light: document.getElementById('inp-light')?.value || '',
         angle: document.getElementById('inp-angle')?.value || '',
         fx: document.getElementById('inp-fx')?.value || '',
@@ -38,7 +39,7 @@ export function applySettings(settings) {
     if (settings.gender) setGender(settings.gender);
     if (settings.txtPos) setTextPos(settings.txtPos);
 
-    const fields = ['expr', 'outfit', 'obj', 'bg', 'txt', 'light', 'angle', 'fx'];
+    const fields = ['expr', 'outfit', 'obj', 'bg', 'txt', 'txtColor', 'light', 'angle', 'fx'];
     fields.forEach(field => {
         const el = document.getElementById(`inp-${field}`);
         if (el && settings[field]) {

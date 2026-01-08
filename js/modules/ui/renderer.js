@@ -78,7 +78,7 @@ export function renderUI() {
     if (txtPosEl) txtPosEl.innerText = currentLang === 'tr' ? 'YAZI' : 'TEXT';
 
     // Loop through all categories
-    const cats = ['expr', 'outfit', 'obj', 'bg', 'txt', 'light', 'angle', 'fx'];
+    const cats = ['expr', 'outfit', 'obj', 'bg', 'txt', 'txtColor', 'light', 'angle', 'fx'];
 
     cats.forEach((cat, i) => {
         const inputEl = document.getElementById(`inp-${cat}`);
@@ -130,11 +130,11 @@ function renderCategoryChips(cat, currentLang) {
         chip.appendChild(iconSpan);
         chip.appendChild(labelText);
 
-        // Value to Set: EN description for Prompt, Localized for Text
+        // Value to Set: EN description for Prompt, Localized for Text and txtColor
         let valueToSet = valuesData[index].l;
-        if (cat === 'txt') valueToSet = item.l;
+        if (cat === 'txt' || cat === 'txtColor') valueToSet = item.l;
 
-        chip.onclick = () => {
+        chip.onclick = async () => {
             const input = document.getElementById(`inp-${cat}`);
             if (input) {
                 input.value = valueToSet;
@@ -147,6 +147,11 @@ function renderCategoryChips(cat, currentLang) {
                     input.style.boxShadow = 'none';
                 }, 300);
                 updateHud();
+
+                // Redraw canvas for color changes
+                if (cat === 'txtColor' && window.drawPreview) {
+                    await window.drawPreview();
+                }
             }
         };
         container.appendChild(chip);
@@ -269,7 +274,7 @@ export function resetAll() {
     };
     saveUndoState(settings);
 
-    const fields = ['expr', 'outfit', 'obj', 'bg', 'txt', 'light', 'angle', 'fx'];
+    const fields = ['expr', 'outfit', 'obj', 'bg', 'txt', 'txtColor', 'light', 'angle', 'fx'];
     fields.forEach(f => {
         const el = document.getElementById(`inp-${f}`);
         if (el) el.value = '';
@@ -310,7 +315,7 @@ function applySettingsFromUndo(settings) {
     if (settings.gender) updateGenderButtons(settings.gender);
     if (settings.txtPos) updateTextPosButtons(settings.txtPos);
 
-    const fields = ['expr', 'outfit', 'obj', 'bg', 'txt', 'light', 'angle', 'fx'];
+    const fields = ['expr', 'outfit', 'obj', 'bg', 'txt', 'txtColor', 'light', 'angle', 'fx'];
     fields.forEach(f => {
         const el = document.getElementById(`inp-${f}`);
         if (el && settings[f]) el.value = settings[f];

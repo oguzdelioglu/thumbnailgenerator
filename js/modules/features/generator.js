@@ -15,7 +15,8 @@ export function generatePrompt(settings) {
         outfit = "casual clothes",
         obj = "looking at camera",
         bg = "cinematic background",
-        txt = "VIDEO"
+        txt = "VIDEO",
+        txtColor = "white"
     } = settings;
 
     const {
@@ -62,7 +63,7 @@ export function generatePrompt(settings) {
     let positionText = getPositionText(currentPos);
     let textPosition = getTextPositionText(currentPos, currentTxtPos);
 
-    const prompt = `A hyper-realistic, high-ctr YouTube thumbnail featuring ${subject} with an expression of ${expr}, making direct eye contact. ${pronoun} wearing ${outfit}. ${positionText}. In the foreground/hands, interacting with ${obj}. The background is a ${bg}. The scene is illuminated by ${light}. Camera angle is ${angle}. Visual effects: ${fx}. ${textPosition}, large, bold, 3D typography with ${fontDescription}, glossy metallic texture and sharp white outline reads "${txt}". Shot with Sony A7S III, f/1.8 aperture, highly detailed, photorealistic, 8k, ray tracing, global illumination, --ar ${currentAr} --v 6.0`;
+    const prompt = `A hyper-realistic, high-ctr YouTube thumbnail featuring ${subject} with an expression of ${expr}, making direct eye contact. ${pronoun} wearing ${outfit}. ${positionText}. In the foreground/hands, interacting with ${obj}. The background is a ${bg}. The scene is illuminated by ${light}. Camera angle is ${angle}. Visual effects: ${fx}. ${textPosition}, large, bold, 3D typography with ${fontDescription}, in ${txtColor} color, glossy metallic texture and sharp outline reads "${txt}". Shot with Sony A7S III, f/1.8 aperture, highly detailed, photorealistic, 8k, ray tracing, global illumination, --ar ${currentAr} --v 6.0`;
 
     return prompt;
 }

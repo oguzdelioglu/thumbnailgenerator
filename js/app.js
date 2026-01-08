@@ -82,7 +82,7 @@ window.applyPreset = async function(presetName) {
 
     saveUndoState(getCurrentSettings());
 
-    const fields = ['expr', 'outfit', 'obj', 'bg', 'txt', 'light', 'angle', 'fx'];
+    const fields = ['expr', 'outfit', 'obj', 'bg', 'txt', 'txtColor', 'light', 'angle', 'fx'];
     fields.forEach(f => {
         const el = document.getElementById(`inp-${f}`);
         if (el) el.value = preset[f] || '';

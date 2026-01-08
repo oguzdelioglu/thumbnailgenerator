@@ -164,5 +164,29 @@ export const englishData = {
         { i: "❄️", l: "falling snow and ice particles" },
         { i: "🎨", l: "oil painting texture overlay" },
         { i: "🕸️", l: "cobwebs and dusty atmosphere" }
+    ],
+    txtColor: [
+        // Bright & Vibrant
+        { i: "⚪", l: "pure white" },
+        { i: "🟡", l: "bright yellow" },
+        { i: "🟠", l: "vibrant orange" },
+        { i: "🔴", l: "intense red" },
+        { i: "🟣", l: "deep purple" },
+        { i: "🔵", l: "electric blue" },
+        { i: "🟢", l: "vivid green" },
+        { i: "🩷", l: "hot pink" },
+        // Dark & Bold
+        { i: "⚫", l: "solid black" },
+        { i: "🟤", l: "dark brown" },
+        { i: "🔶", l: "dark orange" },
+        { i: "🟥", l: "dark red" },
+        // Special Effects
+        { i: "✨", l: "metallic gold" },
+        { i: "💎", l: "metallic silver" },
+        { i: "🌈", l: "rainbow gradient" },
+        { i: "⚡", l: "neon blue glow" },
+        { i: "🔥", l: "fire red with glow" },
+        { i: "💀", l: "bone white" },
+        { i: "👻", l: "ghostly white" }
     ]
 };
