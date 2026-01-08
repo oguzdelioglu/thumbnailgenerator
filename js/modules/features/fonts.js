@@ -332,7 +332,7 @@ export function updateFontPreview() {
     const textInput = document.getElementById('inp-txt');
 
     if (previewBox && previewText) {
-        const currentLang = getState()?.currentLang || 'tr';
+        const currentLang = getPreviewState()?.currentLang || 'tr';
         const text = textInput?.value || (currentLang === 'tr' ? 'ÖRNEK' : 'EXAMPLE');
         previewText.textContent = text;
         previewText.style.fontFamily = selectedFont.family;
@@ -353,27 +353,12 @@ export function updateFontPreview() {
 /**
  * Get current state (for text preview update)
  */
-function getState() {
+function getPreviewState() {
     // Try to get state from window if available
     if (window.ThumbnailStudio?.state) {
         return window.ThumbnailStudio.state();
     }
     return { currentLang: 'tr' };
-}
-
-/**
- * Show toast notification
- */
-function showToast(message) {
-    const existing = document.querySelector('.font-toast');
-    if (existing) existing.remove();
-
-    const toast = document.createElement('div');
-    toast.className = 'font-toast';
-    toast.innerText = message;
-    document.body.appendChild(toast);
-
-    setTimeout(() => toast.remove(), 1500);
 }
 
 /**
