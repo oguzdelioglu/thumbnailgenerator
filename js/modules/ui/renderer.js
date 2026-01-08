@@ -53,6 +53,19 @@ export function renderUI() {
         if (el) el.innerText = d.presetLabels[key];
     });
 
+    // Update position preset labels
+    if (d.positionPresetLabels) {
+        Object.keys(d.positionPresetLabels).forEach(key => {
+            const el = document.getElementById(`pos-${key}`);
+            if (el) el.innerText = d.positionPresetLabels[key];
+        });
+    }
+
+    // Update position presets title
+    if (d.txtPositionPresets) {
+        setText('txt-position-presets-title', d.txtPositionPresets);
+    }
+
     // Update stat labels
     setText('stat-chars-label', d.statLabels.chars);
     setText('stat-words-label', d.statLabels.words);

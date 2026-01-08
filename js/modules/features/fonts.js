@@ -138,16 +138,16 @@ export function getSelectedFont() {
 /**
  * Set selected font and update UI
  */
-export function setSelectedFont(fontId) {
+export async function setSelectedFont(fontId) {
     const font = fontList.find(f => f.id === fontId);
     if (font) {
         selectedFont = font;
         updateFontPreview();
         updateActiveFontInGrid();
 
-        // Update canvas with new font
+        // Update canvas with new font (now async)
         if (typeof window.drawPreview === 'function') {
-            window.drawPreview();
+            await window.drawPreview();
         }
 
         return font;
@@ -185,7 +185,7 @@ export function getFontCSS(font) {
 /**
  * Navigate fonts with arrow keys
  */
-export function navigateFonts(direction) {
+export async function navigateFonts(direction) {
     const currentIndex = fontList.findIndex(f => f.id === selectedFont.id);
     let newIndex;
 
@@ -197,7 +197,7 @@ export function navigateFonts(direction) {
 
     const newFont = fontList[newIndex];
     if (newFont) {
-        setSelectedFont(newFont.id);
+        await setSelectedFont(newFont.id);
 
         // Scroll to visible
         setTimeout(() => {
@@ -206,11 +206,6 @@ export function navigateFonts(direction) {
                 fontItem.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
             }
         }, 50);
-
-        // Update canvas
-        if (typeof window.drawPreview === 'function') {
-            window.drawPreview();
-        }
 
         return newFont;
     }
@@ -227,11 +222,11 @@ export function renderFontSelector(currentLang) {
     container.innerHTML = `
         <div class="font-selector-header">
             <span class="font-selector-title">${currentLang === 'tr' ? 'YAZI FONTU' : 'TEXT FONT'}</span>
-            <span class="font-selector-hint">← → yön tuşları ile geçiş yapabilirsiniz</span>
+            <span class="font-selector-hint">${currentLang === 'tr' ? '← → yön tuşları ile geçiş yapabilirsiniz' : 'Use ← → arrow keys to navigate'}</span>
         </div>
         <div class="font-preview-box" id="font-preview-box">
-            ${fontsLoading ? '<div class="font-loading">Loading fonts...</div>' : ''}
-            <span class="font-preview-text" id="font-preview-text" style="display: ${fontsLoaded ? 'block' : 'none'}">EXAMPLE</span>
+            ${fontsLoading ? `<div class="font-loading">${currentLang === 'tr' ? 'Fontlar yükleniyor...' : 'Loading fonts...'}</div>` : ''}
+            <span class="font-preview-text" id="font-preview-text" style="display: ${fontsLoaded ? 'block' : 'none'}">${currentLang === 'tr' ? 'ÖRNEK' : 'EXAMPLE'}</span>
         </div>
         <div class="font-grid" id="font-grid"></div>
     `;
@@ -302,17 +297,21 @@ function setupKeyboardNavigation() {
         document.removeEventListener('keydown', existingHandler);
     }
 
-    const handler = (e) => {
+    const handler = async (e) => {
         // Only handle arrow keys if not in an input field
         if (['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) return;
 
         if (e.key === 'ArrowLeft' || e.key === 'ArrowUp' || e.key === 'ArrowRight' || e.key === 'ArrowDown') {
             e.preventDefault();
             const direction = e.key.replace('Arrow', '').toLowerCase();
-            const newFont = navigateFonts(direction);
+            const newFont = await navigateFonts(direction);
 
             if (newFont) {
-                showToast(`${newFont.name} seçildi`);
+                const currentLang = getState()?.currentLang || 'tr';
+                const message = currentLang === 'tr'
+                    ? `${newFont.name} seçildi`
+                    : `${newFont.name} selected`;
+                showToast(message);
             }
         }
     };

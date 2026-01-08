@@ -2,7 +2,7 @@
  * Presets Module - Preset management
  */
 
-import { presets } from '../../data/index.js';
+import { presets, positionPresets } from '../../data/index.js';
 
 /**
  * Get all preset names
@@ -30,4 +30,25 @@ export function hasPreset(name) {
  */
 export function getAllPresets() {
     return { ...presets };
+}
+
+/**
+ * Get position preset by name
+ */
+export function getPositionPreset(name) {
+    return positionPresets[name];
+}
+
+/**
+ * Get all position presets
+ */
+export function getAllPositionPresets() {
+    return { ...positionPresets };
+}
+
+/**
+ * Get all position preset names
+ */
+export function getPositionPresetNames() {
+    return Object.keys(positionPresets);
 }

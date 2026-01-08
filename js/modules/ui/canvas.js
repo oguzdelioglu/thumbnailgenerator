@@ -20,10 +20,13 @@ let textBounds = { x: 0, y: 0, w: 0, h: 0 };
 export function getCharBounds() { return charBounds; }
 export function getTextBounds() { return textBounds; }
 
+// Track loaded fonts to avoid repeated loading attempts
+const loadedFonts = new Set();
+
 /**
  * Draw preview canvas
  */
-export function drawPreview() {
+export async function drawPreview() {
     const canvas = document.getElementById('preview-canvas');
     if (!canvas) return;
 
@@ -33,6 +36,22 @@ export function drawPreview() {
 
     // Get the selected font info directly
     const selectedFont = getSelectedFont();
+
+    // Wait for Google Font to load if it's a web font
+    if (selectedFont && selectedFont.google) {
+        const fontKey = `${selectedFont.family}`;
+
+        if (!loadedFonts.has(fontKey)) {
+            try {
+                // Explicitly load the font
+                await document.fonts.load(`bold 12px "${selectedFont.family}"`);
+                loadedFonts.add(fontKey);
+                console.log(`✅ Loaded font: ${selectedFont.name}`);
+            } catch (e) {
+                console.warn(`⚠️ Font load failed for ${selectedFont.name}, using fallback`);
+            }
+        }
+    }
 
     // Set canvas size based on aspect ratio
     if (currentAr === '16:9') {

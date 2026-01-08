@@ -10,7 +10,7 @@
 // Import all modules
 import { getState, setLanguage, setAr, setPosition, setGender, setTextPos, saveUndoState, addFavorite as addFavoriteState, removeFavorite as removeFavoriteState, clearFavorites as clearFavoritesState, getFavorites, getHistory } from './modules/core/state.js';
 import * as storage from './modules/core/storage.js';
-import { getPreset } from './modules/core/presets.js';
+import { getPreset, getPositionPreset } from './modules/core/presets.js';
 import * as generator from './modules/features/generator.js';
 import * as favorites from './modules/features/favorites.js';
 import * as history from './modules/features/history.js';
@@ -23,40 +23,40 @@ import { renderUI, updateHud, updateModeButtons, updateArButtons, updatePosition
 // GLOBAL FUNCTIONS (for HTML onclick handlers)
 // =========================================
 
-window.setMode = function(mode) {
+window.setMode = async function(mode) {
     updateModeButtons(mode);
     updateHud();
-    drawPreview();
+    await drawPreview();
 };
 
-window.setAr = function(ar) {
+window.setAr = async function(ar) {
     updateArButtons(ar);
-    drawPreview();
+    await drawPreview();
 };
 
-window.setPos = function(pos) {
+window.setPos = async function(pos) {
     updatePositionButtons(pos);
     updateHud();
-    drawPreview();
+    await drawPreview();
 };
 
-window.setGender = function(gender) {
+window.setGender = async function(gender) {
     updateGenderButtons(gender);
     updateHud();
-    drawPreview();
+    await drawPreview();
 };
 
-window.setTxtPos = function(pos) {
+window.setTxtPos = async function(pos) {
     updateTextPosButtons(pos);
     updateHud();
-    drawPreview();
+    await drawPreview();
 };
 
-window.toggleLang = function() {
+window.toggleLang = async function() {
     toggleLanguage();
     const { currentMode } = getState();
     updateModeButtons(currentMode);
-    drawPreview();
+    await drawPreview();
 };
 
 window.resetAll = resetAll;
@@ -73,7 +73,7 @@ window.clearAllFavorites = function() {
     favorites.clearAllFavoritesFn(getState().currentLang);
 };
 
-window.applyPreset = function(presetName) {
+window.applyPreset = async function(presetName) {
     const preset = getPreset(presetName);
     if (!preset) return;
 
@@ -87,16 +87,49 @@ window.applyPreset = function(presetName) {
 
     // Apply font from preset
     if (preset.font && typeof fonts.setSelectedFont === 'function') {
-        fonts.setSelectedFont(preset.font);
+        await fonts.setSelectedFont(preset.font);
+    }
+
+    // Apply positions from preset
+    if (preset.charPos) {
+        updatePositionButtons(preset.charPos);
+    }
+    if (preset.txtPos) {
+        updateTextPosButtons(preset.txtPos);
     }
 
     updateHud();
-    drawPreview();
+    await drawPreview();
 
     const { currentLang } = getState();
     const message = currentLang === 'tr'
         ? `${presetName.toUpperCase()} şablonu uygulandı!`
         : `${presetName.toUpperCase()} preset applied!`;
+    showToast(message);
+};
+
+window.applyPositionPreset = async function(positionPresetName) {
+    const positionPreset = getPositionPreset(positionPresetName);
+    if (!positionPreset) return;
+
+    saveUndoState(getCurrentSettings());
+
+    // Apply positions from position preset
+    if (positionPreset.charPos) {
+        updatePositionButtons(positionPreset.charPos);
+    }
+    if (positionPreset.txtPos) {
+        updateTextPosButtons(positionPreset.txtPos);
+    }
+
+    updateHud();
+    await drawPreview();
+
+    const { currentLang } = getState();
+    const label = currentLang === 'tr' ? positionPreset.name : positionPreset.nameEn;
+    const message = currentLang === 'tr'
+        ? `${label} pozisyonu uygulandı!`
+        : `${label} position applied!`;
     showToast(message);
 };
 
@@ -159,8 +192,13 @@ window.handleImport = async function(event) {
             if (el && settings[f]) el.value = settings[f];
         });
 
+        // Apply font setting
+        if (settings.font && typeof fonts.setSelectedFont === 'function') {
+            await fonts.setSelectedFont(settings.font);
+        }
+
         updateHud();
-        drawPreview();
+        await drawPreview();
 
         // Import favorites and history if available
         if (settings.favorites && Array.isArray(settings.favorites)) {
@@ -198,7 +236,7 @@ window.undo = undo;
 // INITIALIZATION
 // =========================================
 
-function init() {
+async function init() {
     // Load data from storage
     const historyData = storage.loadHistory();
     historyData.forEach(h => history.addToHistory(h));
@@ -217,9 +255,9 @@ function init() {
     updateTextPosButtons('auto');
 
     // Initialize font selector
-    fonts.initFontSelector(getState().currentLang);
+    await fonts.initFontSelector(getState().currentLang);
 
-    drawPreview();
+    await drawPreview();
 
     // Setup canvas drag handlers
     setupCanvasDrag(

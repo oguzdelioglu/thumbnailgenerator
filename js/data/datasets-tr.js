@@ -28,6 +28,17 @@ export const turkishData = {
         storytime: "HİKAYE", reaction: "REAKSİYON", review: "İNCELEME", unboxing: "KUTU AÇILIMI",
         cooking: "YEMEKTARİFİ", travel: "SEYAHAT", fitness: "FİTNESS", tech: "TEKNOLOJİ"
     },
+    positionPresetLabels: {
+        "focus-left": "SOL ODAK",
+        "focus-center": "ORTA ODAK",
+        "focus-right": "SAĞ ODAK",
+        "classic-rule": "KLASİK ÜÇTE",
+        "center-symmetry": "ORTA SİMETRİK",
+        "dramatic-diagonal": "DRAMATİK DIYAGONAL",
+        "text-top-hero": "YAZI ÜST KAHRAMAN",
+        "side-by-side": "YAN YANA"
+    },
+    txtPositionPresets: "POZİSYON ŞABLONLARI",
     statLabels: { chars: "KARAKTER", words: "KELİME", tokens: "TOKEN (≈)" },
     shortcutLabels: { gen: "Oluştur", copy: "Kopyala" },
 

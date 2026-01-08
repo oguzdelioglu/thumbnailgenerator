@@ -28,6 +28,17 @@ export const englishData = {
         storytime: "STORYTIME", reaction: "REACTION", review: "REVIEW", unboxing: "UNBOXING",
         cooking: "COOKING", travel: "TRAVEL", fitness: "FITNESS", tech: "TECH"
     },
+    positionPresetLabels: {
+        "focus-left": "FOCUS LEFT",
+        "focus-center": "FOCUS CENTER",
+        "focus-right": "FOCUS RIGHT",
+        "classic-rule": "CLASSIC RULE",
+        "center-symmetry": "CENTER SYMMETRY",
+        "dramatic-diagonal": "DRAMATIC DIAGONAL",
+        "text-top-hero": "TEXT TOP HERO",
+        "side-by-side": "SIDE BY SIDE"
+    },
+    txtPositionPresets: "POSITION PRESETS",
     statLabels: { chars: "CHARACTERS", words: "WORDS", tokens: "TOKEN (≈)" },
     shortcutLabels: { gen: "Generate", copy: "Copy" },
 
