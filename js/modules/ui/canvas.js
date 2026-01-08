@@ -21,14 +21,6 @@ export function getCharBounds() { return charBounds; }
 export function getTextBounds() { return textBounds; }
 
 /**
- * Load custom fonts for canvas
- */
-export function loadCanvasFonts() {
-    // Wait for Google Fonts to load
-    return document.fonts.ready;
-}
-
-/**
  * Draw preview canvas
  */
 export function drawPreview() {
